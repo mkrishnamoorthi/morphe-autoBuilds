@@ -141,9 +141,9 @@
       "arch": "arm64-v8a",
       "config_version": "",
       "source_sig": "MorpheApp/morphe-cli@v1.15.0@2026-09-03T11:42:05Z@2026-09-03T11:43:05Z|morphe-desktop-1.15.0-all.jar:sha256:727e3744aa5c0006474590de6f4041bd55edc59f3d6cb9b596e95f7116384506|sha:44c4169b1f1b;crimera/piko@v3.10.0-dev.4@2026-09-04T22:13:25Z@2026-09-04T22:13:25Z|patches-3.10.0-dev.4.mpp:sha256:757303393551de7a9ef137fd5b5dd75553591b922b144020fb214163a0df5b2e|sha:50744aa07bb4",
-      "patch_tag": "v3.10.0-dev.4",
-      "patch_url": "https://github.com/crimera/piko/releases/tag/v3.10.0-dev.4",
-      "patch_changelog": "## [3.10.0-dev.4](https://github.com/crimera/piko/compare/v3.10.0-dev.3...v3.10.0-dev.4) (2026-09-04)\n\n### \ud83d\udc1b Bug Fixes\n\n* **Instagram:** Add missing entity dependencies ([#1833](https://github.com/crimera/piko/issues/1833)) ([a19b255](https://github.com/crimera/piko/commit/a19b255eccd3b2fed5474bc481ab7f3ae6640be9))\n",
+      "patch_tag": "v3.10.0-dev.5",
+      "patch_url": "https://github.com/crimera/piko/releases/tag/v3.10.0-dev.5",
+      "patch_changelog": "## [3.10.0-dev.5](https://github.com/crimera/piko/compare/v3.10.0-dev.4...v3.10.0-dev.5) (2026-09-07)\n\n### \ud83d\udc1b Bug Fixes\n\n* **Twitter:** restore relationship actions in user lists ([854f5e2](https://github.com/crimera/piko/commit/854f5e26831c997e376a7b68094a7fbde89fc790))\n",
       "apk": "x-arm64-v8a-piko-dev-v12.19.1-release.0.apk",
       "built_version": "12.19.1-release.0",
       "built_at": "2026-09-05T01:09:32Z",
@@ -155,13 +155,13 @@
       "source": "rushiranpise",
       "arch": "arm64-v8a",
       "config_version": "",
-      "source_sig": "MorpheApp/morphe-cli@v1.15.0@2026-09-03T11:42:05Z@2026-09-03T11:43:05Z|morphe-desktop-1.15.0-all.jar:sha256:727e3744aa5c0006474590de6f4041bd55edc59f3d6cb9b596e95f7116384506|sha:44c4169b1f1b;rushiranpise/morphe-patches@v1.21.4@2026-09-01T12:53:18Z@2026-09-01T12:53:18Z|SHA256SUMS.txt:sha256:115bb97b950500be3f2f8fe066a382fd31c42f7948aa9b5c7f40dcac363d2e24,patches-1.21.4.mpp:sha256:f47d000d2e75c598cf0a3acd54bc0f340a54852b21294037eb04561b6596a0ff,patches-bundle.json:sha256:07479d6fe59c4fb63183224239d743a3bca87e63997008ad2799a547fcf4b507,patches-list.json:sha256:a7a7db89bfeab97753bd6e97d4287694e7424b18368b519e3d26caf17d9ec6a8|sha:930cc995c9d5",
-      "patch_tag": "v1.21.4",
-      "patch_url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.21.4",
-      "patch_changelog": "## [1.21.4](https://github.com/rushiranpise/morphe-patches/compare/v1.21.3...v1.21.4) (2026-09-01)\n\n### \ud83d\udc1b Bug Fixes\n\n* remove drivvo ([9863742](https://github.com/rushiranpise/morphe-patches/commit/98637422416922553c37ec557a4f2327b95f9cf1))\n* remove pixel patches ([4036563](https://github.com/rushiranpise/morphe-patches/commit/40365632f5d5e9d50f1b35f6288109d743447236))\n* remove tradingview ([4806a...",
+      "source_sig": "MorpheApp/morphe-cli@v1.15.0@2026-09-03T11:42:05Z@2026-09-03T11:43:05Z|morphe-desktop-1.15.0-all.jar:sha256:727e3744aa5c0006474590de6f4041bd55edc59f3d6cb9b596e95f7116384506|sha:44c4169b1f1b;rushiranpise/morphe-patches@v1.21.5@2026-09-08T05:16:26Z@2026-09-08T05:23:42Z|SHA256SUMS.txt:sha256:b7bfe7e4dd06682beded47b61678c52bc6e96f662157007035fc5ae0a5369af4,patches-1.21.5.mpp:sha256:d3df73fe73bf26eddb1bfd610ac85805ff0323d465e94fd414e4e9b65be60d8c,patches-bundle.json:sha256:bf84feab0483cacbed3eb5b581114935aaf2a6391df27d0cd83c846406853603,patches-list.json:sha256:150f8288bd5a72e6f349d0b27becc60ff0752f2e37ada2c2c0ce4cadccabfead|sha:fd3021591193",
+      "patch_tag": "v1.21.5",
+      "patch_url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.21.5",
+      "patch_changelog": "## [1.21.5](https://github.com/rushiranpise/morphe-patches/compare/v1.21.4...v1.21.5) (2026-09-08)\r\n\r\n### \ud83d\udc1b Bug Fixes\r\n\r\n* aaad ([620b6dc](https://github.com/rushiranpise/morphe-patches/commit/620b6dce166b4730bffc8e6ae5d8e0e5845ed9f2)), closes [#938](https://github.com/rushiranpise/morphe-patches/issues/938)\r\n* Moviebox latest update has introduced server-side app checks. While it\u2019s still possible...",
       "apk": "depthwallpaper-arm64-v8a-morphe-patches-v2.1.06.apk",
       "built_version": "2.1.06",
-      "built_at": "2026-09-05T01:08:38Z",
+      "built_at": "2026-09-09T01:09:15Z",
       "package": "com.jndapp.depth.live.wallpaper",
       "icon_url": "https://play-lh.googleusercontent.com/h9g140jbgc6tR6o2VgL2lF0OYTr8cq2n9x_GihS_Toxe3PioggBfXHzIwM2OeNeEyWHfZFpqoMov5Whdm_qMeg=w240-h480"
     },
@@ -171,9 +171,9 @@
       "arch": "arm64-v8a",
       "config_version": "",
       "source_sig": "MorpheApp/morphe-cli@v1.14.0@2026-08-25T12:37:50Z@2026-08-25T12:37:50Z|morphe-desktop-1.14.0-all.jar:sha256:d0579df359c75335d7d79927fa52e351c476bb43a66e43f352a85e943e511131|sha:62d6e8f0dbd3;rushiranpise/morphe-patches@v1.21.4@2026-09-01T12:53:18Z@2026-09-01T12:53:18Z|SHA256SUMS.txt:sha256:115bb97b950500be3f2f8fe066a382fd31c42f7948aa9b5c7f40dcac363d2e24,patches-1.21.4.mpp:sha256:f47d000d2e75c598cf0a3acd54bc0f340a54852b21294037eb04561b6596a0ff,patches-bundle.json:sha256:07479d6fe59c4fb63183224239d743a3bca87e63997008ad2799a547fcf4b507,patches-list.json:sha256:a7a7db89bfeab97753bd6e97d4287694e7424b18368b519e3d26caf17d9ec6a8|sha:930cc995c9d5",
-      "patch_tag": "v1.21.4",
-      "patch_url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.21.4",
-      "patch_changelog": "## [1.21.4](https://github.com/rushiranpise/morphe-patches/compare/v1.21.3...v1.21.4) (2026-09-01)\n\n### \ud83d\udc1b Bug Fixes\n\n* remove drivvo ([9863742](https://github.com/rushiranpise/morphe-patches/commit/98637422416922553c37ec557a4f2327b95f9cf1))\n* remove pixel patches ([4036563](https://github.com/rushiranpise/morphe-patches/commit/40365632f5d5e9d50f1b35f6288109d743447236))\n* remove tradingview ([4806a...",
+      "patch_tag": "v1.21.5",
+      "patch_url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.21.5",
+      "patch_changelog": "## [1.21.5](https://github.com/rushiranpise/morphe-patches/compare/v1.21.4...v1.21.5) (2026-09-08)\r\n\r\n### \ud83d\udc1b Bug Fixes\r\n\r\n* aaad ([620b6dc](https://github.com/rushiranpise/morphe-patches/commit/620b6dce166b4730bffc8e6ae5d8e0e5845ed9f2)), closes [#938](https://github.com/rushiranpise/morphe-patches/issues/938)\r\n* Moviebox latest update has introduced server-side app checks. While it\u2019s still possible...",
       "apk": "pocketcasts-arm64-v8a-morphe-patches-v8.16.apk",
       "built_version": "8.16",
       "built_at": "2026-09-01T15:24:09Z",
@@ -186,9 +186,9 @@
       "arch": "arm64-v8a",
       "config_version": "",
       "source_sig": "MorpheApp/morphe-cli@v1.14.0@2026-08-25T12:37:50Z@2026-08-25T12:37:50Z|morphe-desktop-1.14.0-all.jar:sha256:d0579df359c75335d7d79927fa52e351c476bb43a66e43f352a85e943e511131|sha:62d6e8f0dbd3;rushiranpise/morphe-patches@v1.21.4@2026-09-01T12:53:18Z@2026-09-01T12:53:18Z|SHA256SUMS.txt:sha256:115bb97b950500be3f2f8fe066a382fd31c42f7948aa9b5c7f40dcac363d2e24,patches-1.21.4.mpp:sha256:f47d000d2e75c598cf0a3acd54bc0f340a54852b21294037eb04561b6596a0ff,patches-bundle.json:sha256:07479d6fe59c4fb63183224239d743a3bca87e63997008ad2799a547fcf4b507,patches-list.json:sha256:a7a7db89bfeab97753bd6e97d4287694e7424b18368b519e3d26caf17d9ec6a8|sha:930cc995c9d5",
-      "patch_tag": "v1.21.4",
-      "patch_url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.21.4",
-      "patch_changelog": "## [1.21.4](https://github.com/rushiranpise/morphe-patches/compare/v1.21.3...v1.21.4) (2026-09-01)\n\n### \ud83d\udc1b Bug Fixes\n\n* remove drivvo ([9863742](https://github.com/rushiranpise/morphe-patches/commit/98637422416922553c37ec557a4f2327b95f9cf1))\n* remove pixel patches ([4036563](https://github.com/rushiranpise/morphe-patches/commit/40365632f5d5e9d50f1b35f6288109d743447236))\n* remove tradingview ([4806a...",
+      "patch_tag": "v1.21.5",
+      "patch_url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.21.5",
+      "patch_changelog": "## [1.21.5](https://github.com/rushiranpise/morphe-patches/compare/v1.21.4...v1.21.5) (2026-09-08)\r\n\r\n### \ud83d\udc1b Bug Fixes\r\n\r\n* aaad ([620b6dc](https://github.com/rushiranpise/morphe-patches/commit/620b6dce166b4730bffc8e6ae5d8e0e5845ed9f2)), closes [#938](https://github.com/rushiranpise/morphe-patches/issues/938)\r\n* Moviebox latest update has introduced server-side app checks. While it\u2019s still possible...",
       "apk": "minimalwidgets-arm64-v8a-morphe-patches-v2.1.04.apk",
       "built_version": "2.1.04",
       "built_at": "2026-09-01T15:24:12Z",
@@ -200,13 +200,13 @@
       "source": "rushiranpise",
       "arch": "arm64-v8a",
       "config_version": "",
-      "source_sig": "MorpheApp/morphe-cli@v1.15.0@2026-09-03T11:42:05Z@2026-09-03T11:43:05Z|morphe-desktop-1.15.0-all.jar:sha256:727e3744aa5c0006474590de6f4041bd55edc59f3d6cb9b596e95f7116384506|sha:44c4169b1f1b;rushiranpise/morphe-patches@v1.21.4@2026-09-01T12:53:18Z@2026-09-01T12:53:18Z|SHA256SUMS.txt:sha256:115bb97b950500be3f2f8fe066a382fd31c42f7948aa9b5c7f40dcac363d2e24,patches-1.21.4.mpp:sha256:f47d000d2e75c598cf0a3acd54bc0f340a54852b21294037eb04561b6596a0ff,patches-bundle.json:sha256:07479d6fe59c4fb63183224239d743a3bca87e63997008ad2799a547fcf4b507,patches-list.json:sha256:a7a7db89bfeab97753bd6e97d4287694e7424b18368b519e3d26caf17d9ec6a8|sha:930cc995c9d5",
-      "patch_tag": "v1.21.4",
-      "patch_url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.21.4",
-      "patch_changelog": "## [1.21.4](https://github.com/rushiranpise/morphe-patches/compare/v1.21.3...v1.21.4) (2026-09-01)\n\n### \ud83d\udc1b Bug Fixes\n\n* remove drivvo ([9863742](https://github.com/rushiranpise/morphe-patches/commit/98637422416922553c37ec557a4f2327b95f9cf1))\n* remove pixel patches ([4036563](https://github.com/rushiranpise/morphe-patches/commit/40365632f5d5e9d50f1b35f6288109d743447236))\n* remove tradingview ([4806a...",
+      "source_sig": "MorpheApp/morphe-cli@v1.15.0@2026-09-03T11:42:05Z@2026-09-03T11:43:05Z|morphe-desktop-1.15.0-all.jar:sha256:727e3744aa5c0006474590de6f4041bd55edc59f3d6cb9b596e95f7116384506|sha:44c4169b1f1b;rushiranpise/morphe-patches@v1.21.5@2026-09-08T05:16:26Z@2026-09-08T05:23:42Z|SHA256SUMS.txt:sha256:b7bfe7e4dd06682beded47b61678c52bc6e96f662157007035fc5ae0a5369af4,patches-1.21.5.mpp:sha256:d3df73fe73bf26eddb1bfd610ac85805ff0323d465e94fd414e4e9b65be60d8c,patches-bundle.json:sha256:bf84feab0483cacbed3eb5b581114935aaf2a6391df27d0cd83c846406853603,patches-list.json:sha256:150f8288bd5a72e6f349d0b27becc60ff0752f2e37ada2c2c0ce4cadccabfead|sha:fd3021591193",
+      "patch_tag": "v1.21.5",
+      "patch_url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.21.5",
+      "patch_changelog": "## [1.21.5](https://github.com/rushiranpise/morphe-patches/compare/v1.21.4...v1.21.5) (2026-09-08)\r\n\r\n### \ud83d\udc1b Bug Fixes\r\n\r\n* aaad ([620b6dc](https://github.com/rushiranpise/morphe-patches/commit/620b6dce166b4730bffc8e6ae5d8e0e5845ed9f2)), closes [#938](https://github.com/rushiranpise/morphe-patches/issues/938)\r\n* Moviebox latest update has introduced server-side app checks. While it\u2019s still possible...",
       "apk": "protonpass-arm64-v8a-morphe-patches-v1.40.3.apk",
       "built_version": "1.40.3",
-      "built_at": "2026-09-05T01:09:52Z",
+      "built_at": "2026-09-09T01:10:41Z",
       "package": "proton.android.pass",
       "icon_url": "https://play-lh.googleusercontent.com/Fl-aCgnpB0xcDpnzFYYccPrHKBoh5zSEUZKrHax9m8jGYJepQZhCNO-vhnsJ2En9Hqv8R3f7VJ62QNfgOfXL=w240-h480"
     },
@@ -215,13 +215,13 @@
       "source": "rushiranpise",
       "arch": "arm64-v8a",
       "config_version": "",
-      "source_sig": "MorpheApp/morphe-cli@v1.15.0@2026-09-03T11:42:05Z@2026-09-03T11:43:05Z|morphe-desktop-1.15.0-all.jar:sha256:727e3744aa5c0006474590de6f4041bd55edc59f3d6cb9b596e95f7116384506|sha:44c4169b1f1b;rushiranpise/morphe-patches@v1.21.4@2026-09-01T12:53:18Z@2026-09-01T12:53:18Z|SHA256SUMS.txt:sha256:115bb97b950500be3f2f8fe066a382fd31c42f7948aa9b5c7f40dcac363d2e24,patches-1.21.4.mpp:sha256:f47d000d2e75c598cf0a3acd54bc0f340a54852b21294037eb04561b6596a0ff,patches-bundle.json:sha256:07479d6fe59c4fb63183224239d743a3bca87e63997008ad2799a547fcf4b507,patches-list.json:sha256:a7a7db89bfeab97753bd6e97d4287694e7424b18368b519e3d26caf17d9ec6a8|sha:930cc995c9d5",
-      "patch_tag": "v1.21.4",
-      "patch_url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.21.4",
-      "patch_changelog": "## [1.21.4](https://github.com/rushiranpise/morphe-patches/compare/v1.21.3...v1.21.4) (2026-09-01)\n\n### \ud83d\udc1b Bug Fixes\n\n* remove drivvo ([9863742](https://github.com/rushiranpise/morphe-patches/commit/98637422416922553c37ec557a4f2327b95f9cf1))\n* remove pixel patches ([4036563](https://github.com/rushiranpise/morphe-patches/commit/40365632f5d5e9d50f1b35f6288109d743447236))\n* remove tradingview ([4806a...",
+      "source_sig": "MorpheApp/morphe-cli@v1.15.0@2026-09-03T11:42:05Z@2026-09-03T11:43:05Z|morphe-desktop-1.15.0-all.jar:sha256:727e3744aa5c0006474590de6f4041bd55edc59f3d6cb9b596e95f7116384506|sha:44c4169b1f1b;rushiranpise/morphe-patches@v1.21.5@2026-09-08T05:16:26Z@2026-09-08T05:23:42Z|SHA256SUMS.txt:sha256:b7bfe7e4dd06682beded47b61678c52bc6e96f662157007035fc5ae0a5369af4,patches-1.21.5.mpp:sha256:d3df73fe73bf26eddb1bfd610ac85805ff0323d465e94fd414e4e9b65be60d8c,patches-bundle.json:sha256:bf84feab0483cacbed3eb5b581114935aaf2a6391df27d0cd83c846406853603,patches-list.json:sha256:150f8288bd5a72e6f349d0b27becc60ff0752f2e37ada2c2c0ce4cadccabfead|sha:fd3021591193",
+      "patch_tag": "v1.21.5",
+      "patch_url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.21.5",
+      "patch_changelog": "## [1.21.5](https://github.com/rushiranpise/morphe-patches/compare/v1.21.4...v1.21.5) (2026-09-08)\r\n\r\n### \ud83d\udc1b Bug Fixes\r\n\r\n* aaad ([620b6dc](https://github.com/rushiranpise/morphe-patches/commit/620b6dce166b4730bffc8e6ae5d8e0e5845ed9f2)), closes [#938](https://github.com/rushiranpise/morphe-patches/issues/938)\r\n* Moviebox latest update has introduced server-side app checks. While it\u2019s still possible...",
       "apk": "serverauditor-arm64-v8a-morphe-patches-v7.8.2.apk",
       "built_version": "7.8.2",
-      "built_at": "2026-09-05T01:10:50Z",
+      "built_at": "2026-09-09T01:10:54Z",
       "package": "com.server.auditor.ssh.client",
       "icon_url": "https://play-lh.googleusercontent.com/h0zYNf7cjzKrPw8hrRIvyDxDe_OpikNa9rl0Udjrk-LOo5d23IO5DyXKeRyta1rc12j0Ta60LrvwPkoq2P6e1Q=w240-h480"
     },
@@ -230,13 +230,13 @@
       "source": "morning-entree",
       "arch": "arm64-v8a",
       "config_version": "",
-      "source_sig": "MorpheApp/morphe-cli@v1.15.0@2026-09-03T11:42:05Z@2026-09-03T11:43:05Z|morphe-desktop-1.15.0-all.jar:sha256:727e3744aa5c0006474590de6f4041bd55edc59f3d6cb9b596e95f7116384506|sha:44c4169b1f1b;Entree3k/Morning-Entree-Patches@v1.21.0@2026-09-02T20:57:05Z@2026-09-02T20:57:05Z|patches-1.21.0.mpp:sha256:b59d76dcfaa4647c0481c17186e342168680eea69206f6929dda452b9174b10d|sha:a1ad86cee16a",
-      "patch_tag": "v1.21.0",
-      "patch_url": "https://github.com/Entree3k/Morning-Entree-Patches/releases/tag/v1.21.0",
-      "patch_changelog": "## [1.21.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.20.0...v1.21.0) (2026-09-02)\n\n### \u2728 New Features\n\n* Update ([172dbcb](https://github.com/Entree3k/Morning-Entree-Patches/commit/172dbcb273bcefe1114b5b3010c18c839fb4dbc2))\n",
+      "source_sig": "MorpheApp/morphe-cli@v1.15.0@2026-09-03T11:42:05Z@2026-09-03T11:43:05Z|morphe-desktop-1.15.0-all.jar:sha256:727e3744aa5c0006474590de6f4041bd55edc59f3d6cb9b596e95f7116384506|sha:44c4169b1f1b;Entree3k/Morning-Entree-Patches@v1.22.0@2026-09-08T16:28:24Z@2026-09-08T16:28:24Z|patches-1.22.0.mpp:sha256:bbc681de0f287922b9a61f123b0ca1b811ef557198c9422bb57e92601f9df9f6|sha:9e4c200e04f4",
+      "patch_tag": "v1.22.0",
+      "patch_url": "https://github.com/Entree3k/Morning-Entree-Patches/releases/tag/v1.22.0",
+      "patch_changelog": "## [1.22.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.21.0...v1.22.0) (2026-09-08)\n\n### \u2728 New Features\n\n* update ([b0b80a3](https://github.com/Entree3k/Morning-Entree-Patches/commit/b0b80a39e74abdf82c9e72b2b022cb57f874dc9e))\n",
       "apk": "vocabulary-arm64-v8a-morning-entree-v5.5.1.apk",
       "built_version": "5.5.1",
-      "built_at": "2026-09-05T01:11:04Z",
+      "built_at": "2026-09-09T01:10:56Z",
       "package": "com.hrd.vocabulary",
       "icon_url": "https://play-lh.googleusercontent.com/lxqbwaL36m_080hRNVbDQAjnmCwyDA8tT3B_gPT_yHsuTjeSJfkejJpi19r_qtAm2_QWoTZQS-6MT1T7AILdBA=w240-h480"
     },
@@ -290,13 +290,13 @@
       "source": "hxreborn",
       "arch": "arm64-v8a",
       "config_version": "",
-      "source_sig": "MorpheApp/morphe-cli@v1.15.0@2026-09-03T11:42:05Z@2026-09-03T11:43:05Z|morphe-desktop-1.15.0-all.jar:sha256:727e3744aa5c0006474590de6f4041bd55edc59f3d6cb9b596e95f7116384506|sha:44c4169b1f1b;hxreborn/morphe-patches@v1.14.1@2026-09-02T18:49:14Z@2026-09-02T18:49:14Z|patches-1.14.1.mpp:sha256:1884f73c1b04df303ad9e584be41e724c20586ce0320e115d0152d0a3096c093|sha:b566e2277890",
-      "patch_tag": "v1.14.1",
-      "patch_url": "https://github.com/hxreborn/morphe-patches/releases/tag/v1.14.1",
-      "patch_changelog": "## [1.14.1](https://github.com/hxreborn/morphe-patches/compare/v1.14.0...v1.14.1) (2026-09-02)\n\n### Bug Fixes\n\n* **Proton Mail:** apply the patches on any app version ([a30d68d](https://github.com/hxreborn/morphe-patches/commit/a30d68d47da5356b4c0d4f76dcf6137aa60dbe98))\n",
-      "apk": "notesnook-arm64-v8a-hxreborn-v3.4.11.apk",
-      "built_version": "3.4.11",
-      "built_at": "2026-09-05T01:12:10Z",
+      "source_sig": "MorpheApp/morphe-cli@v1.15.0@2026-09-03T11:42:05Z@2026-09-03T11:43:05Z|morphe-desktop-1.15.0-all.jar:sha256:727e3744aa5c0006474590de6f4041bd55edc59f3d6cb9b596e95f7116384506|sha:44c4169b1f1b;hxreborn/morphe-patches@v1.16.0@2026-09-08T09:47:45Z@2026-09-08T09:47:45Z|patches-1.16.0.mpp:sha256:7285ebe9813952a04ec3febf2c9d2be4b0aa51c356f874847c15d99c66c8a8ec|sha:13b47a06f713",
+      "patch_tag": "v1.16.0",
+      "patch_url": "https://github.com/hxreborn/morphe-patches/releases/tag/v1.16.0",
+      "patch_changelog": "## [1.16.0](https://github.com/hxreborn/morphe-patches/compare/v1.15.0...v1.16.0) (2026-09-08)\n\n### Bug Fixes\n\n* **All-In-One Calculator:** stop listing the pairip patch that only serves the unlocks ([2f93695](https://github.com/hxreborn/morphe-patches/commit/2f93695904bad66bd4ed1b02f64a92f6e8c7a4e1))\n* **AlpineQuest - Bypass signature check:** stop listing a patch that only serves the unlock ([49...",
+      "apk": "notesnook-arm64-v8a-hxreborn-v3.4.12.apk",
+      "built_version": "3.4.12",
+      "built_at": "2026-09-09T01:11:31Z",
       "package": "com.streetwriters.notesnook",
       "icon_url": "https://play-lh.googleusercontent.com/jzOVWLCfAs-yPJoNIJD16f1K-ClRNjcNyhzOW5oW-eP6DdB79LHnRpeBmO97fkXK-N7CrRLhrAjr_1yTloET=w240-h480"
     },
@@ -305,13 +305,13 @@
       "source": "hoodles",
       "arch": "arm64-v8a",
       "config_version": "",
-      "source_sig": "MorpheApp/morphe-cli@v1.15.0@2026-09-03T11:42:05Z@2026-09-03T11:43:05Z|morphe-desktop-1.15.0-all.jar:sha256:727e3744aa5c0006474590de6f4041bd55edc59f3d6cb9b596e95f7116384506|sha:44c4169b1f1b;hoo-dles/morphe-patches@v1.43.0@2026-08-30T00:32:47Z@2026-08-30T00:32:47Z|patches-1.43.0.mpp:sha256:1d81ecbaff24f83287db0f6f33aee1a0df4574cf6647cea8da73617bdcd83f32|sha:bddd5a5a1b00",
-      "patch_tag": "v1.43.0",
-      "patch_url": "https://github.com/hoo-dles/morphe-patches/releases/tag/v1.43.0",
-      "patch_changelog": "# [1.43.0](https://github.com/hoo-dles/morphe-patches/compare/v1.42.0...v1.43.0) (2026-08-30)\n\n\n### Bug Fixes\n\n* **AdGuard:** Add version code for correct APK discovery ([d08ac92](https://github.com/hoo-dles/morphe-patches/commit/d08ac92d55211c5b9faef91d94245cd076ed0550))\n* **Niagara:** Bump supported version to `1.16.24` and fix patch failure ([d2344ae](https://github.com/hoo-dles/morphe-patches/...",
+      "source_sig": "MorpheApp/morphe-cli@v1.15.0@2026-09-03T11:42:05Z@2026-09-03T11:43:05Z|morphe-desktop-1.15.0-all.jar:sha256:727e3744aa5c0006474590de6f4041bd55edc59f3d6cb9b596e95f7116384506|sha:44c4169b1f1b;hoo-dles/morphe-patches@v1.44.0@2026-09-07T01:13:25Z@2026-09-07T01:13:25Z|patches-1.44.0.mpp:sha256:cd87608d1ef682a50e70d73c8585614fb7af6799641e5d7927159fb43b830c40|sha:f7a88fc5fea5",
+      "patch_tag": "v1.44.0",
+      "patch_url": "https://github.com/hoo-dles/morphe-patches/releases/tag/v1.44.0",
+      "patch_changelog": "# [1.44.0](https://github.com/hoo-dles/morphe-patches/compare/v1.43.0...v1.44.0) (2026-09-07)\n\n\n### Features\n\n* Add universal `MicroG integration` patch ([a11dcb4](https://github.com/hoo-dles/morphe-patches/commit/a11dcb4d938c5fd33ce8a3fb9d2dde6575f40c97))\n* Add universal `Spoof SIgnature` patch ([946f3c2](https://github.com/hoo-dles/morphe-patches/commit/946f3c2321984850e37023a3b474a74b08714e82))...",
       "apk": "duolingo-arm64-v8a-hoodles-v6.95.4.apk",
       "built_version": "6.95.4",
-      "built_at": "2026-09-07T01:14:54Z",
+      "built_at": "2026-09-09T01:12:09Z",
       "package": "com.duolingo",
       "icon_url": "https://play-lh.googleusercontent.com/qvCUKsnNRurVefue3FuX4TakVbbUhz9KNFEqgil0N2VT0n_Wa12Gn1ox1ZjRAxXR52cRvgt6BBlo-sNEfC_47w=w240-h480"
     },
@@ -331,7 +331,7 @@
       "icon_url": "https://play-lh.googleusercontent.com/UBrZnuXGb-QACU0uUdF5r_n5nx5oBbdfPyEbtsr0xXv00RN7rpaTVu3GjLeE90aHFmNlbaCmm8vNcmY0eE98U9E=w240-h480"
     }
   },
-  "updated_at": "2026-09-07T01:16:29.991696+00:00",
+  "updated_at": "2026-09-09T01:13:06.396045+00:00",
   "patch_changelogs": {
     "paresh": {
       "source": "paresh",
@@ -372,14 +372,14 @@
         "taskmanager"
       ]
     },
-    "rookie": {
-      "source": "rookie",
-      "old_tag": "v1.3.1",
-      "new_tag": "v1.3.2",
-      "title": "v1.3.2",
-      "url": "https://github.com/RookieEnough/De-Vanced/releases/tag/v1.3.2",
-      "published_at": "2026-09-06T08:30:36Z",
-      "body": "## [1.3.2](https://github.com/RookieEnough/De-Vanced/compare/v1.3.1...v1.3.2) (2026-09-06)\n\n### \ud83d\udc1b Bug Fixes\n\n* **Strava - Add route export:** Patch additional methods ([42c8273](https://github.com/RookieEnough/De-Vanced/commit/42c8273e87a7a401842cd7de8b00e7e07aa2a8ae))\n",
+    "piko-dev": {
+      "source": "piko-dev",
+      "old_tag": "v3.10.0-dev.4",
+      "new_tag": "v3.10.0-dev.5",
+      "title": "v3.10.0-dev.5",
+      "url": "https://github.com/crimera/piko/releases/tag/v3.10.0-dev.5",
+      "published_at": "2026-09-07T01:37:01Z",
+      "body": "## [3.10.0-dev.5](https://github.com/crimera/piko/compare/v3.10.0-dev.4...v3.10.0-dev.5) (2026-09-07)\n\n### \ud83d\udc1b Bug Fixes\n\n* **Twitter:** restore relationship actions in user lists ([854f5e2](https://github.com/crimera/piko/commit/854f5e26831c997e376a7b68094a7fbde89fc790))\n",
       "repos": [
         {
           "provider": "github",
@@ -395,30 +395,29 @@
         },
         {
           "provider": "github",
-          "user": "RookieEnough",
-          "repo": "De-ReVanced",
-          "tag": "v1.3.2",
-          "title": "v1.3.2",
-          "body": "## [1.3.2](https://github.com/RookieEnough/De-Vanced/compare/v1.3.1...v1.3.2) (2026-09-06)\n\n### \ud83d\udc1b Bug Fixes\n\n* **Strava - Add route export:** Patch additional methods ([42c8273](https://github.com/RookieEnough/De-Vanced/commit/42c8273e87a7a401842cd7de8b00e7e07aa2a8ae))\n",
-          "published_at": "2026-09-06T08:30:36Z",
-          "url": "https://github.com/RookieEnough/De-Vanced/releases/tag/v1.3.2",
+          "user": "crimera",
+          "repo": "piko",
+          "tag": "v3.10.0-dev.5",
+          "title": "v3.10.0-dev.5",
+          "body": "## [3.10.0-dev.5](https://github.com/crimera/piko/compare/v3.10.0-dev.4...v3.10.0-dev.5) (2026-09-07)\n\n### \ud83d\udc1b Bug Fixes\n\n* **Twitter:** restore relationship actions in user lists ([854f5e2](https://github.com/crimera/piko/commit/854f5e26831c997e376a7b68094a7fbde89fc790))\n",
+          "published_at": "2026-09-07T01:37:01Z",
+          "url": "https://github.com/crimera/piko/releases/tag/v3.10.0-dev.5",
           "is_cli": false,
           "is_patches": true
         }
       ],
       "affected_apps": [
-        "threads",
-        "google-photos"
+        "x"
       ]
     },
     "rushiranpise": {
       "source": "rushiranpise",
       "old_tag": "v1.21.4",
-      "new_tag": "v1.21.4",
-      "title": "v1.21.4",
-      "url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.21.4",
-      "published_at": "2026-09-01T12:53:18Z",
-      "body": "## [1.21.4](https://github.com/rushiranpise/morphe-patches/compare/v1.21.3...v1.21.4) (2026-09-01)\n\n### \ud83d\udc1b Bug Fixes\n\n* remove drivvo ([9863742](https://github.com/rushiranpise/morphe-patches/commit/98637422416922553c37ec557a4f2327b95f9cf1))\n* remove pixel patches ([4036563](https://github.com/rushiranpise/morphe-patches/commit/40365632f5d5e9d50f1b35f6288109d743447236))\n* remove tradingview ([4806a8f](https://github.com/rushiranpise/morphe-patches/commit/4806a8feb3cd5abe5fb801e2d0d87613a12c0b10))\n* remove universal patches ([55f11fe](https://github.com/rushiranpise/morphe-patches/commit/55f11feae7749990252dfe7f1aede8536aab062a))\n",
+      "new_tag": "v1.21.5",
+      "title": "v1.21.5",
+      "url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.21.5",
+      "published_at": "2026-09-08T05:16:26Z",
+      "body": "## [1.21.5](https://github.com/rushiranpise/morphe-patches/compare/v1.21.4...v1.21.5) (2026-09-08)\r\n\r\n### \ud83d\udc1b Bug Fixes\r\n\r\n* aaad ([620b6dc](https://github.com/rushiranpise/morphe-patches/commit/620b6dce166b4730bffc8e6ae5d8e0e5845ed9f2)), closes [#938](https://github.com/rushiranpise/morphe-patches/issues/938)\r\n* Moviebox latest update has introduced server-side app checks. While it\u2019s still possible to keep using the older version, there\u2019s no guarantee how long it will continue to work. There\u2019s also new APK protection on top of that, so the app has been removed from the patches.\r\n",
       "repos": [
         {
           "provider": "github",
@@ -436,28 +435,107 @@
           "provider": "github",
           "user": "rushiranpise",
           "repo": "morphe-patches",
-          "tag": "v1.21.4",
-          "title": "v1.21.4",
-          "body": "## [1.21.4](https://github.com/rushiranpise/morphe-patches/compare/v1.21.3...v1.21.4) (2026-09-01)\n\n### \ud83d\udc1b Bug Fixes\n\n* remove drivvo ([9863742](https://github.com/rushiranpise/morphe-patches/commit/98637422416922553c37ec557a4f2327b95f9cf1))\n* remove pixel patches ([4036563](https://github.com/rushiranpise/morphe-patches/commit/40365632f5d5e9d50f1b35f6288109d743447236))\n* remove tradingview ([4806a8f](https://github.com/rushiranpise/morphe-patches/commit/4806a8feb3cd5abe5fb801e2d0d87613a12c0b10))\n* remove universal patches ([55f11fe](https://github.com/rushiranpise/morphe-patches/commit/55f11feae7749990252dfe7f1aede8536aab062a))\n",
-          "published_at": "2026-09-01T12:53:18Z",
-          "url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.21.4",
+          "tag": "v1.21.5",
+          "title": "v1.21.5",
+          "body": "## [1.21.5](https://github.com/rushiranpise/morphe-patches/compare/v1.21.4...v1.21.5) (2026-09-08)\r\n\r\n### \ud83d\udc1b Bug Fixes\r\n\r\n* aaad ([620b6dc](https://github.com/rushiranpise/morphe-patches/commit/620b6dce166b4730bffc8e6ae5d8e0e5845ed9f2)), closes [#938](https://github.com/rushiranpise/morphe-patches/issues/938)\r\n* Moviebox latest update has introduced server-side app checks. While it\u2019s still possible to keep using the older version, there\u2019s no guarantee how long it will continue to work. There\u2019s also new APK protection on top of that, so the app has been removed from the patches.\r\n",
+          "published_at": "2026-09-08T05:16:26Z",
+          "url": "https://github.com/rushiranpise/morphe-patches/releases/tag/v1.21.5",
           "is_cli": false,
           "is_patches": true
         }
       ],
       "affected_apps": [
+        "depthwallpaper",
         "pocketcasts",
-        "minimalwidgets"
+        "minimalwidgets",
+        "protonpass",
+        "serverauditor"
+      ]
+    },
+    "morning-entree": {
+      "source": "morning-entree",
+      "old_tag": "v1.21.0",
+      "new_tag": "v1.22.0",
+      "title": "v1.22.0",
+      "url": "https://github.com/Entree3k/Morning-Entree-Patches/releases/tag/v1.22.0",
+      "published_at": "2026-09-08T16:28:24Z",
+      "body": "## [1.22.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.21.0...v1.22.0) (2026-09-08)\n\n### \u2728 New Features\n\n* update ([b0b80a3](https://github.com/Entree3k/Morning-Entree-Patches/commit/b0b80a39e74abdf82c9e72b2b022cb57f874dc9e))\n",
+      "repos": [
+        {
+          "provider": "github",
+          "user": "MorpheApp",
+          "repo": "morphe-cli",
+          "tag": "v1.15.0",
+          "title": "v1.15.0",
+          "body": "# [1.15.0](https://github.com/MorpheApp/morphe-desktop/compare/v1.14.0...v1.15.0) (2026-09-03)\r\n\r\n\r\n### Bug Fixes\r\n\r\n* Prevent NPE crash in `IoUsageSampler` on Windows ([#284](https://github.com/MorpheApp/morphe-desktop/issues/284)) ([539d96f](https://github.com/MorpheApp/morphe-desktop/commit/539d96f07722ec9b7fde28659b3c2c436ba146b2))\r\n* Recognize repository URLs passed to `--patches` on Windows ([#266](https://github.com/MorpheApp/morphe-desktop/issues/266)) ([5ed40a2](https://github.com/MorpheApp/morphe-desktop/commit/5ed40a2ee3895c4763d239aaea44b7cab97bf63e))\r\n\r\n\r\n### Features\r\n\r\n* Port Manager typography and overhaul UI to Material 3 ([#259](https://github.com/MorpheApp/morphe-desktop/issues/259)) ([b4f994b](https://github.com/MorpheApp/morphe-desktop/commit/b4f994bd5b1e7a060f800c05a09be4d097f064bb)), closes [#190](https://github.com/MorpheApp/morphe-desktop/issues/190)\r\n* Port Matrix animated background from Manager ([#285](https://github.com/MorpheApp/morphe-desktop/issues/285)) ([1aa42c2](https://github.com/MorpheApp/morphe-desktop/commit/1aa42c26f48fe49b6529057d60d906898a302885))\r\n",
+          "published_at": "2026-09-03T11:42:05Z",
+          "url": "https://github.com/MorpheApp/morphe-desktop/releases/tag/v1.15.0",
+          "is_cli": true,
+          "is_patches": false
+        },
+        {
+          "provider": "github",
+          "user": "Entree3k",
+          "repo": "Morning-Entree-Patches",
+          "tag": "v1.22.0",
+          "title": "v1.22.0",
+          "body": "## [1.22.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.21.0...v1.22.0) (2026-09-08)\n\n### \u2728 New Features\n\n* update ([b0b80a3](https://github.com/Entree3k/Morning-Entree-Patches/commit/b0b80a39e74abdf82c9e72b2b022cb57f874dc9e))\n",
+          "published_at": "2026-09-08T16:28:24Z",
+          "url": "https://github.com/Entree3k/Morning-Entree-Patches/releases/tag/v1.22.0",
+          "is_cli": false,
+          "is_patches": true
+        }
+      ],
+      "affected_apps": [
+        "vocabulary"
+      ]
+    },
+    "hxreborn": {
+      "source": "hxreborn",
+      "old_tag": "v1.14.1",
+      "new_tag": "v1.16.0",
+      "title": "v1.16.0",
+      "url": "https://github.com/hxreborn/morphe-patches/releases/tag/v1.16.0",
+      "published_at": "2026-09-08T09:47:45Z",
+      "body": "## [1.16.0](https://github.com/hxreborn/morphe-patches/compare/v1.15.0...v1.16.0) (2026-09-08)\n\n### Bug Fixes\n\n* **All-In-One Calculator:** stop listing the pairip patch that only serves the unlocks ([2f93695](https://github.com/hxreborn/morphe-patches/commit/2f93695904bad66bd4ed1b02f64a92f6e8c7a4e1))\n* **AlpineQuest - Bypass signature check:** stop listing a patch that only serves the unlock ([4959f5e](https://github.com/hxreborn/morphe-patches/commit/4959f5e070d79130977df9b8f73b198945985095))\n* **Photo Editor Pro - Spoof signature:** stop listing a patch the app cannot run without ([0bdb3db](https://github.com/hxreborn/morphe-patches/commit/0bdb3dba66a2e669c6610d02452c65f722621460))\n* **Photo Editor Pro:** stop listing the iOS spoof the AI tools cannot work without ([a44cffd](https://github.com/hxreborn/morphe-patches/commit/a44cffd9a8ded18908277244eabc2054af5bf00f))\n* **Proton Mail:** keep push notifications working whichever patches are selected ([e17ead1](https://github.com/hxreborn/morphe-patches/commit/e17ead1c4fa5d8adfbe7cae759f1d24451fb8969))\n* **Quranify - Unlock premium:** pull in the integrity and pairip patches as dependencies ([06db4dd](https://github.com/hxreborn/morphe-patches/commit/06db4dd2dbebd6ba9cab2b7bf579ceb5ac912353))\n* **RateGlance - Unlock premium:** pull in the pairip patch as a dependency ([5359f91](https://github.com/hxreborn/morphe-patches/commit/5359f913df2c84be9c5bb2c66f001578454fb6b2))\n* **Remove pairip protection:** fail at patch time when the hoisted-field table does not match ([5972cc3](https://github.com/hxreborn/morphe-patches/commit/5972cc3fdd23c81866b42215d558058fb30202ef))\n* **Remove pairip protection:** stop listing a patch that only serves the unlocks ([8d8acf6](https://github.com/hxreborn/morphe-patches/commit/8d8acf6e35833bec3af6875feba4b45ab28a510a))\n\n### New Features\n\n* **BetterSleep - Spoof signature:** keep account sign-up and Firebase working on a re-signed build ([eac36d1](https://github.com/hxreborn/morphe-patches/commit/eac36d1efbee1b5ddec40732cc490121a5ef7267))\n* **BetterSleep - Unlock premium:** unlock all content and skip the free trial screen ([8cac3d5](https://github.com/hxreborn/morphe-patches/commit/8cac3d59efcb71922a8884f00f17962b5f2201ec))\n* **RISE - Unlock premium:** unlock the energy schedule and habit tools without a subscription ([d9df4c1](https://github.com/hxreborn/morphe-patches/commit/d9df4c1ff09a965c5ef365fbc04e648d21249881))\n",
+      "repos": [
+        {
+          "provider": "github",
+          "user": "MorpheApp",
+          "repo": "morphe-cli",
+          "tag": "v1.15.0",
+          "title": "v1.15.0",
+          "body": "# [1.15.0](https://github.com/MorpheApp/morphe-desktop/compare/v1.14.0...v1.15.0) (2026-09-03)\r\n\r\n\r\n### Bug Fixes\r\n\r\n* Prevent NPE crash in `IoUsageSampler` on Windows ([#284](https://github.com/MorpheApp/morphe-desktop/issues/284)) ([539d96f](https://github.com/MorpheApp/morphe-desktop/commit/539d96f07722ec9b7fde28659b3c2c436ba146b2))\r\n* Recognize repository URLs passed to `--patches` on Windows ([#266](https://github.com/MorpheApp/morphe-desktop/issues/266)) ([5ed40a2](https://github.com/MorpheApp/morphe-desktop/commit/5ed40a2ee3895c4763d239aaea44b7cab97bf63e))\r\n\r\n\r\n### Features\r\n\r\n* Port Manager typography and overhaul UI to Material 3 ([#259](https://github.com/MorpheApp/morphe-desktop/issues/259)) ([b4f994b](https://github.com/MorpheApp/morphe-desktop/commit/b4f994bd5b1e7a060f800c05a09be4d097f064bb)), closes [#190](https://github.com/MorpheApp/morphe-desktop/issues/190)\r\n* Port Matrix animated background from Manager ([#285](https://github.com/MorpheApp/morphe-desktop/issues/285)) ([1aa42c2](https://github.com/MorpheApp/morphe-desktop/commit/1aa42c26f48fe49b6529057d60d906898a302885))\r\n",
+          "published_at": "2026-09-03T11:42:05Z",
+          "url": "https://github.com/MorpheApp/morphe-desktop/releases/tag/v1.15.0",
+          "is_cli": true,
+          "is_patches": false
+        },
+        {
+          "provider": "github",
+          "user": "hxreborn",
+          "repo": "morphe-patches",
+          "tag": "v1.16.0",
+          "title": "v1.16.0",
+          "body": "## [1.16.0](https://github.com/hxreborn/morphe-patches/compare/v1.15.0...v1.16.0) (2026-09-08)\n\n### Bug Fixes\n\n* **All-In-One Calculator:** stop listing the pairip patch that only serves the unlocks ([2f93695](https://github.com/hxreborn/morphe-patches/commit/2f93695904bad66bd4ed1b02f64a92f6e8c7a4e1))\n* **AlpineQuest - Bypass signature check:** stop listing a patch that only serves the unlock ([4959f5e](https://github.com/hxreborn/morphe-patches/commit/4959f5e070d79130977df9b8f73b198945985095))\n* **Photo Editor Pro - Spoof signature:** stop listing a patch the app cannot run without ([0bdb3db](https://github.com/hxreborn/morphe-patches/commit/0bdb3dba66a2e669c6610d02452c65f722621460))\n* **Photo Editor Pro:** stop listing the iOS spoof the AI tools cannot work without ([a44cffd](https://github.com/hxreborn/morphe-patches/commit/a44cffd9a8ded18908277244eabc2054af5bf00f))\n* **Proton Mail:** keep push notifications working whichever patches are selected ([e17ead1](https://github.com/hxreborn/morphe-patches/commit/e17ead1c4fa5d8adfbe7cae759f1d24451fb8969))\n* **Quranify - Unlock premium:** pull in the integrity and pairip patches as dependencies ([06db4dd](https://github.com/hxreborn/morphe-patches/commit/06db4dd2dbebd6ba9cab2b7bf579ceb5ac912353))\n* **RateGlance - Unlock premium:** pull in the pairip patch as a dependency ([5359f91](https://github.com/hxreborn/morphe-patches/commit/5359f913df2c84be9c5bb2c66f001578454fb6b2))\n* **Remove pairip protection:** fail at patch time when the hoisted-field table does not match ([5972cc3](https://github.com/hxreborn/morphe-patches/commit/5972cc3fdd23c81866b42215d558058fb30202ef))\n* **Remove pairip protection:** stop listing a patch that only serves the unlocks ([8d8acf6](https://github.com/hxreborn/morphe-patches/commit/8d8acf6e35833bec3af6875feba4b45ab28a510a))\n\n### New Features\n\n* **BetterSleep - Spoof signature:** keep account sign-up and Firebase working on a re-signed build ([eac36d1](https://github.com/hxreborn/morphe-patches/commit/eac36d1efbee1b5ddec40732cc490121a5ef7267))\n* **BetterSleep - Unlock premium:** unlock all content and skip the free trial screen ([8cac3d5](https://github.com/hxreborn/morphe-patches/commit/8cac3d59efcb71922a8884f00f17962b5f2201ec))\n* **RISE - Unlock premium:** unlock the energy schedule and habit tools without a subscription ([d9df4c1](https://github.com/hxreborn/morphe-patches/commit/d9df4c1ff09a965c5ef365fbc04e648d21249881))\n",
+          "published_at": "2026-09-08T09:47:45Z",
+          "url": "https://github.com/hxreborn/morphe-patches/releases/tag/v1.16.0",
+          "is_cli": false,
+          "is_patches": true
+        }
+      ],
+      "affected_apps": [
+        "notesnook"
       ]
     },
     "hoodles": {
       "source": "hoodles",
       "old_tag": "v1.43.0",
-      "new_tag": "v1.43.0",
-      "title": "v1.43.0",
-      "url": "https://github.com/hoo-dles/morphe-patches/releases/tag/v1.43.0",
-      "published_at": "2026-08-30T00:32:47Z",
-      "body": "# [1.43.0](https://github.com/hoo-dles/morphe-patches/compare/v1.42.0...v1.43.0) (2026-08-30)\n\n\n### Bug Fixes\n\n* **AdGuard:** Add version code for correct APK discovery ([d08ac92](https://github.com/hoo-dles/morphe-patches/commit/d08ac92d55211c5b9faef91d94245cd076ed0550))\n* **Niagara:** Bump supported version to `1.16.24` and fix patch failure ([d2344ae](https://github.com/hoo-dles/morphe-patches/commit/d2344ae2726b5ab5f7e14fa75e52d0990a8a22e5))\n* **Showly:** Fix news feed not loading ([828698e](https://github.com/hoo-dles/morphe-patches/commit/828698efb3ece50b5e07a9cc8dcc4c4d3b1490e0))\n\n\n### Features\n\n* **Bend:** Add `Enable Premium` patch ([d3ee74f](https://github.com/hoo-dles/morphe-patches/commit/d3ee74f73ad1239cb580a485e1c0bc97ab0510f1))\n\n\n\n",
+      "new_tag": "v1.44.0",
+      "title": "v1.44.0",
+      "url": "https://github.com/hoo-dles/morphe-patches/releases/tag/v1.44.0",
+      "published_at": "2026-09-07T01:13:25Z",
+      "body": "# [1.44.0](https://github.com/hoo-dles/morphe-patches/compare/v1.43.0...v1.44.0) (2026-09-07)\n\n\n### Features\n\n* Add universal `MicroG integration` patch ([a11dcb4](https://github.com/hoo-dles/morphe-patches/commit/a11dcb4d938c5fd33ce8a3fb9d2dde6575f40c97))\n* Add universal `Spoof SIgnature` patch ([946f3c2](https://github.com/hoo-dles/morphe-patches/commit/946f3c2321984850e37023a3b474a74b08714e82))\n* **ASL Bloom:** Add `Enable Premium` patch ([3dde853](https://github.com/hoo-dles/morphe-patches/commit/3dde853c2362849e336277e556e9a2e84a36137f))\n\n\n\n",
       "repos": [
         {
           "provider": "github",
@@ -475,67 +553,17 @@
           "provider": "github",
           "user": "hoo-dles",
           "repo": "morphe-patches",
-          "tag": "v1.43.0",
-          "title": "v1.43.0",
-          "body": "# [1.43.0](https://github.com/hoo-dles/morphe-patches/compare/v1.42.0...v1.43.0) (2026-08-30)\n\n\n### Bug Fixes\n\n* **AdGuard:** Add version code for correct APK discovery ([d08ac92](https://github.com/hoo-dles/morphe-patches/commit/d08ac92d55211c5b9faef91d94245cd076ed0550))\n* **Niagara:** Bump supported version to `1.16.24` and fix patch failure ([d2344ae](https://github.com/hoo-dles/morphe-patches/commit/d2344ae2726b5ab5f7e14fa75e52d0990a8a22e5))\n* **Showly:** Fix news feed not loading ([828698e](https://github.com/hoo-dles/morphe-patches/commit/828698efb3ece50b5e07a9cc8dcc4c4d3b1490e0))\n\n\n### Features\n\n* **Bend:** Add `Enable Premium` patch ([d3ee74f](https://github.com/hoo-dles/morphe-patches/commit/d3ee74f73ad1239cb580a485e1c0bc97ab0510f1))\n\n\n\n",
-          "published_at": "2026-08-30T00:32:47Z",
-          "url": "https://github.com/hoo-dles/morphe-patches/releases/tag/v1.43.0",
+          "tag": "v1.44.0",
+          "title": "v1.44.0",
+          "body": "# [1.44.0](https://github.com/hoo-dles/morphe-patches/compare/v1.43.0...v1.44.0) (2026-09-07)\n\n\n### Features\n\n* Add universal `MicroG integration` patch ([a11dcb4](https://github.com/hoo-dles/morphe-patches/commit/a11dcb4d938c5fd33ce8a3fb9d2dde6575f40c97))\n* Add universal `Spoof SIgnature` patch ([946f3c2](https://github.com/hoo-dles/morphe-patches/commit/946f3c2321984850e37023a3b474a74b08714e82))\n* **ASL Bloom:** Add `Enable Premium` patch ([3dde853](https://github.com/hoo-dles/morphe-patches/commit/3dde853c2362849e336277e556e9a2e84a36137f))\n\n\n\n",
+          "published_at": "2026-09-07T01:13:25Z",
+          "url": "https://github.com/hoo-dles/morphe-patches/releases/tag/v1.44.0",
           "is_cli": false,
           "is_patches": true
         }
       ],
       "affected_apps": [
         "duolingo"
-      ]
-    },
-    "dh6k": {
-      "source": "dh6k",
-      "old_tag": "v1.4.0",
-      "new_tag": "v1.5.0",
-      "title": "v1.5.0",
-      "url": "https://github.com/dh6k/morphe-patches/releases/tag/v1.5.0",
-      "published_at": "2026-09-05T22:28:53Z",
-      "body": "## [1.5.0](https://github.com/dh6k/morphe-patches/compare/v1.4.0...v1.5.0) (2026-09-05)\n\n### \ud83d\udc1b Bug Fixes\n\n* **brave:** tolerate Origin log-literal drift on 1.97.x ([86755f2](https://github.com/dh6k/morphe-patches/commit/86755f20a37a75546af646cd7c0f3acd684ca674)), closes [#1](https://github.com/dh6k/morphe-patches/issues/1) [#5](https://github.com/dh6k/morphe-patches/issues/5)\n\n### \u2728 New Features\n\n* **universal:** broaden Disable analytics to kondratjev parity ([2cb64ac](https://github.com/dh6k/morphe-patches/commit/2cb64ac9ca097b92394b4f558ed9de8685c42656))\n* **universal:** cover Adjust v5 initSdk and Crashlytics boxed overload ([aaba54a](https://github.com/dh6k/morphe-patches/commit/aaba54a195cc6adae3c3ea6aa1479b62a5ac9dd7))\n* **universal:** cover screen reporting, crashlytics/perf providers and Adjust init ([42baa67](https://github.com/dh6k/morphe-patches/commit/42baa6770542275c175ac75ec6a514d10b84ea81))\n* **universal:** harden Disable analytics manifest scope and runtime backstop ([1f27512](https://github.com/dh6k/morphe-patches/commit/1f275125aa6db5dcb05fccebb38474c68cd0adbd))\n",
-      "repos": [
-        {
-          "provider": "github",
-          "user": "MorpheApp",
-          "repo": "morphe-cli",
-          "tag": "v1.15.0",
-          "title": "v1.15.0",
-          "body": "# [1.15.0](https://github.com/MorpheApp/morphe-desktop/compare/v1.14.0...v1.15.0) (2026-09-03)\r\n\r\n\r\n### Bug Fixes\r\n\r\n* Prevent NPE crash in `IoUsageSampler` on Windows ([#284](https://github.com/MorpheApp/morphe-desktop/issues/284)) ([539d96f](https://github.com/MorpheApp/morphe-desktop/commit/539d96f07722ec9b7fde28659b3c2c436ba146b2))\r\n* Recognize repository URLs passed to `--patches` on Windows ([#266](https://github.com/MorpheApp/morphe-desktop/issues/266)) ([5ed40a2](https://github.com/MorpheApp/morphe-desktop/commit/5ed40a2ee3895c4763d239aaea44b7cab97bf63e))\r\n\r\n\r\n### Features\r\n\r\n* Port Manager typography and overhaul UI to Material 3 ([#259](https://github.com/MorpheApp/morphe-desktop/issues/259)) ([b4f994b](https://github.com/MorpheApp/morphe-desktop/commit/b4f994bd5b1e7a060f800c05a09be4d097f064bb)), closes [#190](https://github.com/MorpheApp/morphe-desktop/issues/190)\r\n* Port Matrix animated background from Manager ([#285](https://github.com/MorpheApp/morphe-desktop/issues/285)) ([1aa42c2](https://github.com/MorpheApp/morphe-desktop/commit/1aa42c26f48fe49b6529057d60d906898a302885))\r\n",
-          "published_at": "2026-09-03T11:42:05Z",
-          "url": "https://github.com/MorpheApp/morphe-desktop/releases/tag/v1.15.0",
-          "is_cli": true,
-          "is_patches": false
-        },
-        {
-          "provider": "github",
-          "user": "dh6k",
-          "repo": "morphe-patches",
-          "tag": "v1.5.0",
-          "title": "v1.5.0",
-          "body": "## [1.5.0](https://github.com/dh6k/morphe-patches/compare/v1.4.0...v1.5.0) (2026-09-05)\n\n### \ud83d\udc1b Bug Fixes\n\n* **brave:** tolerate Origin log-literal drift on 1.97.x ([86755f2](https://github.com/dh6k/morphe-patches/commit/86755f20a37a75546af646cd7c0f3acd684ca674)), closes [#1](https://github.com/dh6k/morphe-patches/issues/1) [#5](https://github.com/dh6k/morphe-patches/issues/5)\n\n### \u2728 New Features\n\n* **universal:** broaden Disable analytics to kondratjev parity ([2cb64ac](https://github.com/dh6k/morphe-patches/commit/2cb64ac9ca097b92394b4f558ed9de8685c42656))\n* **universal:** cover Adjust v5 initSdk and Crashlytics boxed overload ([aaba54a](https://github.com/dh6k/morphe-patches/commit/aaba54a195cc6adae3c3ea6aa1479b62a5ac9dd7))\n* **universal:** cover screen reporting, crashlytics/perf providers and Adjust init ([42baa67](https://github.com/dh6k/morphe-patches/commit/42baa6770542275c175ac75ec6a514d10b84ea81))\n* **universal:** harden Disable analytics manifest scope and runtime backstop ([1f27512](https://github.com/dh6k/morphe-patches/commit/1f275125aa6db5dcb05fccebb38474c68cd0adbd))\n",
-          "published_at": "2026-09-05T22:28:53Z",
-          "url": "https://github.com/dh6k/morphe-patches/releases/tag/v1.5.0",
-          "is_cli": false,
-          "is_patches": true
-        },
-        {
-          "provider": "github",
-          "user": "MorpheApp",
-          "repo": "morphe-patches",
-          "tag": "v1.41.0",
-          "title": "v1.41.0",
-          "body": "## [1.41.0](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0...v1.41.0) (2026-09-01)\r\n\r\n### \ud83d\udc1b Bug Fixes\r\n\r\n* **Reddit:** Preserve font weights with system and custom fonts ([#2643](https://github.com/MorpheApp/morphe-patches/issues/2643)) ([9cf3838](https://github.com/MorpheApp/morphe-patches/commit/9cf38388b924c8ca5a27db6fb82d6231b16dbc41))\r\n* **Settings:** Keep search results in sync with preferences and highlight every match ([#2712](https://github.com/MorpheApp/morphe-patches/issues/2712)) ([5cae2b5](https://github.com/MorpheApp/morphe-patches/commit/5cae2b57c35afeb2d6d14e4ea52edaf93d138043))\r\n* **Settings:** Resolve OOM crashes and prevent duplicate dialogs ([047121d](https://github.com/MorpheApp/morphe-patches/commit/047121d9d9001ba56439ce20ac7596e48a415a90))\r\n* **Theme:** Add new color tokens and Litho hooks ([a7d7520](https://github.com/MorpheApp/morphe-patches/commit/a7d7520f824013816d579a716e67ef6a76102936))\r\n* **YouTube - Add to queue:** Flyout menu is too wide and loses the item changes on rotation ([72dbc80](https://github.com/MorpheApp/morphe-patches/commit/72dbc80f74853e491f377dbb11b111b351880362))\r\n* **YouTube - Advanced quality menu:** The menu is not show in some circumstances ([a867890](https://github.com/MorpheApp/morphe-patches/commit/a8678901703c6b903f4002ab950355ccebcc1d15))\r\n* **YouTube - Change form factor:** Prevent tablet layout causing app to crash ([#2600](https://github.com/MorpheApp/morphe-patches/issues/2600)) ([f54d9cd](https://github.com/MorpheApp/morphe-patches/commit/f54d9cd0c86ec3fa960d2505201f323f4766ebd5))\r\n* **YouTube - Hide ads:** Prevent unintended navigation button swap ([#2659](https://github.com/MorpheApp/morphe-patches/issues/2659)) ([389d2d3](https://github.com/MorpheApp/morphe-patches/commit/389d2d37ddd14dd102ce98bafa85feedb1df8234))\r\n* **YouTube - Hide layout components:** Exception thrown if there are duplicate keywords in the `Comments carousel filter` ([#2640](https://github.com/MorpheApp/morphe-patches/issues/2640)) ([5c3be65](https://github.com/MorpheApp/morphe-patches/commit/5c3be655f3f92bae646b494bc7a3be57d6fc0cb0))\r\n* **YouTube - Hide layout components:** Prevent Library shelves from being hidden ([#2597](https://github.com/MorpheApp/morphe-patches/issues/2597)) ([2d1e542](https://github.com/MorpheApp/morphe-patches/commit/2d1e5428f23a76b8f3ba6d8c84e1148b459ed112))\r\n* **YouTube - Hide player overlay buttons:** Cast button is not always hidden ([0c9cabf](https://github.com/MorpheApp/morphe-patches/commit/0c9cabfd9c30cc4c80453fc927f6cd0566f1a6b3))\r\n* **YouTube - Hide player overlay buttons:** Hide new type of cast button ([bb36691](https://github.com/MorpheApp/morphe-patches/commit/bb3669139536e0c632fb4991b7e4bcd4ee3cc84e))\r\n* **YouTube - Legacy player controls:** Top bar buttons are hidden in some circumstances ([f429938](https://github.com/MorpheApp/morphe-patches/commit/f429938f5ebde77d811aba4faad37ef01566e954))\r\n* **YouTube - PlayerOverlayButton:** Correct spacing when fullscreen button is hidden ([#2663](https://github.com/MorpheApp/morphe-patches/issues/2663)) ([7ddb7c2](https://github.com/MorpheApp/morphe-patches/commit/7ddb7c2870a0a28f1d1df6c2c621d873782f1775))\r\n* **YouTube - Reload video:** Keep pitch/speed after reload ([#2595](https://github.com/MorpheApp/morphe-patches/issues/2595)) ([959597c](https://github.com/MorpheApp/morphe-patches/commit/959597cef9b5ac7ed5342bf64ff3b31da7f7a842))\r\n* **YouTube - Save to watch later for kids button:** Button was hidden in flyout for some videos ([109f9dc](https://github.com/MorpheApp/morphe-patches/commit/109f9dc64ffffdbde70c51395cfd9fa8a08b999f))\r\n* **YouTube - Seekbar:** Force newer splash screen animation ([91f937a](https://github.com/MorpheApp/morphe-patches/commit/91f937a83346df0e1361fa11f7e5db422c8ff3d2))\r\n* **YouTube - Video quality:** SABR playback breaks due to \"Prioritize video quality\" ([#2720](https://github.com/MorpheApp/morphe-patches/issues/2720)) ([895a8f1](https://github.com/MorpheApp/morphe-patches/commit/895a8f19e897239a7e3e4978c0524822f1863c78))\r\n* **YouTube Music - Play albums songs:** Restore music videos outside of albums and use the SponsorBlock segments of the song ([55cd280](https://github.com/MorpheApp/morphe-patches/commit/55cd28030ca12efd686735a08885dcf42bd58f77))\r\n* **YouTube Music - Play albums songs:** Use the length of the song instead of the length of the music video ([e38ec78](https://github.com/MorpheApp/morphe-patches/commit/e38ec78c780cc698f227fed577e96ef15114c140))\r\n* **YouTube Music - Scrobbling:** Scrobble the song version of album tracks instead of the music video ([9ceace2](https://github.com/MorpheApp/morphe-patches/commit/9ceace24b220ea711d91fa750665a46d85bce444))\r\n* **YouTube Music - Theme:** Fade the page header into the background color ([#2636](https://github.com/MorpheApp/morphe-patches/issues/2636)) ([5f5a478](https://github.com/MorpheApp/morphe-patches/commit/5f5a478f7c8670958255b06eeabbfff2e9be4ff0))\r\n* **YouTube Music - Third-party lyrics:** Show the lyrics of the song version of album tracks ([e29d3e9](https://github.com/MorpheApp/morphe-patches/commit/e29d3e939dad95fab0981517be47a55529dc30b1))\r\n* **YouTube Music:** Various issues of the `Play albums songs` patch ([#2698](https://github.com/MorpheApp/morphe-patches/issues/2698)) ([b18ca17](https://github.com/MorpheApp/morphe-patches/commit/b18ca17bb50c255fc1328ec291b77298cf687ff2))\r\n\r\n### \u2728 New Features\r\n\r\n* Add `App refresh rate` patch ([#2695](https://github.com/MorpheApp/morphe-patches/issues/2695)) ([e11c5e9](https://github.com/MorpheApp/morphe-patches/commit/e11c5e97cfb63f413cb3e1f695f50610e11016d5))\r\n* Add `PoToken provider` patch ([#2618](https://github.com/MorpheApp/morphe-patches/issues/2618)) ([fb25ff1](https://github.com/MorpheApp/morphe-patches/commit/fb25ff1fe8270a8a8d003361e17c130c5d422237))\r\n* **Enable debugging - Feature flags manager:** Redesign and add flag forcing, import and export, and binary search ([#2638](https://github.com/MorpheApp/morphe-patches/issues/2638)) ([f0fdebe](https://github.com/MorpheApp/morphe-patches/commit/f0fdebeb02e40360c150e093180530a606709660))\r\n* **Settings:** Add an option to change the name of the Morphe settings entry ([#2691](https://github.com/MorpheApp/morphe-patches/issues/2691)) ([942d6fb](https://github.com/MorpheApp/morphe-patches/commit/942d6fb59121fbf5629adbcbcb735db7818cac9e))\r\n* **YouTube - Disable fullscreen gestures:** Add option to disable pinch-to-zoom ([#2633](https://github.com/MorpheApp/morphe-patches/issues/2633)) ([7b05d2d](https://github.com/MorpheApp/morphe-patches/commit/7b05d2db985232b5dc3bd3a3bcde13e9b4875dbc))\r\n* **YouTube - Disable video codecs:** Add \"Force HDR video\" setting ([#2634](https://github.com/MorpheApp/morphe-patches/issues/2634)) ([04529f3](https://github.com/MorpheApp/morphe-patches/commit/04529f34cc7052b57b1290bf5b1eeeffea3b76b9))\r\n* **YouTube - Hide layout components:** Add \"Hide 'Top fans' button\" setting ([#2660](https://github.com/MorpheApp/morphe-patches/issues/2660)) ([1e719f6](https://github.com/MorpheApp/morphe-patches/commit/1e719f614c75163bda9b9bac95bbadfb6268ff1c))\r\n* **YouTube - Hide layout components:** Add \"Hide filter bar in channel page\" and \"Hide 'Members only' chip\" settings ([#2622](https://github.com/MorpheApp/morphe-patches/issues/2622)) ([5db5a77](https://github.com/MorpheApp/morphe-patches/commit/5db5a7799d3617b4d93d39ecc42c3d0af58308e8))\r\n* **YouTube - Hide player flyout menu components:** Add \"Hide 'On-the-go' menu\" setting ([#2715](https://github.com/MorpheApp/morphe-patches/issues/2715)) ([8408ec9](https://github.com/MorpheApp/morphe-patches/commit/8408ec93703286988fe1b65024cea272e19aa489))\r\n* **YouTube - Save to Watch later:** Support for related kids videos ([#2572](https://github.com/MorpheApp/morphe-patches/issues/2572)) ([b0ec540](https://github.com/MorpheApp/morphe-patches/commit/b0ec540b8829864e3fdcda5910edff1fddf1a72a))\r\n* **YouTube - Wide search bar:** Replace the toggle with Disabled, Wide and Extra wide options ([#2608](https://github.com/MorpheApp/morphe-patches/issues/2608)) ([ce18f82](https://github.com/MorpheApp/morphe-patches/commit/ce18f821225e7c82da6832828e405d56394026fe))\r\n* **YouTube Music - Hide music action buttons:** Add \"Hide 'Live chat replay' button\" setting ([#2674](https://github.com/MorpheApp/morphe-patches/issues/2674)) ([d43da80](https://github.com/MorpheApp/morphe-patches/commit/d43da80e8b27a5e767337d3a4c2fec64bb221d59))\r\n* **YouTube Music:** Add `Play song version in albums` patch ([#2556](https://github.com/MorpheApp/morphe-patches/issues/2556)) ([5093f61](https://github.com/MorpheApp/morphe-patches/commit/5093f6120b39dc87a943b0d90bfc720ddb6b9a53))\r\n* **YouTube:** Add `Disable playlist autoplay` patch ([#2628](https://github.com/MorpheApp/morphe-patches/issues/2628)) ([7beae7a](https://github.com/MorpheApp/morphe-patches/commit/7beae7afaaba4a00649874033915bd599877ad94))\r\n* **YouTube:** Add `Disable scrolling speed limit` patch ([#2582](https://github.com/MorpheApp/morphe-patches/issues/2582)) ([162e690](https://github.com/MorpheApp/morphe-patches/commit/162e690df1d4fdf3f0acc2f720586d256c259e22))\r\n* **YouTube:** Add `Fullscreen video scale` patch ([#2616](https://github.com/MorpheApp/morphe-patches/issues/2616)) ([53815a9](https://github.com/MorpheApp/morphe-patches/commit/53815a9ab88c4595e9e070ce56605584cd7a34e7))\r\n* **YouTube:** Add `Mute button` patch ([#2624](https://github.com/MorpheApp/morphe-patches/issues/2624)) ([4c2b3c0](https://github.com/MorpheApp/morphe-patches/commit/4c2b3c040a404bd8661decc31398ca0a343a6768))\r\n* **YouTube:** Disabled automatic playback pause after opening the player's video settings ([829f4c3](https://github.com/MorpheApp/morphe-patches/commit/829f4c3b64dde3cd0069680f9ecf44cccbcf3038))\r\n\r\n### \ud83d\ude80 Updated App Support\r\n\r\n* **Reddit:** Add experimental support for `2026.35.0` ([71f8a7f](https://github.com/MorpheApp/morphe-patches/commit/71f8a7fca74e3f008a9879a924f45aae7e5e4052))\r\n* **YouTube Music:** Add experimental support for `9.34.52` ([fea25c2](https://github.com/MorpheApp/morphe-patches/commit/fea25c2c2fb7c20122ad5b9ac893a2733047a804))\r\n* **YouTube:** Add experimental support for `21.35.442` ([#2627](https://github.com/MorpheApp/morphe-patches/issues/2627)) ([4535022](https://github.com/MorpheApp/morphe-patches/commit/453502203ca298c837176995c283502cf8f4adb1))\r\n* **YouTube:** Add support for `21.07.247` ([0c61372](https://github.com/MorpheApp/morphe-patches/commit/0c61372bdca637a2bdb6d144627e181348cb372c))\r\n\r\n### \ud83d\udd27 Improvements\r\n\r\n* **YouTube:** Fix some issues and improve code ([#2688](https://github.com/MorpheApp/morphe-patches/issues/2688)) ([d8fcd8c](https://github.com/MorpheApp/morphe-patches/commit/d8fcd8c04ad72cc2655237e2c3d61d26bd220099))\r\n* **YouTube:** Fix some issues and improve code ([#2699](https://github.com/MorpheApp/morphe-patches/issues/2699)) ([31beebf](https://github.com/MorpheApp/morphe-patches/commit/31beebfe81eaf08ea008ab321255057393e83482))\r\n",
-          "published_at": "2026-09-01T16:30:24Z",
-          "url": "https://github.com/MorpheApp/morphe-patches/releases/tag/v1.41.0",
-          "is_cli": false,
-          "is_patches": true
-        }
-      ],
-      "affected_apps": [
-        "brave"
       ]
     }
   }

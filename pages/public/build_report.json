@@ -1,15 +1,15 @@
 [
   {
-    "app": "brave",
+    "app": "depthwallpaper",
     "arch": "arm64-v8a",
-    "source": "dh6k",
+    "source": "rushiranpise",
     "status": "success",
-    "version": "1.94.121",
+    "version": "2.1.06",
     "patches": [
       "Disable Play Store updates"
     ],
     "dl_method": "download_playstore",
-    "apk": "brave-arm64-v8a-dh6k-patches-v1.94.121.apk"
+    "apk": "depthwallpaper-arm64-v8a-morphe-patches-v2.1.06.apk"
   },
   {
     "app": "duolingo",
@@ -24,19 +24,6 @@
     "apk": "duolingo-arm64-v8a-hoodles-v6.95.4.apk"
   },
   {
-    "app": "google-photos",
-    "arch": "arm64-v8a",
-    "source": "rookie",
-    "status": "success",
-    "version": "7.90.0.971743778",
-    "patches": [
-      "Change package name",
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "google-photos-arm64-v8a-morphe-patches-v7.90.0.971743778.apk"
-  },
-  {
     "app": "minimalwidgets",
     "arch": "arm64-v8a",
     "source": "rushiranpise",
@@ -44,6 +31,18 @@
     "version": null,
     "patches": [],
     "error": "Failed to download version 2.1.04"
+  },
+  {
+    "app": "notesnook",
+    "arch": "arm64-v8a",
+    "source": "hxreborn",
+    "status": "success",
+    "version": "3.4.12",
+    "patches": [
+      "Disable Play Store updates"
+    ],
+    "dl_method": "download_playstore",
+    "apk": "notesnook-arm64-v8a-hxreborn-v3.4.12.apk"
   },
   {
     "app": "pocketcasts",
@@ -55,6 +54,18 @@
     "error": "Failed to download version 8.16"
   },
   {
+    "app": "protonpass",
+    "arch": "arm64-v8a",
+    "source": "rushiranpise",
+    "status": "success",
+    "version": "1.40.3",
+    "patches": [
+      "Disable Play Store updates"
+    ],
+    "dl_method": "download_playstore",
+    "apk": "protonpass-arm64-v8a-morphe-patches-v1.40.3.apk"
+  },
+  {
     "app": "sdmaidse",
     "arch": "arm64-v8a",
     "source": "paresh",
@@ -62,6 +73,19 @@
     "version": null,
     "patches": [],
     "error": "Failed to download version 1.7.3-rc0"
+  },
+  {
+    "app": "serverauditor",
+    "arch": "arm64-v8a",
+    "source": "rushiranpise",
+    "status": "success",
+    "version": "7.8.2",
+    "patches": [
+      "Disable Play Store updates",
+      "Change installer source"
+    ],
+    "dl_method": "download_apkmirror",
+    "apk": "serverauditor-arm64-v8a-morphe-patches-v7.8.2.apk"
   },
   {
     "app": "taskmanager",
@@ -73,15 +97,25 @@
     "error": "Failed to download version 1.5.2"
   },
   {
-    "app": "threads",
+    "app": "vocabulary",
     "arch": "arm64-v8a",
-    "source": "rookie",
+    "source": "morning-entree",
     "status": "success",
-    "version": "445.0.0.46.83",
+    "version": "5.5.1",
     "patches": [
-      "Disable Play Store updates"
+      "Disable Play Store updates",
+      "Change installer source"
     ],
-    "dl_method": "download_playstore",
-    "apk": "threads-arm64-v8a-morphe-patches-v445.0.0.46.83.apk"
+    "dl_method": "download_apkmirror",
+    "apk": "vocabulary-arm64-v8a-morning-entree-v5.5.1.apk"
+  },
+  {
+    "app": "x",
+    "arch": "arm64-v8a",
+    "source": "piko-dev",
+    "status": "failed",
+    "version": null,
+    "patches": [],
+    "error": "Failed to download version 12.19.1-release.0"
   }
 ]
