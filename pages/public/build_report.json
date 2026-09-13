@@ -1,42 +1,5 @@
 [
   {
-    "app": "brave",
-    "arch": "arm64-v8a",
-    "source": "dh6k",
-    "status": "success",
-    "version": "1.94.121",
-    "patches": [
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "brave-arm64-v8a-dh6k-patches-v1.94.121.apk"
-  },
-  {
-    "app": "depthwallpaper",
-    "arch": "arm64-v8a",
-    "source": "rushiranpise",
-    "status": "success",
-    "version": "2.1.06",
-    "patches": [
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "depthwallpaper-arm64-v8a-morphe-patches-v2.1.06.apk"
-  },
-  {
-    "app": "duolingo",
-    "arch": "arm64-v8a",
-    "source": "hoodles",
-    "status": "success",
-    "version": "6.95.4",
-    "patches": [
-      "Disable Play Store updates",
-      "Change installer source"
-    ],
-    "dl_method": "download_apkmirror",
-    "apk": "duolingo-arm64-v8a-hoodles-v6.95.4.apk"
-  },
-  {
     "app": "gboard",
     "arch": "arm64-v8a",
     "source": "jasonwu",
@@ -50,40 +13,14 @@
     "arch": "arm64-v8a",
     "source": "rookie",
     "status": "success",
-    "version": "7.90.0.971743778",
+    "version": "7.80.0.929302933",
     "patches": [
       "Change package name",
       "Disable Play Store updates",
       "Change installer source"
     ],
     "dl_method": "download_apkmirror",
-    "apk": "google-photos-arm64-v8a-morphe-patches-v7.90.0.971743778.apk"
-  },
-  {
-    "app": "habitkit",
-    "arch": "arm64-v8a",
-    "source": "paresh",
-    "status": "success",
-    "version": "1.15.2",
-    "patches": [
-      "Disable Play Store updates",
-      "Change installer source"
-    ],
-    "dl_method": "download_apkmirror",
-    "apk": "habitkit-arm64-v8a-paresh-v1.15.2.apk"
-  },
-  {
-    "app": "instagram",
-    "arch": "arm64-v8a",
-    "source": "piko",
-    "status": "success",
-    "version": "439.0.0.37.89",
-    "patches": [
-      "Disable Play Store updates",
-      "Change installer source"
-    ],
-    "dl_method": "download_github",
-    "apk": "instagram-arm64-v8a-piko-patches-v439.0.0.37.89.apk"
+    "apk": "google-photos-arm64-v8a-morphe-patches-v7.80.0.929302933.apk"
   },
   {
     "app": "minimalwidgets",
@@ -125,31 +62,6 @@
     "error": "Failed to download version 8.16"
   },
   {
-    "app": "protonpass",
-    "arch": "arm64-v8a",
-    "source": "rushiranpise",
-    "status": "success",
-    "version": "1.40.3",
-    "patches": [
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "protonpass-arm64-v8a-morphe-patches-v1.40.3.apk"
-  },
-  {
-    "app": "reddit",
-    "arch": "arm64-v8a",
-    "source": "morphe",
-    "status": "success",
-    "version": "2026.14.0",
-    "patches": [
-      "Disable Play Store updates",
-      "Change installer source"
-    ],
-    "dl_method": "download_apkmirror",
-    "apk": "reddit-arm64-v8a-morphe-v2026.14.0.apk"
-  },
-  {
     "app": "sdmaidse",
     "arch": "arm64-v8a",
     "source": "paresh",
@@ -159,19 +71,6 @@
     "error": "Failed to download version 1.7.3-rc0"
   },
   {
-    "app": "serverauditor",
-    "arch": "arm64-v8a",
-    "source": "rushiranpise",
-    "status": "success",
-    "version": "7.8.2",
-    "patches": [
-      "Disable Play Store updates",
-      "Change installer source"
-    ],
-    "dl_method": "download_apkmirror",
-    "apk": "serverauditor-arm64-v8a-morphe-patches-v7.8.2.apk"
-  },
-  {
     "app": "taskmanager",
     "arch": "arm64-v8a",
     "source": "paresh",
@@ -179,18 +78,6 @@
     "version": null,
     "patches": [],
     "error": "Failed to download version 1.5.2"
-  },
-  {
-    "app": "telegram",
-    "arch": "arm64-v8a",
-    "source": "paresh",
-    "status": "success",
-    "version": "12.10.1",
-    "patches": [
-      "Disable Play Store updates"
-    ],
-    "dl_method": "download_playstore",
-    "apk": "telegram-arm64-v8a-paresh-v12.10.1.apk"
   },
   {
     "app": "threads",
@@ -205,19 +92,6 @@
     "apk": "threads-arm64-v8a-morphe-patches-v446.0.0.32.78.apk"
   },
   {
-    "app": "vocabulary",
-    "arch": "arm64-v8a",
-    "source": "morning-entree",
-    "status": "success",
-    "version": "5.5.1",
-    "patches": [
-      "Disable Play Store updates",
-      "Change installer source"
-    ],
-    "dl_method": "download_apkmirror",
-    "apk": "vocabulary-arm64-v8a-morning-entree-v5.5.1.apk"
-  },
-  {
     "app": "x",
     "arch": "arm64-v8a",
     "source": "piko-dev",
@@ -225,31 +99,5 @@
     "version": null,
     "patches": [],
     "error": "Failed to download version 12.19.1-release.0"
-  },
-  {
-    "app": "youtube-music",
-    "arch": "arm64-v8a",
-    "source": "morphe",
-    "status": "success",
-    "version": "9.15.51",
-    "patches": [
-      "Disable Play Store updates",
-      "Change installer source"
-    ],
-    "dl_method": "download_apkmirror",
-    "apk": "youtube-music-arm64-v8a-morphe-v9.15.51.apk"
-  },
-  {
-    "app": "youtube",
-    "arch": "arm64-v8a",
-    "source": "morphe",
-    "status": "success",
-    "version": "21.13.164",
-    "patches": [
-      "Disable Play Store updates",
-      "Change installer source"
-    ],
-    "dl_method": "download_apkmirror",
-    "apk": "youtube-arm64-v8a-morphe-v21.13.164.apk"
   }
 ]
