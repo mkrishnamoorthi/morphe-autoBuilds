@@ -101,5 +101,33 @@ class TestPlaystoreResolver(unittest.TestCase):
         code = playstore.resolve_version_code("com.instagram.android", "2.371.0")
         self.assertEqual(code, 200)
 
+    @patch('src.playstore.requests.get')
+    def test_cli_version_code_precedence(self, mock_get):
+        from src import utils
+        utils.cli_version_codes[("au.com.shiftyjelly.pocketcasts", "8.16")] = {
+            "arm64_v8a": 9441,
+            "universal": 9441
+        }
+        code = playstore.resolve_version_code("au.com.shiftyjelly.pocketcasts", "8.16", "arm64-v8a")
+        self.assertEqual(code, 9441)
+        mock_get.assert_not_called()
+
+    @patch('src.playstore.scrape_exodus_version_code')
+    @patch('src.playstore.requests.get')
+    def test_exodus_web_fallback_success(self, mock_get, mock_scrape):
+        import requests
+        # API returns 401 Unauthorized
+        mock_response = Mock()
+        mock_response.status_code = 401
+        mock_response.raise_for_status.side_effect = requests.RequestException("HTTP 401: Invalid token")
+        mock_get.return_value = mock_response
+
+        # Web scraper returns resolved version code
+        mock_scrape.return_value = 14348020
+
+        code = playstore.resolve_version_code("com.pinterest", "14.34.0")
+        self.assertEqual(code, 14348020)
+        mock_scrape.assert_called_once_with("com.pinterest", "14.34.0")
+
 if __name__ == '__main__':
     unittest.main()

@@ -210,6 +210,21 @@ def get_highest_version(versions: list[str]) -> str | None:
             highest_version = v
     return highest_version
 
+cli_version_codes: dict[tuple[str, str], dict[str, int]] = {}
+
+def get_cli_version_code(package_name: str, version_name: str, arch: str = None) -> int | None:
+    """Retrieve CLI-discovered versionCode for a given package, version, and optional architecture."""
+    codes = cli_version_codes.get((package_name, version_name))
+    if not codes:
+        return None
+    if arch:
+        norm_arch = arch.upper().replace("-", "_")
+        for k, v in codes.items():
+            if k.upper().replace("-", "_") == norm_arch:
+                return v
+    # Fall back to first available arch code
+    return next(iter(codes.values()))
+
 def get_supported_versions(package_name: str, cli: str, patches: list[Path]) -> list[str]:
     # Morphe CLI and ReVanced CLI have different list-versions syntax
     cli_name = Path(cli).name.lower()
@@ -286,6 +301,22 @@ def get_supported_versions(package_name: str, cli: str, patches: list[Path]) -> 
                 if len(parts) >= 3 and parts[1].lower() == 'build':
                     version = f"{parts[0]} build {parts[2]}"
                 versions.append(version)
+
+                # Check for [versionCodes: ARM64_V8A=9441, ARMEABI_V7A=9441, ...]
+                vc_match = re.search(r'versionCodes:\s*([^\]]+)', line)
+                if vc_match:
+                    codes = {}
+                    for item in vc_match.group(1).split(','):
+                        if '=' in item:
+                            k, v = item.split('=', 1)
+                            try:
+                                codes[k.strip().lower()] = int(v.strip())
+                            except ValueError:
+                                pass
+                    if codes:
+                        cli_version_codes[(package_name, version)] = codes
+                        if parts[0] != version:
+                            cli_version_codes[(package_name, parts[0])] = codes
 
     # If Morphe CLI only returned a tiny "most common" list (or nothing),
     # attempt to derive a fuller candidate set from `list-patches`.

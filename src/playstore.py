@@ -27,6 +27,8 @@ import shutil
 import subprocess
 from pathlib import Path
 import requests
+from bs4 import BeautifulSoup
+from src.utils import get_cli_version_code
 
 _TOOL = "gplaydl"
 _ARCH = "arm64"   # gplaydl uses 'arm64', not 'arm64-v8a'
@@ -56,60 +58,124 @@ def _run(cmd: list[str], **kwargs) -> subprocess.CompletedProcess:
     logging.info(f"PlayStore: {' '.join(cmd)}")
     return subprocess.run(cmd, **kwargs)
 
-def resolve_version_code(package_name: str, version_name: str) -> int:
+def scrape_exodus_version_code(package_name: str, version_name: str) -> int | None:
+    """Scrape the public Exodus Privacy web report for a package and version without authentication."""
+    search_url = f"https://reports.exodus-privacy.eu.org/reports/search/{package_name}"
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+    try:
+        logging.info(f"PlayStore: Checking Exodus public web reports for {package_name} {version_name}")
+        resp = requests.get(search_url, headers=headers, timeout=15)
+        if resp.status_code != 200:
+            logging.debug(f"PlayStore: Exodus web search returned HTTP {resp.status_code}")
+            return None
+        soup = BeautifulSoup(resp.content, "html.parser")
+    except Exception as e:
+        logging.debug(f"PlayStore: Exodus web search failed: {e}")
+        return None
+
+    # Search report cards
+    for card in soup.find_all("div", class_=lambda c: c and "position-static" in c):
+        v_el = card.find("div", class_="small")
+        a_el = card.find("a", class_=lambda c: c and "report-link" in c)
+        if not v_el or not a_el:
+            continue
+        v_text = v_el.get_text()
+        m = re.search(r"Version\s+([^\s-]+)", v_text, re.IGNORECASE)
+        if m and m.group(1).strip() == version_name:
+            report_href = a_el["href"]
+            report_url = f"https://reports.exodus-privacy.eu.org{report_href}" if report_href.startswith("/") else report_href
+            try:
+                rep_resp = requests.get(report_url, headers=headers, timeout=15)
+                if rep_resp.status_code == 200:
+                    rep_soup = BeautifulSoup(rep_resp.content, "html.parser")
+                    for pre in rep_soup.find_all(["pre", "code"]):
+                        try:
+                            data = json.loads(pre.get_text())
+                            if "version_code" in data:
+                                return int(data["version_code"])
+                        except Exception:
+                            continue
+            except Exception as e:
+                logging.debug(f"PlayStore: Error scraping report page {report_url}: {e}")
+                continue
+
+    return None
+
+def resolve_version_code(package_name: str, version_name: str, arch: str = None) -> int:
     cache_key = f"{package_name}:{version_name}"
     if cache_key in _exodus_cache:
         return _exodus_cache[cache_key]
 
+    # 1. Check if CLI provided version code
+    cli_code = get_cli_version_code(package_name, version_name, arch)
+    if cli_code:
+        logging.info(f"PlayStore: Using CLI-provided versionCode {cli_code} for {package_name} {version_name}")
+        _exodus_cache[cache_key] = cli_code
+        return cli_code
+
     api_key = os.environ.get("EXODUS_API_KEY")
-    if not api_key:
-        raise ExodusApiError("EXODUS_API_KEY environment variable is not set")
+    api_error = None
 
-    base_url = os.environ.get(
-        "EXODUS_SEARCH_URL", 
-        "https://reports.exodus-privacy.eu.org/api/search/"
-    )
-    url = f"{base_url}{package_name}"
-    
-    headers = {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-        "Authorization": f"Token {api_key}"
-    }
+    # 2. Try authenticated Exodus API if key is present
+    if api_key:
+        base_url = os.environ.get(
+            "EXODUS_SEARCH_URL", 
+            "https://reports.exodus-privacy.eu.org/api/search/"
+        )
+        url = f"{base_url}{package_name}"
+        headers = {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": f"Token {api_key}"
+        }
 
-    logging.info(f"PlayStore: Resolving versionCode for {package_name} {version_name}")
-    try:
-        response = requests.get(url, headers=headers, timeout=15)
-        response.raise_for_status()
-    except requests.RequestException as e:
-        raise ExodusApiError(f"HTTP error resolving version from Exodus: {e}")
+        logging.info(f"PlayStore: Resolving versionCode for {package_name} {version_name} via Exodus API")
+        try:
+            response = requests.get(url, headers=headers, timeout=15)
+            response.raise_for_status()
+            data = response.json()
+            if package_name not in data or "reports" not in data[package_name]:
+                raise ExodusApiError(f"Missing reports array for {package_name} in Exodus API response")
 
-    try:
-        data = response.json()
-    except ValueError:
-        raise ExodusApiError("Malformed JSON response from Exodus API")
+            reports = data[package_name]["reports"]
+            matching_codes = []
 
-    if package_name not in data or "reports" not in data[package_name]:
-        raise ExodusApiError(f"Missing reports array for {package_name} in Exodus API response")
+            for report in reports:
+                if report.get("version") == version_name:
+                    code_str = report.get("version_code")
+                    if code_str is not None:
+                        try:
+                            matching_codes.append(int(code_str))
+                        except ValueError:
+                            raise ValueError(f"Malformed versionCode '{code_str}' in Exodus API response")
 
-    reports = data[package_name]["reports"]
-    matching_codes = []
+            if matching_codes:
+                resolved_code = max(matching_codes)
+                _exodus_cache[cache_key] = resolved_code
+                return resolved_code
+            else:
+                api_error = VersionNotFound(f"Version '{version_name}' not found in Exodus reports for {package_name}")
 
-    for report in reports:
-        if report.get("version") == version_name:
-            code_str = report.get("version_code")
-            if code_str is not None:
-                try:
-                    matching_codes.append(int(code_str))
-                except ValueError:
-                    raise ValueError(f"Malformed versionCode '{code_str}' in Exodus API response")
+        except requests.RequestException as e:
+            logging.warning(f"PlayStore: Exodus API request failed: {e}")
+            api_error = e
+        except Exception as e:
+            logging.warning(f"PlayStore: Error parsing Exodus API response: {e}")
+            api_error = e
 
-    if not matching_codes:
-        raise VersionNotFound(f"Version '{version_name}' not found in Exodus reports for {package_name}")
+    # 3. Fall back to Exodus public web report scraper (unauthenticated)
+    web_code = scrape_exodus_version_code(package_name, version_name)
+    if web_code is not None:
+        logging.info(f"PlayStore: Resolved versionCode {web_code} for {package_name} {version_name} via Exodus public web")
+        _exodus_cache[cache_key] = web_code
+        return web_code
 
-    resolved_code = max(matching_codes)
-    _exodus_cache[cache_key] = resolved_code
-    return resolved_code
+    if api_error:
+        if isinstance(api_error, (VersionNotFound, ValueError)):
+            raise api_error
+        raise ExodusApiError(f"HTTP error resolving version from Exodus: {api_error}")
+
+    raise VersionNotFound(f"Version '{version_name}' not found in Exodus reports for {package_name}")
 
 
 def _get_version_code(package: str) -> str | None:
@@ -352,7 +418,7 @@ def get_download_link(version: str, app_name: str, config: dict) -> str | None:
     # If it wasn't the latest version (or `info` failed), resolve via Exodus
     if not version_code:
         try:
-            version_code_int = resolve_version_code(package, version)
+            version_code_int = resolve_version_code(package, version, config.get('arch'))
             version_code = str(version_code_int)
             logging.info(f"PlayStore: Resolved historical {version} to versionCode {version_code}")
         except VersionNotFound as e:

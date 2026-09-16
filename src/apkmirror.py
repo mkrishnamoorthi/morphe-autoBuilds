@@ -163,9 +163,12 @@ def _scrape_release_url_from_soup(soup, version: str, config: dict, build_number
     """Scan a BeautifulSoup-parsed main app page for a release link matching the version.
     Returns the full release page URL if found, else None."""
     version_parts = version.split('.')
+    valid_slugs = _app_slug_candidates(config)
     
-    # Try full version first, then progressively strip parts (e.g., 6.77.5 -> 6.77 -> 6)
-    for i in range(len(version_parts), 0, -1):
+    # Try full version first, then progressively strip parts, but never down to a single digit
+    # (e.g. 6.77.5 -> 6.77, but stop at min_parts=2 so we never loosely match single digits like "9")
+    min_parts = 2 if len(version_parts) >= 2 else 1
+    for i in range(len(version_parts), min_parts - 1, -1):
         current_ver = ".".join(version_parts[:i])
         current_ver_dash = "-".join(version_parts[:i])
         
@@ -184,6 +187,10 @@ def _scrape_release_url_from_soup(soup, version: str, config: dict, build_number
             href = link['href']
             if not href.startswith('/apk/'):
                 continue
+            # Ensure the link belongs to this application/org, not unrelated sidebar recommendations
+            if not any(f"/{slug}/" in href or href.startswith(f"/apk/{slug}/") for slug in valid_slugs):
+                continue
+
             # Must look like a release page: contain the dashed version
             # Use regex to check the version is properly bounded (not part of a longer number)
             # e.g., for "6-77-5", match -6-77-5- or -6-77-5/
@@ -468,39 +475,48 @@ def get_download_link(version: str, app_name: str, config: dict, arch: str = Non
     rows = found_soup.find_all('div', class_='table-row headerFont')
     download_page_url = None
     
-    # Try to find exact version match first
-    for row in rows:
-        row_text = row.get_text()
-        
-        # Check if row contains our exact version
-        if version in row_text or version.replace('.', '-') in row_text:
-            # Check criteria
-            type_match = config['type'] in row_text
-            dpi_match = config['dpi'] in row_text
-            if config['dpi'] == 'nodpi' and not dpi_match:
-                dpi_match = 'universal' in row_text or 'noarch' in row_text or 'dpi' in row_text or '-' in row_text
-                
-            arch_match = target_arch in row_text
-            if config['type'] == 'BUNDLE' and not arch_match:
-                arch_match = 'universal' in row_text or 'noarch' in row_text or 'arm64-v8a' in row_text
-            
-            if type_match and dpi_match and arch_match:
-                sub_url = row.find('a', class_='accent_color')
-                if sub_url:
-                    download_page_url = base_url + sub_url['href']
-                    break
-    
-    # If exact version not found, try to find any variant matching criteria
-    if not download_page_url:
+    # Try preferred type first (e.g. "APK"), then fallback to "BUNDLE" if APK was requested but not found
+    types_to_try = [config['type']]
+    if config['type'] == 'APK':
+        types_to_try.append('BUNDLE')
+
+    for try_type in types_to_try:
+        # Try to find exact version match first
         for row in rows:
             row_text = row.get_text()
-            type_match = config['type'] in row_text
+            
+            # Check if row contains our exact version
+            if version in row_text or version.replace('.', '-') in row_text:
+                type_match = try_type in row_text
+                dpi_match = config['dpi'] in row_text
+                if config['dpi'] == 'nodpi' and not dpi_match:
+                    dpi_match = 'universal' in row_text or 'noarch' in row_text or 'dpi' in row_text or '-' in row_text
+                    
+                arch_match = target_arch in row_text
+                if try_type == 'BUNDLE' and not arch_match:
+                    arch_match = 'universal' in row_text or 'noarch' in row_text or 'arm64-v8a' in row_text
+                
+                if type_match and dpi_match and arch_match:
+                    sub_url = row.find('a', class_='accent_color')
+                    if sub_url:
+                        download_page_url = base_url + sub_url['href']
+                        if try_type != config['type']:
+                            logging.info(f"Fallback to {try_type} variant succeeded for {app_name} {version}")
+                        break
+        
+        if download_page_url:
+            break
+
+        # If exact version not found, try to find any variant matching criteria
+        for row in rows:
+            row_text = row.get_text()
+            type_match = try_type in row_text
             dpi_match = config['dpi'] in row_text
             if config['dpi'] == 'nodpi' and not dpi_match:
                 dpi_match = 'universal' in row_text or 'noarch' in row_text or 'dpi' in row_text or '-' in row_text
                 
             arch_match = target_arch in row_text
-            if config['type'] == 'BUNDLE' and not arch_match:
+            if try_type == 'BUNDLE' and not arch_match:
                 arch_match = 'universal' in row_text or 'noarch' in row_text or 'arm64-v8a' in row_text
                 
             if type_match and dpi_match and arch_match:
@@ -513,8 +529,11 @@ def get_download_link(version: str, app_name: str, config: dict, arch: str = Non
                         match = re.search(r'(\d+(\.\d+)+(\.\w+)*)', row_text)
                         if match:
                             actual_version = match.group(1)
-                            logging.warning(f"Using variant {actual_version} (criteria match)")
+                            logging.warning(f"Using variant {actual_version} (criteria match, type={try_type})")
                         break
+
+        if download_page_url:
+            break
     
     if not download_page_url:
         logging.error(f"No variant found for {app_name} {version} with criteria {criteria}")
