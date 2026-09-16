@@ -716,7 +716,7 @@ individual pages.
 
 ## 12. Do / Don't Cheatsheet
 
-| ✅ Do | ❌ Don't |
+| Do | Don't |
 |---|---|
 | Use accent for **one** thing per section | Paint entire sections in accent |
 | `hsl(var(--x) / 0.4)` for alpha | Hardcode `rgba` / hex |

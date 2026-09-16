@@ -76,7 +76,7 @@ jobs:
           echo '{"name":"twitch","package":"tv.twitch.android.app","version":""}' > apps/uptodown/twitch.json
           echo '{"name":"viber","package":"com.viber.voip","version":""}' > apps/uptodown/viber.json
           
-          echo "✅ Configs created for 17 apps"
+          echo "Configs created for 17 apps"
           ls -la apps/apkmirror/*.json apps/apkpure/*.json apps/uptodown/*.json | wc -l
       
       - name: Commit Configs

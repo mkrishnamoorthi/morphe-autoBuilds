@@ -178,9 +178,9 @@ jobs:
           if [ -n "$GPLAYDL_TOKEN" ]; then
             mkdir -p ~/.config/gplaydl
             jq -n --arg token "$GPLAYDL_TOKEN" '{dispenser: "https://dispenser.gplaydl.com", api_key: $token}' > ~/.config/gplaydl/config.json
-            echo "✓ gplaydl config created"
+            echo "[OK] gplaydl config created"
           else
-            echo "⚠️ GPLAYDL_TOKEN secret not set — Google Play source will be skipped, falling back to scrapers"
+            echo "[WARN] GPLAYDL_TOKEN secret not set — Google Play source will be skipped, falling back to scrapers"
           fi
 
       - name: Build APK
@@ -264,10 +264,10 @@ jobs:
           echo "Built APKs: $built_count"
 
           if [ "$built_count" -eq 0 ]; then
-            echo "❌ No rebuilt APKs available"
+            echo "[INFO] No rebuilt APKs available"
             echo "skip_release=true" >> $GITHUB_OUTPUT
           else
-            echo "✅ $built_count rebuilt APK(s) ready for release"
+            echo "[OK] $built_count rebuilt APK(s) ready for release"
             echo "skip_release=false" >> $GITHUB_OUTPUT
           fi
       
@@ -275,19 +275,19 @@ jobs:
         if: steps.check-apks.outputs.skip_release == 'false'
         run: |
           mkdir -p ./release-apks
-          echo "📦 Collecting rebuilt APKs..."
+          echo "Collecting rebuilt APKs..."
           find ./all-apks -name "*.apk" -exec cp -f {} ./release-apks/ \; 2>/dev/null || true
 
-          echo "📁 APKs ready for release:"
+          echo "APKs ready for release:"
           ls -la ./release-apks/
 
           final_count=$(ls -1 ./release-apks/*.apk 2>/dev/null | wc -l || echo "0")
-          echo "📊 Total APKs: $final_count"
+          echo "Total APKs: $final_count"
 
       - name: Build Final Manifest
         if: steps.check-apks.outputs.skip_release == 'false'
         run: |
-          echo "🧾 Building manifest.json from build-plan + build records..."
+          echo "Building manifest.json from build-plan + build records..."
           # The new_manifest.json and patch_changelogs.json live in the build-plan artifact
           if [ -f ./build-plan/new_manifest.json ]; then
             cp ./build-plan/new_manifest.json ./new_manifest.json
@@ -301,14 +301,14 @@ jobs:
             find ./all-records -name "*.json" -exec cp {} build_records/ \; 2>/dev/null || true
           fi
           python scripts/merge_manifest.py || {
-            echo "⚠️ merge_manifest.py failed; continuing without manifest update."
+            echo "[WARN] merge_manifest.py failed; continuing without manifest update."
             rm -f manifest.json
           }
           if [ -f manifest.json ]; then
-            echo "🧾 Generating Obtainium configuration and deep links..."
-            python scripts/generate_obtainium.py || echo "⚠️ generate_obtainium.py failed"
-            python scripts/validate_obtainium.py || echo "⚠️ validate_obtainium.py failed"
-            echo "✅ manifest.json built:"
+            echo "Generating Obtainium configuration and deep links..."
+            python scripts/generate_obtainium.py || echo "[WARN] generate_obtainium.py failed"
+            python scripts/validate_obtainium.py || echo "[WARN] validate_obtainium.py failed"
+            echo "[OK] manifest.json built:"
             jq '.entries | length' manifest.json || true
             cp manifest.json ./release-apks/manifest.json
             if [ -f obtainium.json ]; then
@@ -319,7 +319,7 @@ jobs:
             cp patch_changelogs.json ./release-apks/patch_changelogs.json
           fi
           if [ -f build_report.json ]; then
-            echo "✅ build_report.json built."
+            echo "[OK] build_report.json built."
             cp build_report.json ./release-apks/build_report.json
           fi
 
@@ -340,10 +340,10 @@ jobs:
         run: |
           if gh release view latest >/dev/null 2>&1; then
             echo "release_exists=true" >> "$GITHUB_OUTPUT"
-            echo "✅ Release 'latest' exists; assets will be updated in place."
+            echo "Release 'latest' exists; assets will be updated in place."
           else
             echo "release_exists=false" >> "$GITHUB_OUTPUT"
-            echo "📭 Release 'latest' does not exist; it will be created."
+            echo "Release 'latest' does not exist; it will be created."
           fi
       
       - name: Generate Release Notes
@@ -352,10 +352,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.CUSTOM_GH_TOKEN || secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.CUSTOM_GH_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
-          echo "📝 Generating release notes..."
+          echo "Generating release notes..."
           
           if [ "${{ steps.check-release.outputs.release_exists }}" = "true" ]; then
-            python scripts/remove_orphaned_assets.py || echo "⚠️ remove_orphaned_assets.py failed; continuing..."
+            python scripts/remove_orphaned_assets.py || echo "[WARN] remove_orphaned_assets.py failed; continuing..."
             gh release view latest --json assets --jq '.assets[].name' > current_assets.txt
           else
             : > current_assets.txt
@@ -380,35 +380,35 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.CUSTOM_GH_TOKEN || secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.CUSTOM_GH_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
-          echo "🚀 Publishing rebuilt assets to release..."
+          echo "Publishing rebuilt assets to release..."
 
           # Count APKs
           apk_count=$(ls -1 ./release-apks/*.apk 2>/dev/null | wc -l || echo "0")
 
           if [ $apk_count -eq 0 ]; then
-            echo "❌ No APKs found to release"
+            echo "[ERROR] No APKs found to release"
             exit 1
           fi
 
-          echo "📦 Releasing $apk_count APK(s)..."
+          echo "Releasing $apk_count APK(s)..."
 
           # Build the asset list: APKs + optional manifest.json
           ASSETS=( ./release-apks/*.apk )
           if [ -f ./release-apks/manifest.json ]; then
             ASSETS+=( ./release-apks/manifest.json )
-            echo "📎 Including manifest.json"
+            echo "Including manifest.json"
           fi
           if [ -f ./release-apks/obtainium.json ]; then
             ASSETS+=( ./release-apks/obtainium.json )
-            echo "📎 Including obtainium.json"
+            echo "Including obtainium.json"
           fi
           if [ -f ./release-apks/build_report.json ]; then
             ASSETS+=( ./release-apks/build_report.json )
-            echo "📎 Including build_report.json"
+            echo "Including build_report.json"
           fi
 
           if [ "${{ steps.check-release.outputs.release_exists }}" = "true" ]; then
-            echo "⬆️ Uploading rebuilt assets in place and refreshing release metadata..."
+            echo "Uploading rebuilt assets in place and refreshing release metadata..."
 
             # Delete superseded older-version APKs. The previous loop only deleted
             # assets whose filename EXACTLY matched a new APK; since APK names
@@ -422,16 +422,16 @@ jobs:
               basename "$apk" >> keep_apks.txt
             done
             python scripts/cleanup_old_apks.py --release latest --keep-file keep_apks.txt || \
-              echo "⚠️  cleanup_old_apks.py failed; continuing with exact-name cleanup"
+              echo "[WARN] cleanup_old_apks.py failed; continuing with exact-name cleanup"
 
             # Upload new APKs and manifest with retry logic for GitHub 502 API errors
             for i in {1..3}; do
               gh release upload latest "${ASSETS[@]}" --clobber && break || {
                 if [ $i -lt 3 ]; then
-                  echo "⚠️ Upload failed (attempt $i/3). Retrying in 10s..."
+                  echo "[WARN] Upload failed (attempt $i/3). Retrying in 10s..."
                   sleep 10
                 else
-                  echo "❌ Upload failed after 3 attempts."
+                  echo "[ERROR] Upload failed after 3 attempts."
                   exit 1
                 fi
               }
@@ -440,7 +440,7 @@ jobs:
               --title "Morphe APKs - $(date +'%Y-%m-%d %H:%M')" \
               --notes-file release_notes.md
           else
-            echo "🆕 Creating 'latest' release..."
+            echo "Creating 'latest' release..."
             for i in {1..3}; do
               gh release create "latest" \
                 --title "Morphe APKs - $(date +'%Y-%m-%d %H:%M')" \
@@ -448,22 +448,22 @@ jobs:
                 "${ASSETS[@]}" \
                 --latest && break || {
                 if [ $i -lt 3 ]; then
-                  echo "⚠️ Create release failed (attempt $i/3). Retrying in 10s..."
+                  echo "[WARN] Create release failed (attempt $i/3). Retrying in 10s..."
                   sleep 10
                 else
-                  echo "❌ Create release failed after 3 attempts."
+                  echo "[ERROR] Create release failed after 3 attempts."
                   exit 1
                 fi
               }
             done
           fi
 
-          echo "✅ Release publish step completed successfully!"
+          echo "Release publish step completed successfully!"
       
       - name: Update Repository, README & Pages Data
         if: steps.check-apks.outputs.skip_release == 'false'
         run: |
-          echo "🔄 Syncing Manifest, Obtainium, README, and Pages Data..."
+          echo "Syncing Manifest, Obtainium, README, and Pages Data..."
           mkdir -p pages/public
           cp ./release-apks/manifest.json pages/public/manifest.json || true
           cp ./release-apks/manifest.json ./manifest.json || true
@@ -476,7 +476,7 @@ jobs:
             cp ./release-apks/patch_changelogs.json pages/public/patch_changelogs.json || true
           fi
 
-          python scripts/update_readme_obtainium.py || echo "⚠️ update_readme_obtainium.py failed"
+          python scripts/update_readme_obtainium.py || echo "[WARN] update_readme_obtainium.py failed"
           
           # Only commit if there are changes to data
           if [[ -n $(git status -s manifest.json obtainium.json README.md pages/public) ]]; then
@@ -485,7 +485,7 @@ jobs:
             git add manifest.json obtainium.json README.md pages/public/
             git commit -m "chore: auto-sync manifest, obtainium bundle, and README catalog [skip ci]" || true
             git push
-            echo "✅ Repository and Pages data pushed successfully!"
+            echo "Repository and Pages data pushed successfully!"
           else
             echo "No changes detected, skipping push."
           fi
@@ -497,9 +497,9 @@ jobs:
           GH_TOKEN: ${{ secrets.CUSTOM_GH_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
           release_url=$(gh release view latest --json url --jq .url)
-          echo "🔗 Release URL: $release_url"
+          echo "Release URL: $release_url"
           echo ""
-          echo "📦 Direct Download Links:"
+          echo "Direct Download Links:"
           for apk in ./release-apks/*.apk; do
             filename=$(basename "$apk")
             echo "- $filename: $release_url/download/$filename"

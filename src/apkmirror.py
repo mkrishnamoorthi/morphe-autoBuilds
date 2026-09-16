@@ -146,7 +146,7 @@ def discover_app_main_url(config: dict) -> str | None:
                 
                 if candidates:
                     discovered = base_url + candidates[0]
-                    logging.info(f"✓ Discovered main app page via search: {discovered}")
+                    logging.info(f"Discovered main app page via search: {discovered}")
                     return discovered
             except Exception as e:
                 logging.debug(f"Error during search query '{query}': {e}")
@@ -198,7 +198,7 @@ def _scrape_release_url_from_soup(soup, version: str, config: dict, build_number
             candidates.sort(key=lambda x: (x[0], len(x[1])))
             chosen = candidates[0][1]
             full_url = base_url + chosen
-            logging.info(f"✓ Found release page on main listing for {current_ver}: {full_url}")
+            logging.info(f"Found release page on main listing for {current_ver}: {full_url}")
             return full_url
     
     return None
@@ -299,7 +299,7 @@ def get_download_link(version: str, app_name: str, config: dict, arch: str = Non
                 page_text = soup.get_text()
                 # Quick validation: check version appears on page
                 if version in page_text or version.replace('.', '-') in page_text:
-                    logging.info(f"✓ Scraped release page validated: {response.url}")
+                    logging.info(f"Scraped release page validated: {response.url}")
                     found_soup = soup
                     correct_version_page = True
                 else:
@@ -429,7 +429,7 @@ def get_download_link(version: str, app_name: str, config: dict, arch: str = Non
                         
                         if is_correct_page:
                             content_size = len(response.content)
-                            logging.info(f"✓ Correct version page found: {response.url}")
+                            logging.info(f"Correct version page found: {response.url}")
                             found_soup = soup
                             correct_version_page = True
                             break  # Found correct page!

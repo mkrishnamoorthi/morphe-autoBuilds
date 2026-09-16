@@ -33,15 +33,15 @@ def main():
         is_active = any(asset.startswith(f"{app_name}-") for app_name in app_names)
         
         if not is_active:
-            print(f"🗑️ Deleting orphaned asset: {asset}")
+            print(f"Deleting orphaned asset: {asset}")
             delete_res = subprocess.run(
                 ['gh', 'release', 'delete-asset', 'latest', asset, '-y'],
                 capture_output=True, text=True
             )
             if delete_res.returncode == 0:
-                print(f"✅ Successfully deleted {asset}")
+                print(f"[OK] Successfully deleted {asset}")
             else:
-                print(f"❌ Failed to delete {asset}: {delete_res.stderr}")
+                print(f"[ERROR] Failed to delete {asset}: {delete_res.stderr}")
 
 if __name__ == "__main__":
     main()

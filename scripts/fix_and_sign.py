@@ -43,7 +43,7 @@ def main():
             "--in", fixed,
             "--out", output_apk
         ], check=True)
-        print(f"✅ Fixed and signed: {output_apk}")
+        print(f"[OK] Fixed and signed: {output_apk}")
     else:
         # Just try to sign normally
         try:
@@ -56,9 +56,9 @@ def main():
                 "--in", input_apk,
                 "--out", output_apk
             ], check=True)
-            print(f"✅ Signed: {output_apk}")
+            print(f"[OK] Signed: {output_apk}")
         except Exception:
-            print(f"❌ Failed to sign {input_apk}")
+            print(f"[ERROR] Failed to sign {input_apk}")
 
 if __name__ == "__main__":
     main()

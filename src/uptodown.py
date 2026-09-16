@@ -14,7 +14,7 @@ def get_latest_version(app_name: str, config: dict) -> str:
             response = session.get(url)
             if response.status_code == 200:
                 content_size = len(response.content)
-                logging.info(f"✓ Found: {response.url}")
+                logging.info(f"Found: {response.url}")
                 soup = BeautifulSoup(response.content, "html.parser")
                 version_spans = soup.select('#versions-items-list .version')
                 versions = [span.text for span in version_spans]
@@ -24,7 +24,7 @@ def get_latest_version(app_name: str, config: dict) -> str:
                     logging.info(f"Found version {highest_version} for {app_name}")
                     return highest_version
             elif response.status_code == 404:
-                logging.debug(f"✗ Not found: {url}")
+                logging.debug(f"Not found: {url}")
                 continue
             else:
                 response.raise_for_status()
@@ -106,7 +106,7 @@ def get_download_link(version: str, app_name: str, config: dict) -> str:
                         or entry_ver.startswith(version + "-")
                     )
                     if is_match:
-                        logging.info(f"✓ Uptodown matched version '{entry_ver}' for target '{version}'")
+                        logging.info(f"Uptodown matched version '{entry_ver}' for target '{version}'")
                         dl = _fetch_version_url(base_url, data_code, entry, session)
                         if dl:
                             return dl

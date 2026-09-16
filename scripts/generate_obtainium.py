@@ -136,7 +136,7 @@ def make_deep_links(app_obj: Dict[str, Any]) -> tuple[str, str]:
 def main() -> int:
     manifest_path = Path("manifest.json")
     if not manifest_path.exists():
-        print("❌ manifest.json not found; cannot generate Obtainium configurations")
+        print("[ERROR] manifest.json not found; cannot generate Obtainium configurations")
         return 1
 
     with manifest_path.open("r", encoding="utf-8") as f:
@@ -144,7 +144,7 @@ def main() -> int:
 
     entries = manifest.get("entries", {})
     if not entries:
-        print("⚠️ No entries found in manifest.json")
+        print("[WARN] No entries found in manifest.json")
         return 0
 
     repo_slug = os.environ.get("GITHUB_REPOSITORY", "").strip() or DEFAULT_REPO
@@ -166,7 +166,7 @@ def main() -> int:
 
         # Skip entries that have no produced APK or version
         if not apk or not built_version:
-            print(f"  ⏭️ Skipping {key} (no APK or built_version yet)")
+            print(f"  Skipping {key} (no APK or built_version yet)")
             continue
 
         try:
@@ -179,21 +179,21 @@ def main() -> int:
 
             obtainium_apps.append(app_obj)
             generated_count += 1
-            print(f"  ✓ {entry.get('app_name')} ({entry.get('arch')}): {app_obj['name']}")
+            print(f"  [OK] {entry.get('app_name')} ({entry.get('arch')}): {app_obj['name']}")
         except Exception as e:
-            print(f"  ❌ Error processing {key}: {e}")
+            print(f"  [ERROR] Error processing {key}: {e}")
 
     # 1. Update manifest.json with deep links
     with manifest_path.open("w", encoding="utf-8", newline="\n") as f:
         json.dump(manifest, f, indent=2)
-    print(f"✅ Updated manifest.json with Obtainium links for {generated_count} apps")
+    print(f"[OK] Updated manifest.json with Obtainium links for {generated_count} apps")
 
     # 2. Write obtainium.json bundle file
     bundle_data = {"apps": obtainium_apps}
     obtainium_file = Path("obtainium.json")
     with obtainium_file.open("w", encoding="utf-8", newline="\n") as f:
         json.dump(bundle_data, f, indent=2)
-    print(f"✅ Generated obtainium.json ({len(obtainium_apps)} apps)")
+    print(f"[OK] Generated obtainium.json ({len(obtainium_apps)} apps)")
 
     # 3. Mirror obtainium.json to pages/public/ if directory exists
     pages_public = Path("pages/public")
@@ -201,7 +201,7 @@ def main() -> int:
         pages_obtainium = pages_public / "obtainium.json"
         with pages_obtainium.open("w", encoding="utf-8", newline="\n") as f:
             json.dump(bundle_data, f, indent=2)
-        print(f"✅ Copied obtainium.json to pages/public/obtainium.json")
+        print(f"[OK] Copied obtainium.json to pages/public/obtainium.json")
 
     return 0
 

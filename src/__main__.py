@@ -69,7 +69,7 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
     download_files, name = downloader.download_required(source)
 
     # Log downloaded files for debugging
-    logging.info(f"📦 Downloaded {len(download_files)} files for {source}:")
+    logging.info(f"Downloaded {len(download_files)} files for {source}:")
     for file in download_files:
         logging.info(f"  - {file.name} ({file.stat().st_size} bytes)")
 
@@ -102,7 +102,7 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
         is_morphe = "morphe" in source.lower() or "custom" in source.lower()
         is_revanced = not is_morphe  # Default to ReVanced if not Morphe
 
-    logging.info(f"🔍 Detected: {'Morphe' if is_morphe else 'ReVanced'} source type")
+    logging.info(f"Detected: {'Morphe' if is_morphe else 'ReVanced'} source type")
 
     # FIND FILES BASED ON DETECTED TYPE
     if is_morphe:
@@ -131,16 +131,16 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
 
     # Validate tools
     if not cli:
-        logging.error(f"❌ CLI not found for source: {source}")
+        logging.error(f"CLI not found for source: {source}")
         logging.error(f"Available files: {[f.name for f in download_files]}")
         return None
     if not patches:
-        logging.error(f"❌ Patches not found for source: {source}")
+        logging.error(f"Patches not found for source: {source}")
         logging.error(f"Available files: {[f.name for f in download_files]}")
         return None
 
-    logging.info(f"✅ Using CLI: {cli.name}")
-    logging.info(f"✅ Using patches: {[p.name for p in patches]}")
+    logging.info(f"Using CLI: {cli.name}")
+    logging.info(f"Using patches: {[p.name for p in patches]}")
 
     download_methods = [
         downloader.download_playstore,   # 1. Google Play (Canonical split fallback via gplaydl)
@@ -308,7 +308,7 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
             report["patches"] = current_include_patches
             
         if dynamic_includes:
-            logging.info(f"💉 Dynamically injected global patches: {dynamic_includes}")
+            logging.info(f"Dynamically injected global patches: {dynamic_includes}")
 
         # Include architecture in output filename
         output_apk = Path(f"{app_name}-{arch}-patch-v{version}.apk")
@@ -316,7 +316,7 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
         try:
             # USE DIFFERENT COMMANDS BASED ON SOURCE TYPE
             if is_morphe:
-                logging.info("🔧 Using Morphe patching system...")
+                logging.info("Using Morphe patching system...")
                 patch_error: subprocess.CalledProcessError | None = None
                 try:
                     morphe_cmd = [
@@ -367,7 +367,7 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
                     # Fallback path succeeded; clear the error so we don't retry.
                     patch_error = None
             else:
-                logging.info("🔧 Using ReVanced patching system...")
+                logging.info("Using ReVanced patching system...")
                 cli_name = Path(cli).name.lower()
                 is_revanced_v6_or_newer = (
                     'revanced-cli-6' in cli_name or 'revanced-cli-7' in cli_name or 'revanced-cli-8' in cli_name
@@ -450,7 +450,7 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
             ], capture=True, stream=True)
 
         output_apk.unlink(missing_ok=True)
-        print(f"✅ APK built: {signed_apk.name}")
+        print(f"APK built: {signed_apk.name}")
         return str(signed_apk)
 
     # If we got here, every candidate version failed.
@@ -481,7 +481,7 @@ def main():
         built_apks = []
         build_reports = []
         for arch in arches:
-            logging.info(f"🔨 Building {app_name} for {arch} architecture...")
+            logging.info(f"Building {app_name} for {arch} architecture...")
             report = {"app": app_name, "arch": arch, "source": source, "status": "failed", "version": None, "patches": []}
             apk_path = run_build(app_name, source, arch, report=report)
             if apk_path:
@@ -490,16 +490,16 @@ def main():
                 report["apk"] = Path(apk_path).name
             build_reports.append(report)
             if apk_path:
-                print(f"✅ Built {arch} version: {Path(apk_path).name}")
+                print(f"Built {arch} version: {Path(apk_path).name}")
         
         Path("build_records").mkdir(exist_ok=True)
         with open(f"build_records/build_report_{app_name}.json", "w") as f:
             json.dump(build_reports, f)
         
         # Summary
-        print(f"\n🎯 Built {len(built_apks)} APK(s) for {app_name}:")
+        print(f"\nBuilt {len(built_apks)} APK(s) for {app_name}:")
         for apk in built_apks:
-            print(f"  📱 {Path(apk).name}")
+            print(f"  {Path(apk).name}")
         
     else:
         # Fallback to single universal build
@@ -509,7 +509,7 @@ def main():
         if apk_path:
             report["status"] = "success"
             report["apk"] = Path(apk_path).name
-            print(f"🎯 Final APK path: {apk_path}")
+            print(f"Final APK path: {apk_path}")
             
         Path("build_records").mkdir(exist_ok=True)
         with open(f"build_records/build_report_{app_name}.json", "w") as f:

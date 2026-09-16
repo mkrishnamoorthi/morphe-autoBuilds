@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Update README.md with Obtainium documentation and app badges."""
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -21,7 +22,7 @@ def main() -> int:
     manifest_path = Path("manifest.json")
 
     if not readme_path.exists() or not manifest_path.exists():
-        print("❌ README.md or manifest.json not found")
+        print("[ERROR] README.md or manifest.json not found")
         return 1
 
     with manifest_path.open("r", encoding="utf-8") as f:
@@ -50,14 +51,14 @@ def main() -> int:
 
     table_text = "\n".join(table_rows)
 
-    obtainium_section = """### 📲 Obtainium Auto-Updates & 1-Click Install
+    obtainium_section = """### Obtainium Auto-Updates & 1-Click Install
 
 This repository provides full first-class integration with [**Obtainium**](https://github.com/ImranR98/Obtainium), allowing you to install and automatically receive daily background updates for any or all apps directly from GitHub Releases with zero manual downloads.
 
-#### 🚀 Option 1: 1-Click Single App Install
+#### Option 1: 1-Click Single App Install
 Click the **Add to Obtainium** badge for any app in the catalog below on your Android device (with Obtainium installed). Obtainium will automatically open with the exact repository, APK filter regex, and version extractor preconfigured!
 
-#### 📦 Option 2: Bulk Import All Apps
+#### Option 2: Bulk Import All Apps
 To import the entire curated catalog at once:
 1. Open **Obtainium** on your Android device.
 2. Tap the **+** button (or navigate to **Import / Export**) $\\rightarrow$ select **Import from URL**.
@@ -73,7 +74,7 @@ To import the entire curated catalog at once:
 
     new_section = f"""{obtainium_section}
 
-### 📱 Supported Apps & Patch Repositories
+### Supported Apps & Patch Repositories
 
 This repository compiles optimized builds using specific community patch repositories for our curated application catalog:
 
@@ -84,21 +85,20 @@ This repository compiles optimized builds using specific community patch reposit
     content = readme_path.read_text(encoding="utf-8")
 
     # Find the target section
-    old_start = "### 📱 Supported Apps & Patch Repositories"
-    old_end = "*(All builds are target-optimized for `arm64-v8a` to reduce bundle sizes and increase device efficiency).*"
+    m_apps = re.search(r"###\s*.*Supported Apps & Patch Repositories", content)
+    m_obt = re.search(r"###\s*.*Obtainium Auto-Updates", content)
 
-    # If it was already updated before, handle new footer
-    alt_old_end = "*(All builds are target-optimized for their respective architectures to reduce bundle sizes and increase device efficiency).*"
-
-    if old_start not in content:
-        print("❌ Could not find apps section in README.md")
+    if not m_apps and not m_obt:
+        print("[ERROR] Could not find apps section in README.md")
         return 1
 
-    # Check if obtainium section already exists
-    if "### 📲 Obtainium Auto-Updates" in content:
-        start_idx = content.find("### 📲 Obtainium Auto-Updates")
-    else:
-        start_idx = content.find(old_start)
+    if m_obt:
+        start_idx = m_obt.start()
+    elif m_apps:
+        start_idx = m_apps.start()
+
+    old_end = "*(All builds are target-optimized for `arm64-v8a` to reduce bundle sizes and increase device efficiency).*"
+    alt_old_end = "*(All builds are target-optimized for their respective architectures to reduce bundle sizes and increase device efficiency).*"
 
     end_idx = -1
     if old_end in content:
@@ -107,12 +107,12 @@ This repository compiles optimized builds using specific community patch reposit
         end_idx = content.find(alt_old_end) + len(alt_old_end)
 
     if end_idx == -1:
-        print("❌ Could not find end marker of apps section in README.md")
+        print("[ERROR] Could not find end marker of apps section in README.md")
         return 1
 
     updated_content = content[:start_idx] + new_section + content[end_idx:]
     readme_path.write_text(updated_content, encoding="utf-8", newline="\n")
-    print(f"✅ README.md updated successfully with {len(entries)} apps and Obtainium documentation.")
+    print(f"[OK] README.md updated successfully with {len(entries)} apps and Obtainium documentation.")
     return 0
 
 

@@ -183,7 +183,7 @@ def _download_splits(
             return False
 
         logging.info(
-            f"PlayStore: ✓ downloaded {len(apk_files)} file(s) for {package}"
+            f"PlayStore: Downloaded {len(apk_files)} file(s) for {package}"
         )
         return True
 
@@ -237,7 +237,7 @@ def _merge_splits(splits_dir: Path, output_apk: Path) -> bool:
             logging.error("PlayStore: merged APK not produced")
             return False
 
-        logging.info(f"PlayStore: ✓ merged {len(apk_files)} splits → {output_apk.name}")
+        logging.info(f"PlayStore: Merged {len(apk_files)} splits -> {output_apk.name}")
         return True
 
     except subprocess.TimeoutExpired:
@@ -347,7 +347,7 @@ def get_download_link(version: str, app_name: str, config: dict) -> str | None:
                     or play_version.startswith(version + ".")
                     or play_version.startswith(version + "-")):
                 version_code = play_code
-                logging.info(f"PlayStore: target is latest version ✓ using code {version_code}")
+                logging.info(f"PlayStore: target is latest version, using code {version_code}")
 
     # If it wasn't the latest version (or `info` failed), resolve via Exodus
     if not version_code:
@@ -383,5 +383,5 @@ def get_download_link(version: str, app_name: str, config: dict) -> str | None:
         logging.error(f"PlayStore: merge failed for {app_name} {version}")
         return None
 
-    logging.info(f"PlayStore: ✓ {app_name} {version} → {output_apk}")
+    logging.info(f"PlayStore: {app_name} {version} -> {output_apk}")
     return str(output_apk)

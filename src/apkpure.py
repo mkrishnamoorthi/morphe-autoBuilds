@@ -193,7 +193,7 @@ def get_download_link(version: str, app_name: str, config: dict) -> str | None:
         # 1. Try the direct download URL (fastest path)
         dl = _get_direct_download(slug, package, version)
         if dl:
-            logging.info(f"APKPure: ✓ direct download found for {app_name} {version}")
+            logging.info(f"APKPure: Direct download found for {app_name} {version}")
             return dl
 
         # 2. Scan the version list for prefix match or closest version

@@ -34,30 +34,30 @@ if sys.stderr and hasattr(sys.stderr, "reconfigure"):
 
 def validate_obtainium_bundle(obtainium_path: Path, manifest_path: Path) -> bool:
     if not obtainium_path.exists():
-        print(f"❌ Obtainium file not found: {obtainium_path}", file=sys.stderr)
+        print(f"[ERROR] Obtainium file not found: {obtainium_path}", file=sys.stderr)
         return False
 
     if not manifest_path.exists():
-        print(f"❌ Manifest file not found: {manifest_path}", file=sys.stderr)
+        print(f"[ERROR] Manifest file not found: {manifest_path}", file=sys.stderr)
         return False
 
     try:
         with obtainium_path.open("r", encoding="utf-8") as f:
             bundle = json.load(f)
     except Exception as e:
-        print(f"❌ Failed to parse JSON from {obtainium_path}: {e}", file=sys.stderr)
+        print(f"[ERROR] Failed to parse JSON from {obtainium_path}: {e}", file=sys.stderr)
         return False
 
     try:
         with manifest_path.open("r", encoding="utf-8") as f:
             manifest = json.load(f)
     except Exception as e:
-        print(f"❌ Failed to parse JSON from {manifest_path}: {e}", file=sys.stderr)
+        print(f"[ERROR] Failed to parse JSON from {manifest_path}: {e}", file=sys.stderr)
         return False
 
     apps: List[Dict[str, Any]] = bundle.get("apps", [])
     if not apps:
-        print(f"❌ No apps found in {obtainium_path}", file=sys.stderr)
+        print(f"[ERROR] No apps found in {obtainium_path}", file=sys.stderr)
         return False
 
     entries: Dict[str, Any] = manifest.get("entries", {})
@@ -69,7 +69,7 @@ def validate_obtainium_bundle(obtainium_path: Path, manifest_path: Path) -> bool
     }
 
     errors: List[str] = []
-    print(f"🔍 Validating {len(apps)} Obtainium app configurations against {len(all_apks)} manifest APKs...\n")
+    print(f"Validating {len(apps)} Obtainium app configurations against {len(all_apks)} manifest APKs...\n")
 
     for idx, app in enumerate(apps, 1):
         app_name = app.get("name", f"App #{idx}")
@@ -157,16 +157,16 @@ def validate_obtainium_bundle(obtainium_path: Path, manifest_path: Path) -> bool
             )
             continue
 
-        print(f"  ✓ {app_name:<28} -> {matched_apk} (v{extracted_version})")
+        print(f"  [OK] {app_name:<28} -> {matched_apk} (v{extracted_version})")
 
     print("")
     if errors:
-        print(f"❌ Obtainium validation failed with {len(errors)} error(s):", file=sys.stderr)
+        print(f"[ERROR] Obtainium validation failed with {len(errors)} error(s):", file=sys.stderr)
         for err in errors:
             print(f"  - {err}", file=sys.stderr)
         return False
 
-    print(f"🎉 All {len(apps)} Obtainium apps passed strict validation successfully!")
+    print(f"All {len(apps)} Obtainium apps passed strict validation successfully!")
     return True
 
 

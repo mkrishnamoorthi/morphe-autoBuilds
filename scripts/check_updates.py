@@ -113,9 +113,9 @@ def main():
                 print(f"\nChecking {config_file}...")
                 if check_and_update_config(config_file):
                     updated = True
-                    print(f"✓ Updated {config_file}")
+                    print(f"[OK] Updated {config_file}")
                 else:
-                    print(f"✓ No update needed for {config_file}")
+                    print(f"[OK] No update needed for {config_file}")
                 break  # Found the config, no need to check other dirs
     
     # Also check if there are any configs not in patch-config.json

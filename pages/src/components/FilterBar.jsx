@@ -112,19 +112,25 @@ export function FilterBar({
           {searchQuery && (
             <span className="px-2 py-0.5 rounded-md bg-accent/10 text-accent font-medium flex items-center gap-1">
               "{searchQuery}"
-              <button onClick={() => setSearchQuery('')} className="hover:text-foreground">✕</button>
+              <button onClick={() => setSearchQuery('')} className="hover:text-foreground">
+                <X className="w-3 h-3" />
+              </button>
             </span>
           )}
           {selectedSource !== 'all' && (
             <span className="px-2 py-0.5 rounded-md bg-accent/10 text-accent font-medium flex items-center gap-1">
               Source: {getSourceLabel(selectedSource)}
-              <button onClick={() => setSelectedSource('all')} className="hover:text-foreground">✕</button>
+              <button onClick={() => setSelectedSource('all')} className="hover:text-foreground">
+                <X className="w-3 h-3" />
+              </button>
             </span>
           )}
           {selectedArch !== 'all' && (
             <span className="px-2 py-0.5 rounded-md bg-accent/10 text-accent font-medium flex items-center gap-1">
               Arch: {getArchLabel(selectedArch)}
-              <button onClick={() => setSelectedArch('all')} className="hover:text-foreground">✕</button>
+              <button onClick={() => setSelectedArch('all')} className="hover:text-foreground">
+                <X className="w-3 h-3" />
+              </button>
             </span>
           )}
           <button

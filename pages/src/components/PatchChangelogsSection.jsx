@@ -90,7 +90,7 @@ export function PatchChangelogsSection({ patchChangelogs, onFilterByApp }) {
           const displayName = getSourceDisplayName(sourceKey);
           const affectedApps = data.affected_apps || [];
           const publishedAt = data.published_at ? data.published_at.split("T")[0] : "";
-          const versionTransition = oldTag && oldTag !== newTag ? `${oldTag} ➔ ${newTag}` : newTag;
+          const versionTransition = oldTag && oldTag !== newTag ? `${oldTag} -> ${newTag}` : newTag;
 
           return (
             <div

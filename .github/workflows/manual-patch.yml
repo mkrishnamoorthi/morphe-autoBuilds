@@ -89,9 +89,9 @@ jobs:
           if [ -n "$GPLAYDL_TOKEN" ]; then
             mkdir -p ~/.config/gplaydl
             jq -n --arg token "$GPLAYDL_TOKEN" '{dispenser: "https://dispenser.gplaydl.com", api_key: $token}' > ~/.config/gplaydl/config.json
-            echo "✓ gplaydl config created"
+            echo "[OK] gplaydl config created"
           else
-            echo "⚠️ GPLAYDL_TOKEN secret not set — Google Play source will be skipped"
+            echo "[WARN] GPLAYDL_TOKEN secret not set — Google Play source will be skipped"
           fi
 
       - name: Build APK
@@ -102,7 +102,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           EXODUS_API_KEY: ${{ secrets.EXODUS_API_KEY }}
         run: |
-          echo "🔧 Building ${{ inputs.app_name }} with ${{ inputs.source }} for ${{ inputs.architecture }} architecture..."
+          echo "Building ${{ inputs.app_name }} with ${{ inputs.source }} for ${{ inputs.architecture }} architecture..."
           python -m src
 
       
@@ -112,7 +112,7 @@ jobs:
           # Find the built APK file(s)
           apk_files=$(ls -1 *.apk 2>/dev/null)
           if [ -z "$apk_files" ]; then
-            echo "❌ No APK files found"
+            echo "[ERROR] No APK files found"
             exit 1
           fi
           
@@ -142,10 +142,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if gh release view latest >/dev/null 2>&1; then
-            echo "✅ Release 'latest' exists"
+            echo "[OK] Release 'latest' exists"
             echo "release_exists=true" >> $GITHUB_OUTPUT
           else
-            echo "❌ Release 'latest' does not exist"
+            echo "[INFO] Release 'latest' does not exist"
             echo "release_exists=false" >> $GITHUB_OUTPUT
           fi
       
@@ -154,13 +154,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "🔄 Updating release efficiently..."
+          echo "Updating release efficiently..."
           
           # 1. GENERATE FILE LIST FOR NOTES
           # We fetch the list of names via API so the release notes remain accurate
           # without needing to download the actual heavy APK files.
           if [ "${{ steps.check-release.outputs.release_exists }}" == "true" ]; then
-            python scripts/remove_orphaned_assets.py || echo "⚠️ remove_orphaned_assets.py failed; continuing..."
+            python scripts/remove_orphaned_assets.py || echo "[WARN] remove_orphaned_assets.py failed; continuing..."
             gh release view latest --json assets --jq '.assets[].name' > current_assets.txt
           else
             touch current_assets.txt
@@ -172,23 +172,23 @@ jobs:
           done
           
           # 2. UPDATE MANIFEST & CREATE RELEASE NOTES
-          echo "🧾 Updating manifest and generating Obtainium & release notes..."
+          echo "Updating manifest and generating Obtainium & release notes..."
           # Download manifest from latest release if available to ensure we have existing catalog
           gh release download latest -p "manifest.json" --clobber || true
 
           # Merge newly built record into manifest.json
-          python scripts/merge_manifest.py || echo "⚠️ merge_manifest.py failed"
+          python scripts/merge_manifest.py || echo "[WARN] merge_manifest.py failed"
 
           python scripts/generate_obtainium.py || true
           python scripts/validate_obtainium.py || true
           python scripts/generate_release_notes.py || {
-            echo "# 🔧 Morphe APKs - Custom Build" > release_notes.md
+            echo "# Morphe APKs - Custom Build" > release_notes.md
             echo "Updated ${{ inputs.app_name }} (${{ inputs.architecture }})." >> release_notes.md
           }
           
           # 3. PERFORM UPDATE (CLOBBER) OR CREATE
           if [ "${{ steps.check-release.outputs.release_exists }}" == "true" ]; then
-            echo "⬆️ Uploading new assets (clobbering existing)..."
+            echo "Uploading new assets (clobbering existing)..."
 
             # Delete superseded older-version APKs for this app/arch before upload.
             # --clobber only overwrites exact filenames; since APK names embed the
@@ -202,7 +202,7 @@ jobs:
               echo "$apk" >> keep_apks.txt
             done
             python scripts/cleanup_old_apks.py --release latest --keep-file keep_apks.txt || \
-              echo "⚠️  cleanup_old_apks.py failed; continuing with clobber upload"
+              echo "[WARN] cleanup_old_apks.py failed; continuing with clobber upload"
 
             ASSETS=( *.apk )
             if ls build_records/*.json 1> /dev/null 2>&1; then
@@ -219,22 +219,22 @@ jobs:
             for i in {1..3}; do
               gh release upload latest "${ASSETS[@]}" --clobber && break || {
                 if [ $i -lt 3 ]; then
-                  echo "⚠️ Upload failed (attempt $i/3). Retrying in 10s..."
+                  echo "[WARN] Upload failed (attempt $i/3). Retrying in 10s..."
                   sleep 10
                 else
-                  echo "❌ Upload failed after 3 attempts."
+                  echo "[ERROR] Upload failed after 3 attempts."
                   exit 1
                 fi
               }
             done
 
-            echo "📝 Updating release title and notes..."
+            echo "Updating release title and notes..."
             gh release edit latest \
               --title "Morphe APKs - $(date +'%Y-%m-%d %H:%M')" \
               --notes-file release_notes.md
               
           else
-            echo "🚀 Creating new release..."
+            echo "Creating new release..."
             for i in {1..3}; do
               gh release create "latest" \
                 --title "Morphe APKs - $(date +'%Y-%m-%d %H:%M')" \
@@ -242,22 +242,22 @@ jobs:
                 "${ASSETS[@]}" \
                 --latest && break || {
                 if [ $i -lt 3 ]; then
-                  echo "⚠️ Create release failed (attempt $i/3). Retrying in 10s..."
+                  echo "[WARN] Create release failed (attempt $i/3). Retrying in 10s..."
                   sleep 10
                 else
-                  echo "❌ Create release failed after 3 attempts."
+                  echo "[ERROR] Create release failed after 3 attempts."
                   exit 1
                 fi
               }
             done
           fi
           
-          echo "✅ Release updated successfully!"
+          echo "Release updated successfully!"
 
       - name: Update Repository, README & Pages Data
         if: ${{ inputs.replace_in_release == true }}
         run: |
-          echo "🔄 Syncing Manifest, Obtainium, README, and Pages Data..."
+          echo "Syncing Manifest, Obtainium, README, and Pages Data..."
           mkdir -p pages/public
           cp manifest.json pages/public/manifest.json || true
           if [ -f obtainium.json ]; then
@@ -267,7 +267,7 @@ jobs:
             cp build_records/build_report_*.json pages/public/build_report.json || true
           fi
 
-          python scripts/update_readme_obtainium.py || echo "⚠️ update_readme_obtainium.py failed"
+          python scripts/update_readme_obtainium.py || echo "[WARN] update_readme_obtainium.py failed"
 
           # Only commit if there are changes to the data
           if [[ -n $(git status -s manifest.json obtainium.json README.md pages/public) ]]; then
@@ -276,7 +276,7 @@ jobs:
             git add manifest.json obtainium.json README.md pages/public/
             git commit -m "chore: auto-sync manifest, obtainium bundle, and README catalog [skip ci]" || true
             git push
-            echo "✅ Repository and Pages data pushed successfully!"
+            echo "Repository and Pages data pushed successfully!"
           else
             echo "No changes to data, skipping push."
           fi
@@ -287,9 +287,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           release_url=$(gh release view latest --json url --jq .url)
-          echo "🔗 Updated Release URL: $release_url"
+          echo "Updated Release URL: $release_url"
           echo ""
-          echo "📦 Direct APK links:"
+          echo "Direct APK links:"
           for apk in *.apk; do
             echo "  - $release_url/download/$apk"
           done

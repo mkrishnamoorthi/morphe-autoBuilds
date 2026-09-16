@@ -49,14 +49,6 @@
       "additionalSettings": "{\"apkFilterRegEx\":\"^telegram-arm64-v8a-paresh-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"^telegram-arm64-v8a-paresh-v(.*)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
     },
     {
-      "id": "com.frontrow.vlog",
-      "url": "https://github.com/yashrajrocxx/Mophe-AutoBuilds",
-      "author": "yashrajrocxx",
-      "name": "VN Video Editor",
-      "preferredApkIndex": 0,
-      "additionalSettings": "{\"apkFilterRegEx\":\"^vn-arm64-v8a-paresh-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"^vn-arm64-v8a-paresh-v(.*)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
-    },
-    {
       "id": "eu.darken.sdmse",
       "url": "https://github.com/yashrajrocxx/Mophe-AutoBuilds",
       "author": "yashrajrocxx",
@@ -84,17 +76,9 @@
       "id": "com.twitter.android",
       "url": "https://github.com/yashrajrocxx/Mophe-AutoBuilds",
       "author": "yashrajrocxx",
-      "name": "X (Twitter) (arm64-v8a)",
+      "name": "X (Twitter)",
       "preferredApkIndex": 0,
-      "additionalSettings": "{\"apkFilterRegEx\":\"^x-arm64-v8a-piko-patches-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"^x-arm64-v8a-piko-patches-v(.*)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
-    },
-    {
-      "id": "com.tradingview.tradingviewapp",
-      "url": "https://github.com/yashrajrocxx/Mophe-AutoBuilds",
-      "author": "yashrajrocxx",
-      "name": "TradingView",
-      "preferredApkIndex": 0,
-      "additionalSettings": "{\"apkFilterRegEx\":\"^tradingview-arm64-v8a-morphe-patches-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"^tradingview-arm64-v8a-morphe-patches-v(.*)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
+      "additionalSettings": "{\"apkFilterRegEx\":\"^x-arm64-v8a-piko-dev-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"^x-arm64-v8a-piko-dev-v(.*)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
     },
     {
       "id": "com.jndapp.depth.live.wallpaper",
@@ -119,30 +103,6 @@
       "name": "Minimal Widgets",
       "preferredApkIndex": 0,
       "additionalSettings": "{\"apkFilterRegEx\":\"^minimalwidgets-arm64-v8a-morphe-patches-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"^minimalwidgets-arm64-v8a-morphe-patches-v(.*)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
-    },
-    {
-      "id": "com.jio.media.jiotvplus",
-      "url": "https://github.com/yashrajrocxx/Mophe-AutoBuilds",
-      "author": "yashrajrocxx",
-      "name": "JioTV+",
-      "preferredApkIndex": 0,
-      "additionalSettings": "{\"apkFilterRegEx\":\"^jiotvplus-universal-chiggi-patches-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"^jiotvplus-universal-chiggi-patches-v(.*)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
-    },
-    {
-      "id": "com.brave.browser",
-      "url": "https://github.com/yashrajrocxx/Mophe-AutoBuilds",
-      "author": "yashrajrocxx",
-      "name": "Brave Browser",
-      "preferredApkIndex": 0,
-      "additionalSettings": "{\"apkFilterRegEx\":\"^brave-arm64-v8a-dh6k-patches-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"^brave-arm64-v8a-dh6k-patches-v(.*)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
-    },
-    {
-      "id": "com.twitter.android",
-      "url": "https://github.com/yashrajrocxx/Mophe-AutoBuilds",
-      "author": "yashrajrocxx",
-      "name": "X (Twitter) (arm64-v8a)",
-      "preferredApkIndex": 0,
-      "additionalSettings": "{\"apkFilterRegEx\":\"^x-arm64-v8a-piko-dev-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"^x-arm64-v8a-piko-dev-v(.*)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
     },
     {
       "id": "proton.android.pass",
@@ -207,6 +167,14 @@
       "name": "Duolingo",
       "preferredApkIndex": 0,
       "additionalSettings": "{\"apkFilterRegEx\":\"^duolingo-arm64-v8a-hoodles-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"^duolingo-arm64-v8a-hoodles-v(.*)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
+    },
+    {
+      "id": "com.brave.browser",
+      "url": "https://github.com/yashrajrocxx/Mophe-AutoBuilds",
+      "author": "yashrajrocxx",
+      "name": "Brave Browser",
+      "preferredApkIndex": 0,
+      "additionalSettings": "{\"apkFilterRegEx\":\"^brave-arm64-v8a-dh6k-patches-v.*\\\\.apk$\",\"versionExtractionRegEx\":\"^brave-arm64-v8a-dh6k-patches-v(.*)\\\\.apk$\",\"matchGroupToUse\":\"1\"}"
     }
   ]
 }

@@ -16,7 +16,7 @@ def main():
             return
             
         with open(release_notes_file, 'a', encoding='utf-8') as rn:
-            rn.write('\n## ⚠️ Known Issues / Failed Patches\n')
+            rn.write('\n## Known Issues / Failed Patches\n')
             for app, patches in data.items():
                 if patches:
                     rn.write(f"- **{app}**: Failed to apply `{len(patches)}` patches ({ ', '.join(patches) })\n")

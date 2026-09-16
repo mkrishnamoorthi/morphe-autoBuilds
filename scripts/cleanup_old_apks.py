@@ -67,7 +67,7 @@ def gh_release_assets(release: str) -> List[dict]:
         return [a for a in assets if isinstance(a, dict)
                 and str(a.get("name", "")).endswith(".apk")]
     except Exception as e:
-        print(f"⚠️  could not list release assets: {e}", file=sys.stderr)
+        print(f"[WARN] could not list release assets: {e}", file=sys.stderr)
         return []
 
 
@@ -140,16 +140,16 @@ def delete_asset(release: str, name: str, asset_id: str = "") -> bool:
     ok, msg = delete_asset_by_name(release, name)
     if ok:
         return True
-    print(f"  ⚠️  delete-asset failed for {name}: {msg[:200]}", file=sys.stderr)
+    print(f"  [WARN] delete-asset failed for {name}: {msg[:200]}", file=sys.stderr)
 
     if asset_id:
         ok2, msg2 = delete_asset_by_id(name, asset_id)
         if ok2:
             return True
-        print(f"  ⚠️  API fallback failed for {name} (id={asset_id}): {msg2[:200]}",
+        print(f"  [WARN] API fallback failed for {name} (id={asset_id}): {msg2[:200]}",
               file=sys.stderr)
     else:
-        print(f"  ⚠️  no asset id available for {name}; API fallback skipped",
+        print(f"  [WARN] no asset id available for {name}; API fallback skipped",
               file=sys.stderr)
     return False
 
@@ -198,7 +198,7 @@ def main() -> int:
             print(f"  [dry-run] would delete: {name}")
         else:
             if delete_asset(args.release, name, asset_id):
-                print(f"  🗑️  deleted: {name}")
+                print(f"  deleted: {name}")
                 deleted += 1
 
     action = "would delete" if args.dry_run else "deleted"

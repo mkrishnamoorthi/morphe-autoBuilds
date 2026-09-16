@@ -30,7 +30,7 @@ def create_release_notes():
     versions = get_app_versions()
     
     notes = "# ReVanced Patched APKs\n\n"
-    notes += "## 📱 Available Apps\n\n"
+    notes += "## Available Apps\n\n"
     
     # Read patch-config to know which apps were built
     with open('patch-config.json', 'r') as f:
@@ -50,11 +50,11 @@ def create_release_notes():
             notes += "- **Version:** `latest`\n\n"
     
     notes += "---\n\n"
-    notes += "## 🔧 Build Information\n\n"
+    notes += "## Build Information\n\n"
     notes += f"- **Build Date:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}\n"
     notes += "- **Auto-built:** Every 6 hours\n"
     notes += "- **Source:** Various ReVanced sources\n\n"
-    notes += "## ⚠️ Disclaimer\n"
+    notes += "## Disclaimer\n"
     notes += "These APKs are built automatically using the ReVanced patcher.\n"
     notes += "Use at your own risk.\n"
     

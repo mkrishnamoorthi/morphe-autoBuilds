@@ -26,25 +26,25 @@ except ImportError:
     pass
 
 def check_prerequisites():
-    print("🔍 Checking local build prerequisites...")
+    print("Checking local build prerequisites...")
     
     # 1. Java check
     java = shutil.which("java")
     if not java:
-        print("❌ Java JDK is not installed or not in PATH!")
-        print("👉 Please install JDK 17 or JDK 21 (e.g. 'sudo apt install openjdk-21-jdk' on Ubuntu).")
+        print("[ERROR] Java JDK is not installed or not in PATH.")
+        print("        Please install JDK 17 or JDK 21 (e.g. 'sudo apt install openjdk-21-jdk').")
         return False
-    print("  ✓ Java found in PATH")
+    print("  [OK] Java found in PATH")
     
     # 2. Python dependencies check
     try:
         import bs4
         import requests
     except ImportError:
-        print("❌ Python packages 'requests' or 'beautifulsoup4' are missing.")
-        print("👉 Please run: pip install requests beautifulsoup4")
+        print("[ERROR] Python packages 'requests' or 'beautifulsoup4' are missing.")
+        print("        Please run: pip install requests beautifulsoup4")
         return False
-    print("  ✓ Python dependencies (requests, bs4) are installed")
+    print("  [OK] Python dependencies (requests, bs4) are installed")
 
     # 3. apksigner check
     root = Path(__file__).resolve().parent
@@ -53,41 +53,37 @@ def check_prerequisites():
         from src.utils import find_apksigner
         apksigner_path = find_apksigner()
         if not apksigner_path:
-            print("❌ apksigner not found!")
-            print("👉 Please install Android SDK build-tools and put apksigner on PATH or set ANDROID_HOME.")
-            print("   (On Debian/Ubuntu, you can run: sudo apt install apksigner)")
+            print("[ERROR] apksigner not found.")
+            print("        Please install Android SDK build-tools and configure apksigner on PATH or set ANDROID_HOME.")
             return False
-        print(f"  ✓ apksigner found at: {apksigner_path}")
+        print(f"  [OK] apksigner found at: {apksigner_path}")
     except Exception as e:
-        print(f"⚠️ Warning during apksigner check: {e}")
+        print(f"[WARN] Warning during apksigner check: {e}")
 
     # 4. gplaydl (Google Play) check — non-fatal, scrapers are fallbacks
     gplaydl_bin = shutil.which("gplaydl")
     if not gplaydl_bin:
-        print("  ⚠️  gplaydl not found in PATH")
-        print("     Google Play source will be skipped.")
-        print("     To install: pip install gplaydl")
+        print("  [WARN] gplaydl not found in PATH")
+        print("         Google Play source will be skipped; fallback scrapers will be used.")
     else:
-        print(f"  ✓ gplaydl found at: {gplaydl_bin}")
+        print(f"  [OK] gplaydl found at: {gplaydl_bin}")
         try:
             test = subprocess.run(
                 ["gplaydl", "info", "--help"],
                 capture_output=True, text=True, timeout=5
             )
             if test.returncode == 0:
-                print("  ✓ gplaydl is operational")
-                print("     ℹ️  If no account is linked yet, run: gplaydl link <code>")
-                print("        (get the code from the gplaydl Authenticator app)")
+                print("  [OK] gplaydl is operational")
         except Exception:
             pass
 
-    print("✅ All prerequisites checked!\n")
+    print("All prerequisites checked.\n")
     return True
 
 
 def run_update_check(root: Path) -> dict:
     """Run check_app_updates.py and return the plan data."""
-    print("🔍 Checking for patch and app updates from upstream sources...")
+    print("Checking for patch and app updates from upstream sources...")
     check_script = root / "scripts" / "check_app_updates.py"
     
     res = subprocess.run(
@@ -134,13 +130,13 @@ def run_update_check(root: Path) -> dict:
 
 
 def display_patch_changelogs(patch_changelogs: dict):
-    """Print beautifully formatted patch changelogs in the console."""
+    """Print formatted patch changelogs in the console."""
     if not patch_changelogs:
-        print("ℹ️  No new patch updates found. All patch sources are up to date.")
+        print("No new patch updates found. All patch sources are up to date.")
         return
 
     print("\n" + "=" * 70)
-    print("🚀  WHAT'S NEW IN UPSTREAM PATCHES")
+    print("UPSTREAM PATCH UPDATES")
     print("=" * 70)
 
     for source_key, sdata in patch_changelogs.items():
@@ -154,15 +150,15 @@ def display_patch_changelogs(patch_changelogs: dict):
         if published_at and "T" in published_at:
             published_at = published_at.split("T")[0]
 
-        tag_str = f"{old_tag} ➔ {new_tag}" if old_tag and old_tag != new_tag else new_tag
-        print(f"\n📦 {source_name} Patches [{tag_str}]")
+        tag_str = f"{old_tag} -> {new_tag}" if old_tag and old_tag != new_tag else new_tag
+        print(f"\n* {source_name} Patches [{tag_str}]")
         if affected_apps:
-            print(f"   📱 Affected Apps: {', '.join([a.capitalize() for a in affected_apps])}")
+            print(f"   Affected Apps: {', '.join([a.capitalize() for a in affected_apps])}")
         if url:
-            print(f"   🔗 Upstream URL : {url} ({published_at or 'latest'})")
+            print(f"   Upstream URL : {url} ({published_at or 'latest'})")
 
         if body:
-            print("   📝 Changelog Highlights:")
+            print("   Changelog Highlights:")
             lines = body.replace("\r\n", "\n").splitlines()
             shown = 0
             for line in lines:
@@ -170,13 +166,13 @@ def display_patch_changelogs(patch_changelogs: dict):
                     print(f"      {line.strip()}")
                     shown += 1
             if len(lines) > 12:
-                print(f"      ... (view full release on GitHub for {len(lines) - shown} more lines)")
+                print(f"      ... ({len(lines) - shown} more lines in full release notes)")
         print("-" * 70)
 
 
 def main():
     parser = argparse.ArgumentParser(description="Morphe AutoBuilds Local Runner")
-    parser.add_argument("--check", "--check-updates", dest="check_only", action="store_true", help="Only check for patch and app updates and display changelogs without building")
+    parser.add_argument("--check", "--check-updates", dest="check_only", action="store_true", help="Check for patch and app updates without building")
     parser.add_argument("--incremental", "-i", action="store_true", help="Only build apps that have patch or version updates")
     parser.add_argument("--all", "-a", action="store_true", help="Force rebuild all configured apps")
     args = parser.parse_args()
@@ -185,7 +181,7 @@ def main():
     patch_config_path = root / "patch-config.json"
     
     if not patch_config_path.exists():
-        print(f"❌ patch-config.json not found in {root}")
+        print(f"[ERROR] patch-config.json not found in {root}")
         sys.exit(1)
 
     # 1. Update check
@@ -193,14 +189,14 @@ def main():
     display_patch_changelogs(plan.get("patch_changelogs", {}))
 
     if args.check_only:
-        print("\n📊 Update Summary:")
+        print("\nUpdate Summary:")
         print(f"  - Apps needing rebuild : {len(plan.get('build_matrix', []))}")
         print(f"  - Apps carried over    : {len(plan.get('carry_over', []))}")
         print(f"  - Updated patch sources: {len(plan.get('patch_changelogs', {}))}")
         return
 
     if not check_prerequisites():
-        print("❌ Prerequisites check failed. Please fix the issues above and try again.")
+        print("[ERROR] Prerequisites check failed. Please fix the issues above and try again.")
         sys.exit(1)
 
     with open(patch_config_path, "r", encoding="utf-8") as f:
@@ -208,26 +204,26 @@ def main():
         
     all_patch_list = patch_config.get("patch_list", [])
     if not all_patch_list:
-        print("❌ No apps configured in patch-config.json")
+        print("[ERROR] No apps configured in patch-config.json")
         sys.exit(1)
 
     # Determine which apps to build
     if args.incremental:
         build_matrix = plan.get("build_matrix", [])
         if not build_matrix:
-            print("\n🎉 Everything is up to date! No apps need rebuilding.")
+            print("\nEverything is up to date. No apps need rebuilding.")
             return
         patch_list = build_matrix
-        print(f"\n⚡ Incremental mode: Building {len(patch_list)} updated app(s)...")
+        print(f"\nIncremental mode: Building {len(patch_list)} updated app(s)...")
     else:
         patch_list = all_patch_list
-        print(f"\n🚀 Starting local compilation for {len(patch_list)} apps...")
+        print(f"\nStarting local compilation for {len(patch_list)} apps...")
 
     # Create local logs dir
     logs_dir = root / "local_logs"
     logs_dir.mkdir(exist_ok=True)
     
-    print(f"📁 Logs will be saved separately under: {logs_dir}/\n")
+    print(f"Logs will be saved under: {logs_dir}/\n")
     
     success_count = 0
     failed_apps = []
@@ -236,7 +232,7 @@ def main():
         app_name = item["app_name"]
         source = item["source"]
         
-        print(f"[{index:02d}/{len(patch_list):02d}] 🔨 Building {app_name} (patches: {source})... ", end="", flush=True)
+        print(f"[{index:02d}/{len(patch_list):02d}] Building {app_name} (patches: {source})... ", end="", flush=True)
         
         log_file = logs_dir / f"{app_name}_{source}.log"
         
@@ -261,26 +257,26 @@ def main():
                         log_content = rlf.read()
                     
                     if "All download sources failed" in log_content or "Failed to download APK" in log_content:
-                        print("⚠️ SKIPPED (Download failed - see log)")
+                        print("SKIPPED (Download failed - see log)")
                         failed_apps.append(f"{app_name} (download failed)")
                     elif "Built 0 APK(s)" in log_content:
-                        print("⚠️ SKIPPED (No APK built - see log)")
+                        print("SKIPPED (No APK built - see log)")
                         failed_apps.append(f"{app_name} (0 APKs)")
                     else:
                         apks = list(root.glob(f"*{app_name}*.apk"))
                         if apks:
                             apk_names = ", ".join([a.name for a in apks])
-                            print(f"✅ SUCCESS! ({apk_names})")
+                            print(f"SUCCESS ({apk_names})")
                         else:
-                            print("✅ SUCCESS!")
+                            print("SUCCESS")
                         success_count += 1
                 else:
-                    print("❌ FAILED (Check log)")
+                    print("FAILED (Check log)")
                     failed_apps.append(f"{app_name} (compilation error)")
                     
             except Exception as e:
                 lf.write(f"\nLocal runner exception:\n{e}\n")
-                print(f"❌ ERROR: {e}")
+                print(f"ERROR: {e}")
                 failed_apps.append(f"{app_name} (exception)")
                 
     # Merge manifest and generate local release notes
@@ -292,15 +288,15 @@ def main():
     except Exception:
         pass
 
-    print("\n🏁 ============================================= 🏁")
-    print(f"🏁 Local build finished! Success: {success_count}/{len(patch_list)}")
+    print("\n=============================================")
+    print(f"Local build finished. Success: {success_count}/{len(patch_list)}")
     if failed_apps:
-        print(f"❌ Failed/Skipped apps: {failed_apps}")
-        print(f"💡 Check the log files in {logs_dir}/ for detailed tracebacks.")
+        print(f"Failed/Skipped apps: {failed_apps}")
+        print(f"Check the log files in {logs_dir}/ for detailed tracebacks.")
     else:
-        print("🎉 Congratulations! All requested builds compiled successfully!")
-    print(f"📄 Local release notes updated: {root / 'release_notes.md'}")
-    print("🏁 ============================================= 🏁")
+        print("All requested builds compiled successfully.")
+    print(f"Release notes updated: {root / 'release_notes.md'}")
+    print("=============================================")
 
 if __name__ == "__main__":
     main()

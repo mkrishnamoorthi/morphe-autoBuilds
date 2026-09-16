@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔧 Morphe Custom AutoBuilds (Non-Root)
+# Morphe Custom AutoBuilds (Non-Root)
 
 [![Daily Build](https://img.shields.io/github/actions/workflow/status/yashrajrocxx/Mophe-AutoBuilds/patch.yml?label=Daily%20Build&style=for-the-badge&color=2ea44f)](https://github.com/yashrajrocxx/Mophe-AutoBuilds/actions/workflows/patch.yml)
 [![Latest Release](https://img.shields.io/github/v/release/yashrajrocxx/Mophe-AutoBuilds?style=for-the-badge&label=Latest%20Release&color=0366d6)](https://github.com/yashrajrocxx/Mophe-AutoBuilds/releases/latest)
@@ -32,25 +32,25 @@ A sophisticated, automated pipeline that builds ready-to-install custom patched 
 
 ---
 
-## ⚡ Quick Downloads
+## Quick Downloads
 
 > **Last Updated:** August 11, 2026
 > **Note:** All APKs are automatically rebuilt daily at 06:00 UTC to ensure you have the latest features and security patches.
 
-### 📥 Download Links
+### Download Links
 
 | Mirror | Description | Link |
 | :--- | :--- | :--- |
 | **GitHub Releases** | Primary source. Contains all builds. | [**Download Latest Release**](https://github.com/yashrajrocxx/Mophe-AutoBuilds/releases/latest) |
 
-### 📲 Obtainium Auto-Updates & 1-Click Install
+### Obtainium Auto-Updates & 1-Click Install
 
 This repository provides full first-class integration with [**Obtainium**](https://github.com/ImranR98/Obtainium), allowing you to install and automatically receive daily background updates for any or all apps directly from GitHub Releases with zero manual downloads.
 
-#### 🚀 Option 1: 1-Click Single App Install
+#### Option 1: 1-Click Single App Install
 Click the **Add to Obtainium** badge for any app in the catalog below on your Android device (with Obtainium installed). Obtainium will automatically open with the exact repository, APK filter regex, and version extractor preconfigured!
 
-#### 📦 Option 2: Bulk Import All Apps
+#### Option 2: Bulk Import All Apps
 To import the entire curated catalog at once:
 1. Open **Obtainium** on your Android device.
 2. Tap the **+** button (or navigate to **Import / Export**) $\rightarrow$ select **Import from URL**.
@@ -64,44 +64,42 @@ To import the entire curated catalog at once:
 > **User Control & Local State:**
 > In Obtainium, importing an app or the `obtainium.json` bundle adds the configuration to your device's local database. It is **not** a forced synchronization—you retain full freedom to install, delete, pause, or pin whichever apps you choose.
 
-### 📱 Supported Apps & Patch Repositories
+### Supported Apps & Patch Repositories
 
 This repository compiles optimized builds using specific community patch repositories for our curated application catalog:
 
 | Application | Package Name | Patch Source | Arch | Obtainium (1-Click) |
 | :--- | :--- | :--- | :---: | :---: |
-| **Brave Browser** | `com.brave.browser` | dh6k | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.brave.browser%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Brave%2520Browser%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Ebrave-arm64-v8a-dh6k-patches-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Ebrave-arm64-v8a-dh6k-patches-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **Depth Wallpaper** | `com.jndapp.depth.live.wallpaper` | rushiranpise | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.jndapp.depth.live.wallpaper%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Depth%2520Wallpaper%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Edepthwallpaper-arm64-v8a-morphe-patches-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Edepthwallpaper-arm64-v8a-morphe-patches-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **Duolingo** | `com.duolingo` | hoodles | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.duolingo%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Duolingo%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Eduolingo-arm64-v8a-hoodles-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Eduolingo-arm64-v8a-hoodles-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **Gboard** | `com.google.android.inputmethod.latin` | jasonwu | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.google.android.inputmethod.latin%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Gboard%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Egboard-arm64-v8a-jasonwu-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Egboard-arm64-v8a-jasonwu-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **Google Photos** | `com.google.android.apps.photos` | rookie | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.google.android.apps.photos%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Google%2520Photos%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Egoogle-photos-arm64-v8a-morphe-patches-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Egoogle-photos-arm64-v8a-morphe-patches-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **HabitKit** | `com.roehl.habitkit` | paresh | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.roehl.habitkit%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522HabitKit%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Ehabitkit-arm64-v8a-paresh-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Ehabitkit-arm64-v8a-paresh-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **Instagram** | `com.instagram.android` | piko | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.instagram.android%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Instagram%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Einstagram-arm64-v8a-piko-patches-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Einstagram-arm64-v8a-piko-patches-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **JioTV+** | `com.jio.media.jiotvplus` | durgesh | `universal` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.jio.media.jiotvplus%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522JioTV%252B%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Ejiotvplus-universal-chiggi-patches-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Ejiotvplus-universal-chiggi-patches-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **Minimal Widgets** | `com.jndapp.minimal.widgets` | rushiranpise | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.jndapp.minimal.widgets%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Minimal%2520Widgets%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Eminimalwidgets-arm64-v8a-morphe-patches-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Eminimalwidgets-arm64-v8a-morphe-patches-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **Notesnook** | `com.streetwriters.notesnook` | hxreborn | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.streetwriters.notesnook%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Notesnook%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Enotesnook-arm64-v8a-hxreborn-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Enotesnook-arm64-v8a-hxreborn-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **Pinterest** | `com.pinterest` | browzomje | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.pinterest%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Pinterest%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Epinterest-arm64-v8a-browzomje-patches-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Epinterest-arm64-v8a-browzomje-patches-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **Pocket Casts** | `au.com.shiftyjelly.pocketcasts` | rushiranpise | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522au.com.shiftyjelly.pocketcasts%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Pocket%2520Casts%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Epocketcasts-arm64-v8a-morphe-patches-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Epocketcasts-arm64-v8a-morphe-patches-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **Proton Pass** | `proton.android.pass` | rushiranpise | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522proton.android.pass%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Proton%2520Pass%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Eprotonpass-arm64-v8a-morphe-patches-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Eprotonpass-arm64-v8a-morphe-patches-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **Reddit** | `com.reddit.frontpage` | morphe | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.reddit.frontpage%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Reddit%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Ereddit-arm64-v8a-morphe-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Ereddit-arm64-v8a-morphe-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **SD Maid 2 / SE** | `eu.darken.sdmse` | paresh | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522eu.darken.sdmse%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522SD%2520Maid%25202%2520%2F%2520SE%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Esdmaidse-arm64-v8a-paresh-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Esdmaidse-arm64-v8a-paresh-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **Server Auditor (Termius)** | `com.server.auditor.ssh.client` | rushiranpise | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.server.auditor.ssh.client%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Server%2520Auditor%2520%2528Termius%2529%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Eserverauditor-arm64-v8a-morphe-patches-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Eserverauditor-arm64-v8a-morphe-patches-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **TaskManager** | `com.rk.taskmanager` | paresh | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.rk.taskmanager%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522TaskManager%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Etaskmanager-arm64-v8a-paresh-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Etaskmanager-arm64-v8a-paresh-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **Telegram** | `org.telegram.messenger` | paresh | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522org.telegram.messenger%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Telegram%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Etelegram-arm64-v8a-paresh-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Etelegram-arm64-v8a-paresh-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **Threads** | `com.instagram.barcelona` | rookie | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.instagram.barcelona%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Threads%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Ethreads-arm64-v8a-morphe-patches-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Ethreads-arm64-v8a-morphe-patches-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **TradingView** | `com.tradingview.tradingviewapp` | rushiranpise | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.tradingview.tradingviewapp%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522TradingView%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Etradingview-arm64-v8a-morphe-patches-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Etradingview-arm64-v8a-morphe-patches-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **VN Video Editor** | `com.frontrow.vlog` | paresh | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.frontrow.vlog%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522VN%2520Video%2520Editor%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Evn-arm64-v8a-paresh-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Evn-arm64-v8a-paresh-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **Vocabulary** | `com.hrd.vocabulary` | morning-entree | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.hrd.vocabulary%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522Vocabulary%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Evocabulary-arm64-v8a-morning-entree-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Evocabulary-arm64-v8a-morning-entree-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **X (Twitter)** | `com.twitter.android` | piko | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.twitter.android%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522X%2520%2528Twitter%2529%2520%2528arm64-v8a%2529%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Ex-arm64-v8a-piko-patches-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Ex-arm64-v8a-piko-patches-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **X (Twitter)** | `com.twitter.android` | piko-dev | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.twitter.android%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522X%2520%2528Twitter%2529%2520%2528arm64-v8a%2529%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Ex-arm64-v8a-piko-dev-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Ex-arm64-v8a-piko-dev-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **YouTube** | `com.google.android.youtube` | morphe | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.google.android.youtube%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522YouTube%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Eyoutube-arm64-v8a-morphe-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Eyoutube-arm64-v8a-morphe-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
-| **YouTube Music** | `com.google.android.apps.youtube.music` | morphe | `arm64-v8a` | [![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)](https://apps.obtainium.imranr.dev/redirect?r=obtainium%3A%2F%2Fapp%2F%257B%2522id%2522%253A%2522com.google.android.apps.youtube.music%2522%252C%2522url%2522%253A%2522https%253A%2F%2Fgithub.com%2Fyashrajrocxx%2FMophe-AutoBuilds%2522%252C%2522author%2522%253A%2522yashrajrocxx%2522%252C%2522name%2522%253A%2522YouTube%2520Music%2522%252C%2522preferredApkIndex%2522%253A0%252C%2522additionalSettings%2522%253A%2522%257B%255C%2522apkFilterRegEx%255C%2522%253A%255C%2522%255Eyoutube-music-arm64-v8a-morphe-v.%252A%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522versionExtractionRegEx%255C%2522%253A%255C%2522%255Eyoutube-music-arm64-v8a-morphe-v%2528.%252A%2529%255C%255C%255C%255C.apk%2524%255C%2522%252C%255C%2522matchGroupToUse%255C%2522%253A%255C%25221%255C%2522%257D%2522%257D) |
+| **Brave Browser** | `com.brave.browser` | dh6k | `arm64-v8a` | Pending build |
+| **Depth Wallpaper** | `com.jndapp.depth.live.wallpaper` | rushiranpise | `arm64-v8a` | Pending build |
+| **Duolingo** | `com.duolingo` | hoodles | `arm64-v8a` | Pending build |
+| **Gboard** | `com.google.android.inputmethod.latin` | jasonwu | `arm64-v8a` | Pending build |
+| **Google Photos** | `com.google.android.apps.photos` | rookie | `arm64-v8a` | Pending build |
+| **HabitKit** | `com.roehl.habitkit` | paresh | `arm64-v8a` | Pending build |
+| **Instagram** | `com.instagram.android` | piko | `arm64-v8a` | Pending build |
+| **JioHotstar** | `in.startv.hotstar` | durgesh | `arm64-v8a` | Pending build |
+| **Minimal Widgets** | `com.jndapp.minimal.widgets` | rushiranpise | `arm64-v8a` | Pending build |
+| **Notesnook** | `com.streetwriters.notesnook` | hxreborn | `arm64-v8a` | Pending build |
+| **Pinterest** | `com.pinterest` | browzomje | `arm64-v8a` | Pending build |
+| **Pocket Casts** | `au.com.shiftyjelly.pocketcasts` | rushiranpise | `arm64-v8a` | Pending build |
+| **Proton Pass** | `proton.android.pass` | rushiranpise | `arm64-v8a` | Pending build |
+| **Reddit** | `com.reddit.frontpage` | morphe | `arm64-v8a` | Pending build |
+| **SD Maid 2 / SE** | `eu.darken.sdmse` | paresh | `arm64-v8a` | Pending build |
+| **Server Auditor (Termius)** | `com.server.auditor.ssh.client` | rushiranpise | `arm64-v8a` | Pending build |
+| **TaskManager** | `com.rk.taskmanager` | paresh | `arm64-v8a` | Pending build |
+| **Telegram** | `org.telegram.messenger` | paresh | `arm64-v8a` | Pending build |
+| **Threads** | `com.instagram.barcelona` | rookie | `arm64-v8a` | Pending build |
+| **Vivaldi Browser** | `com.vivaldi.browser` | kveld9 | `arm64-v8a` | Pending build |
+| **Vocabulary** | `com.hrd.vocabulary` | morning-entree | `arm64-v8a` | Pending build |
+| **X (Twitter)** | `com.twitter.android` | piko-dev | `arm64-v8a` | Pending build |
+| **YouTube** | `com.google.android.youtube` | morphe | `arm64-v8a` | Pending build |
+| **YouTube Music** | `com.google.android.apps.youtube.music` | morphe | `arm64-v8a` | Pending build |
 
 *(All builds are target-optimized for their respective architectures to reduce bundle sizes and increase device efficiency).*
 
 ---
 
-## ✨ Key Technical Enhancements
+## Key Technical Enhancements
 
 This project has been massively overhauled with custom logic to provide maximum reliability:
 
@@ -114,7 +112,7 @@ This project has been massively overhauled with custom logic to provide maximum 
 
 ---
 
-## 🛠️ Repository Structure
+## Repository Structure
 
 ```text
 morphe-autobuilds/
@@ -132,7 +130,7 @@ morphe-autobuilds/
 
 ---
 
-## ⚙️ Configuration Guide
+## Configuration Guide
 
 This builder is highly configurable. You can adjust the following files to customize the build output.
 
@@ -174,7 +172,7 @@ Located in `patches/`. Example for `patches/youtube-morphe.txt`. Use `+` to forc
 
 ---
 
-## 🚀 Local Build Instructions
+## Local Build Instructions
 
 If you prefer to build the APKs on your own machine, follow these steps.
 
@@ -212,7 +210,7 @@ python -m src
 
 ---
 
-## 🔄 GitHub Actions Workflows
+## GitHub Actions Workflows
 
 ### Daily Automated Build (`patch.yml`)
 * **Schedule:** Runs daily at 06:00 UTC.
@@ -225,7 +223,7 @@ python -m src
 
 ---
 
-## 🤝 Contributing
+## Contributing
 Contributions to improve the toolchain or add support for new apps are welcome.
 1. **Fork** the repository.
 2. **Create** a feature branch (`git checkout -b feature/new-app`).
@@ -236,7 +234,7 @@ Contributions to improve the toolchain or add support for new apps are welcome.
 
 ---
 
-## ⚠️ Disclaimer & Legal
+## Disclaimer & Legal
 
 > **Important:** This project is an automated build tool. The APKs provided in the releases are generated automatically using official and community ReVanced/Morphe tools and patches.
 
@@ -249,8 +247,8 @@ Contributions to improve the toolchain or add support for new apps are welcome.
 
 <div align="center">
 
-**If you found this project helpful, please consider giving it a ⭐ Star.**  
+**If you found this project helpful, please consider giving it a star.**  
 <br>
-**Made with 💜 by RookieZ & Customized by Yashrajrocxx**
+**Maintained by RookieZ & Yashrajrocxx**
 
 </div>

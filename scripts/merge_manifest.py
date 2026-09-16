@@ -45,7 +45,7 @@ def main() -> int:
             if changelogs_data:
                 manifest["patch_changelogs"] = changelogs_data
         except Exception as e:
-            print(f"⚠️ Warning reading patch_changelogs.json: {e}")
+            print(f"[WARN] Warning reading patch_changelogs.json: {e}")
 
     rec_dir = Path("build_records")
     if rec_dir.exists():

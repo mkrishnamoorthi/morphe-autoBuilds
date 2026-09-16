@@ -560,7 +560,7 @@ def detect_github_release(user: str, repo: str, tag: str) -> dict:
                 is_external = user.lower() not in (os.environ.get("GITHUB_REPOSITORY", "").lower())
                 if is_external:
                     logging.error(
-                        "❌ 401 Unauthorized for external repository %s/%s. "
+                        "401 Unauthorized for external repository %s/%s. "
                         "The default GITHUB_TOKEN in Actions cannot access private external repositories. "
                         "If this repo is private, please use a Personal Access Token (PAT) with 'repo' scope "
                         "stored as a secret (e.g., CUSTOM_GH_TOKEN) and update your workflow.",

@@ -36,6 +36,7 @@ def clean_changelog_body(body: str, max_lines: int = 35) -> str:
     
     text = body.replace("\r\n", "\n").strip()
     text = re.sub(r'<!--.*?-->', '', text, flags=re.DOTALL)
+    text = re.sub(r'[\U00010000-\U0010ffff\u2600-\u26ff\u2700-\u27bf]', '', text)
     
     lines = text.splitlines()
     if len(lines) > max_lines:
@@ -157,7 +158,7 @@ def main() -> int:
             with patch_changelogs_file.open("r", encoding="utf-8") as f:
                 changelogs_data = json.load(f)
         except Exception as e:
-            print(f"⚠️ Error reading patch_changelogs.json: {e}")
+            print(f"[WARN] Error reading patch_changelogs.json: {e}")
 
     # Read failed patches
     failed_patches: Dict[str, list] = {}
@@ -166,7 +167,7 @@ def main() -> int:
             with failed_patches_file.open("r", encoding="utf-8") as f:
                 failed_patches = json.load(f)
         except Exception as e:
-            print(f"⚠️ Error reading failed patches: {e}")
+            print(f"[WARN] Error reading failed patches: {e}")
 
     # Identify ONLY newly rebuilt APKs in this cycle
     rebuilt_apks: List[Path] = []
@@ -214,17 +215,17 @@ def main() -> int:
 
     # Start human-written sleek markdown
     content: List[str] = []
-    content.append("# ⚡ Morphe AutoBuilds — Latest Release\n")
+    content.append("# Morphe AutoBuilds — Latest Release\n")
     content.append("Automated compilation of custom patched Android apps with verified ad-blocking, background playback, and premium features.\n")
     
     # Sleek Callout Banners
-    content.append(f"> 🌐 **Full App Catalog:** Browse all apps with instant search, categories, and direct APK downloads on our [**Web Store Portal**]({pages_url}).\n"
+    content.append(f"> **Full App Catalog:** Browse all apps with instant search, categories, and direct APK downloads on our [**Web Store Portal**]({pages_url}).\n"
                    f">\n"
-                   f"> 📲 **Automatic Updates with Obtainium:** Install or update any app with 1-click using the **Add to Obtainium** badges below, or [**Bulk Import All Apps**]({obtainium_raw_url}) via URL in Obtainium.\n")
+                   f"> **Automatic Updates with Obtainium:** Install or update any app with 1-click using the **Add to Obtainium** badges below, or [**Bulk Import All Apps**]({obtainium_raw_url}) via URL in Obtainium.\n")
 
     # 1. Newly Rebuilt Apps Table (ONLY apps built in this release run)
     if rebuilt_apks:
-        content.append("## 🚀 Rebuilt & Updated Apps in This Release\n")
+        content.append("## Rebuilt & Updated Apps in This Release\n")
         content.append("| Application | Version | Patch Source | Arch | Download | Obtainium (1-Click) |")
         content.append("| :--- | :--- | :--- | :---: | :--- | :---: |")
 
@@ -266,13 +267,13 @@ def main() -> int:
             for a in s.get("affected_apps", []):
                 all_affected.add(a)
         if all_affected:
-            content.append("## 🚀 Updated Apps in This Cycle\n")
+            content.append("## Updated Apps in This Cycle\n")
             apps_list = ", ".join([f"**{format_app_display(a)}**" for a in sorted(all_affected)])
             content.append(f"The following applications received patch updates in this build cycle: {apps_list}.\n")
 
     # 2. Full Application Catalog (Always present when manifest exists)
     if manifest_entries:
-        content.append(f"## 📱 Complete App Catalog ({len(manifest_entries)} Apps)\n")
+        content.append(f"## Complete App Catalog ({len(manifest_entries)} Apps)\n")
         content.append("<details open>\n<summary><b>Click to toggle full catalog with 1-Click Obtainium badges</b></summary>\n")
         content.append("| Application | Version | Patch Source | Arch | Download | Obtainium (1-Click) |")
         content.append("| :--- | :--- | :--- | :---: | :--- | :---: |")
@@ -297,7 +298,7 @@ def main() -> int:
 
     # 2. What's New in Patches / Upstream Changelogs
     if changelogs_data:
-        content.append("## 📦 What's New in Upstream Patches\n")
+        content.append("## What's New in Upstream Patches\n")
         
         for source_key, sdata in changelogs_data.items():
             source_display = get_source_display_name(source_key)
@@ -310,9 +311,9 @@ def main() -> int:
             if published_at and "T" in published_at:
                 published_at = published_at.split("T")[0]
 
-            version_transition = f"`{old_tag}` ➔ `{new_tag}`" if old_tag and old_tag != new_tag else f"`{new_tag}`"
+            version_transition = f"`{old_tag}` -> `{new_tag}`" if old_tag and old_tag != new_tag else f"`{new_tag}`"
             
-            content.append(f"### ✨ {source_display} ({version_transition})")
+            content.append(f"### {source_display} ({version_transition})")
             
             meta_items = []
             if affected_apps:
@@ -339,7 +340,7 @@ def main() -> int:
     if failed_patches:
         has_any = any(len(p) > 0 for p in failed_patches.values())
         if has_any:
-            content.append("## ⚠️ Compatibility Notes\n")
+            content.append("## Compatibility Notes\n")
             for app, patches in failed_patches.items():
                 if patches:
                     patches_str = ", ".join([f"`{p}`" for p in patches])
@@ -347,7 +348,7 @@ def main() -> int:
             content.append("")
 
     # 4. Credits & References
-    content.append("## 🛠️ Credits & Toolchains\n")
+    content.append("## Credits & Toolchains\n")
     content.append("Built with [Morphe](https://github.com/MorpheApp) CLI. Credits to all open-source patch developers:")
     content.append("- **Morphe/ReVanced:** [MorpheApp/morphe-patches](https://github.com/MorpheApp/morphe-patches)")
     content.append("- **Piko:** [crimera/piko](https://github.com/crimera/piko)")
@@ -365,7 +366,7 @@ def main() -> int:
     content.append("- **dh6k:** [dh6k/morphe-patches](https://github.com/dh6k/morphe-patches)\n")
 
     # 5. Non-root Note
-    content.append("## ℹ️ Notes")
+    content.append("## Notes")
     content.append("Non-root GmsCore / MicroG-RE is recommended for Google account sign-in on patched Google apps.\n")
 
     full_text = "\n".join(content)
