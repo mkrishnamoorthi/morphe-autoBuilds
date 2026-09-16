@@ -158,6 +158,13 @@ export const APP_METADATA = {
     icon: "https://play-lh.googleusercontent.com/g8_x9f0=w240-h480",
     color: "#4285F4"
   },
+  "vivaldi": {
+    name: "Vivaldi Browser",
+    category: "Web Browser",
+    package: "com.vivaldi.browser",
+    icon: "https://play-lh.googleusercontent.com/v9_x9g0=w240-h480",
+    color: "#EF3939"
+  },
   "vivaldi-snapshot": {
     name: "Vivaldi Snapshot",
     category: "Web Browser",

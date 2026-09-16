@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, CheckCircle2, Clock } from 'lucide-react';
+import { Download, CheckCircle2, Clock, Smartphone } from 'lucide-react';
 import { formatTimeAgo } from '../utils/dateUtils';
 import { getAppMeta } from '../utils/appMeta';
 
@@ -124,26 +124,42 @@ export function AppCard({ appName, appEntries, isRecentlyUpdated, manifestUpdate
           if (!entry.apk) return null;
           const archLabel = (entry.arch || 'universal').toUpperCase();
           const apkUrl = `https://github.com/yashrajrocxx/Mophe-AutoBuilds/releases/download/latest/${entry.apk}`;
+          const obtainiumUrl = entry.obtainium_url;
 
           return (
-            <a
-              key={idx}
-              href={apkUrl}
-              className="flex items-center justify-between px-3 py-1.5 bg-background hover:bg-accent hover:text-white border border-border/60 hover:border-accent rounded-lg text-xs font-semibold text-foreground transition-all duration-150 group/btn shadow-2xs"
-            >
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-[11px] font-bold tracking-wider opacity-90 group-hover/btn:opacity-100">
-                  {archLabel}
-                </span>
-                <span className="text-[10.5px] font-mono font-normal opacity-60 group-hover/btn:opacity-90">
-                  v{entry.built_version || versionDisplay}
-                </span>
-              </div>
+            <div key={idx} className="flex items-center gap-1.5">
+              <a
+                href={apkUrl}
+                title={`Download ${archLabel} APK`}
+                className="flex-1 flex items-center justify-between px-3 py-1.5 bg-background hover:bg-accent hover:text-white border border-border/60 hover:border-accent rounded-lg text-xs font-semibold text-foreground transition-all duration-150 group/btn shadow-2xs"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-[11px] font-bold tracking-wider opacity-90 group-hover/btn:opacity-100">
+                    {archLabel}
+                  </span>
+                  <span className="text-[10.5px] font-mono font-normal opacity-60 group-hover/btn:opacity-90">
+                    v{entry.built_version || versionDisplay}
+                  </span>
+                </div>
 
-              <div className="flex items-center gap-1">
-                <Download size={12} className="group-hover/btn:translate-y-0.5 transition-transform" />
-              </div>
-            </a>
+                <div className="flex items-center gap-1">
+                  <Download size={12} className="group-hover/btn:translate-y-0.5 transition-transform" />
+                </div>
+              </a>
+
+              {obtainiumUrl && (
+                <a
+                  href={obtainiumUrl}
+                  title="Add to Obtainium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2.5 py-1.5 bg-background hover:bg-violet-600 hover:text-white text-muted-foreground hover:border-violet-600 border border-border/60 rounded-lg text-xs font-semibold transition-all duration-150 flex items-center gap-1 shadow-2xs shrink-0 group/obt"
+                >
+                  <Smartphone size={12} className="text-violet-500 group-hover/obt:text-white transition-colors" />
+                  <span className="text-[10.5px] font-medium tracking-tight">Obtainium</span>
+                </a>
+              )}
+            </div>
           );
         })}
       </div>

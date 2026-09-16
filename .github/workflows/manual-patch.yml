@@ -171,33 +171,43 @@ jobs:
             echo "$apk" >> current_assets.txt
           done
           
-          # 2. CREATE RELEASE NOTES
-          cat > release_notes.md << EOF
-          # 🔧 Morphe APKs - Custom Build
-          
-          Automated daily compilation of custom patched Android applications using community ReVanced toolchains.
-          
-          ## 📱 Available Apps
-          EOF
-          
-          # Sort and use 'unique' to remove duplicates in the text list
-          sort -u current_assets.txt | while read filename; do
-            echo "- $filename" >> release_notes.md
-          done
-          
-          python scripts/append_failed_patches.py
-          
-          cat >> release_notes.md << EOF
-          
-          ---
-          
-          **Last Update:** $(date)
-          **Updated App:** ${{ inputs.app_name }}
-          **Architecture:** ${{ inputs.architecture }}
-          **Source:** ${{ inputs.source }}
-          
-          Auto-updates daily at 6 AM UTC.
-          EOF
+          # 2. UPDATE MANIFEST & CREATE RELEASE NOTES
+          echo "🧾 Updating manifest and generating Obtainium & release notes..."
+          # Download manifest from latest release if available to ensure we have existing catalog
+          gh release download latest -p "manifest.json" --clobber || true
+
+          # Merge newly built record into manifest.json
+          python -c "
+import json, glob, datetime
+manifest = {'entries': {}}
+try:
+    with open('manifest.json', 'r') as f:
+        manifest = json.load(f)
+except Exception:
+    pass
+entries = manifest.setdefault('entries', {})
+for rf in glob.glob('build_records/*.json'):
+    if 'build_report' in rf: continue
+    try:
+        with open(rf, 'r') as f:
+            rec = json.load(f)
+        key = rec.get('key')
+        if key:
+            entry = entries.setdefault(key, {})
+            entry.update(rec)
+            entry['built_at'] = datetime.datetime.now(datetime.timezone.utc).isoformat() + 'Z'
+    except Exception as e:
+        print(f'Error merging {rf}: {e}')
+with open('manifest.json', 'w') as f:
+    json.dump(manifest, f, indent=2)
+" || true
+
+          python scripts/generate_obtainium.py || true
+          python scripts/validate_obtainium.py || true
+          python scripts/generate_release_notes.py || {
+            echo "# 🔧 Morphe APKs - Custom Build" > release_notes.md
+            echo "Updated ${{ inputs.app_name }} (${{ inputs.architecture }})." >> release_notes.md
+          }
           
           # 3. PERFORM UPDATE (CLOBBER) OR CREATE
           if [ "${{ steps.check-release.outputs.release_exists }}" == "true" ]; then
@@ -220,6 +230,12 @@ jobs:
             ASSETS=( *.apk )
             if ls build_records/*.json 1> /dev/null 2>&1; then
               ASSETS+=( build_records/*.json )
+            fi
+            if [ -f manifest.json ]; then
+              ASSETS+=( manifest.json )
+            fi
+            if [ -f obtainium.json ]; then
+              ASSETS+=( obtainium.json )
             fi
 
             # --clobber overwrites the file if it exists, adds it if it doesn't
@@ -261,41 +277,31 @@ jobs:
           
           echo "✅ Release updated successfully!"
 
-      - name: Update Pages Data
+      - name: Update Repository, README & Pages Data
         if: ${{ inputs.replace_in_release == true }}
         run: |
-          echo "🔄 Updating Pages Data..."
+          echo "🔄 Syncing Manifest, Obtainium, README, and Pages Data..."
           mkdir -p pages/public
-          python -c "
-          import json, os, datetime
-          try:
-              with open('build_records/build_report_${{ inputs.app_name }}.json', 'r') as f:
-                  reports = json.load(f)
-              report = reports[0] if reports else None
-              if report and report.get('status') == 'success':
-                  with open('pages/public/manifest.json', 'r') as f:
-                      manifest = json.load(f)
-                  for app in manifest:
-                      if app.get('app_name') == report['app']:
-                          app['version'] = report.get('version')
-                          app['built_at'] = datetime.datetime.now(datetime.timezone.utc).isoformat() + 'Z'
-                          break
-                  with open('pages/public/manifest.json', 'w') as f:
-                      json.dump(manifest, f, indent=2)
-          except Exception as e:
-              print(f'Failed to update manifest: {e}')
-          "
-          
+          cp manifest.json pages/public/manifest.json || true
+          if [ -f obtainium.json ]; then
+            cp obtainium.json pages/public/obtainium.json || true
+          fi
+          if ls build_records/build_report_*.json 1> /dev/null 2>&1; then
+            cp build_records/build_report_*.json pages/public/build_report.json || true
+          fi
+
+          python scripts/update_readme_obtainium.py || echo "⚠️ update_readme_obtainium.py failed"
+
           # Only commit if there are changes to the data
-          if [[ -n $(git status -s pages/public) ]]; then
+          if [[ -n $(git status -s manifest.json obtainium.json README.md pages/public) ]]; then
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git add pages/public/manifest.json pages/public/build_report.json
-            git commit -m "chore: auto-update App Store data" || true
+            git add manifest.json obtainium.json README.md pages/public/
+            git commit -m "chore: auto-sync manifest, obtainium bundle, and README catalog [skip ci]" || true
             git push
-            echo "✅ Pages data pushed successfully!"
+            echo "✅ Repository and Pages data pushed successfully!"
           else
-            echo "No changes to pages data, skipping push."
+            echo "No changes to data, skipping push."
           fi
       
       - name: Show Download Links

@@ -2,13 +2,12 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Box, 
   Clock, 
-  Sparkles, 
   Flame, 
-  Layers, 
   Smartphone, 
   Download, 
-  CheckCircle2, 
-  RefreshCw 
+  Copy, 
+  Check, 
+  X 
 } from 'lucide-react';
 import { PatchChangelogsSection } from '../components/PatchChangelogsSection';
 import { AppCard } from '../components/AppCard';
@@ -19,6 +18,8 @@ export function StorePage() {
   const [manifest, setManifest] = useState(null);
   const [patchChangelogs, setPatchChangelogs] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showObtainiumModal, setShowObtainiumModal] = useState(false);
+  const [copied, setCopied] = useState(false);
   
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSource, setSelectedSource] = useState('all');
@@ -161,9 +162,19 @@ export function StorePage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-xs text-muted-foreground bg-muted/40 px-3.5 py-1.5 rounded-xl border border-border/50 self-start sm:self-auto">
-          <Clock size={13} className="text-accent" />
-          <span>Updated {formatTimeAgo(manifest?.updated_at)}</span>
+        <div className="flex items-center gap-2.5 self-start sm:self-auto flex-wrap">
+          <button
+            onClick={() => setShowObtainiumModal(true)}
+            className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 bg-violet-500/10 hover:bg-violet-500/20 text-violet-600 dark:text-violet-400 border border-violet-500/25 rounded-xl transition-all shadow-2xs hover:scale-[1.02] cursor-pointer"
+          >
+            <Smartphone size={13} className="text-violet-500" />
+            <span>Obtainium Setup</span>
+          </button>
+
+          <div className="flex items-center gap-2 text-xs text-muted-foreground bg-muted/40 px-3.5 py-1.5 rounded-xl border border-border/50">
+            <Clock size={13} className="text-accent" />
+            <span>Updated {formatTimeAgo(manifest?.updated_at)}</span>
+          </div>
         </div>
       </div>
 
@@ -245,6 +256,88 @@ export function StorePage() {
           </div>
         )}
       </section>
+
+      {/* Obtainium Import Modal */}
+      {showObtainiumModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm">
+          <div className="bg-card border border-border/80 rounded-2xl shadow-xl max-w-lg w-full p-6 relative yr-fade-up">
+            <button
+              onClick={() => setShowObtainiumModal(false)}
+              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground p-1 rounded-lg hover:bg-muted/50 transition-colors cursor-pointer"
+            >
+              <X size={18} />
+            </button>
+
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-500">
+                <Smartphone size={20} />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-foreground">Obtainium Integration</h3>
+                <p className="text-xs text-muted-foreground">Track updates and install all builds automatically</p>
+              </div>
+            </div>
+
+            <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
+              Obtainium tracks GitHub releases directly. You can add individual apps using the <strong className="text-foreground">Obtainium</strong> button on each card, or import the full catalog at once:
+            </p>
+
+            <div className="space-y-3 mb-5">
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
+                  Bulk Config URL
+                </label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    readOnly
+                    value="https://raw.githubusercontent.com/yashrajrocxx/Mophe-AutoBuilds/main/obtainium.json"
+                    className="flex-1 bg-muted/40 border border-border/60 rounded-xl px-3 py-2 text-xs font-mono text-foreground select-all focus:outline-none focus:ring-1 focus:ring-accent"
+                  />
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText("https://raw.githubusercontent.com/yashrajrocxx/Mophe-AutoBuilds/main/obtainium.json");
+                      setCopied(true);
+                      setTimeout(() => setCopied(false), 2000);
+                    }}
+                    className="flex items-center gap-1.5 px-3 py-2 bg-accent text-white rounded-xl text-xs font-semibold hover:opacity-90 transition-all cursor-pointer shrink-0 shadow-2xs"
+                  >
+                    {copied ? <Check size={13} /> : <Copy size={13} />}
+                    <span>{copied ? "Copied" : "Copy"}</span>
+                  </button>
+                </div>
+              </div>
+
+              <div className="p-3 bg-muted/30 border border-border/40 rounded-xl text-xs space-y-1.5 text-muted-foreground">
+                <p className="font-semibold text-foreground">How to Import All Apps:</p>
+                <ol className="list-decimal list-inside space-y-1 pl-1">
+                  <li>In Obtainium, tap the <strong>+</strong> button (or Import / Export).</li>
+                  <li>Select <strong>Import from URL</strong>.</li>
+                  <li>Paste the URL above and tap <strong>Import</strong>.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between gap-3 pt-4 border-t border-border/40">
+              <a
+                href={`${import.meta.env.BASE_URL}obtainium.json`}
+                download="obtainium.json"
+                className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground font-medium transition-colors"
+              >
+                <Download size={13} />
+                <span>Download obtainium.json</span>
+              </a>
+
+              <button
+                onClick={() => setShowObtainiumModal(false)}
+                className="px-4 py-1.5 bg-muted hover:bg-muted/80 text-foreground font-semibold rounded-xl text-xs transition-colors cursor-pointer"
+              >
+                Done
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );

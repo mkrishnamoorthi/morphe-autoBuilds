@@ -305,9 +305,15 @@ jobs:
             rm -f manifest.json
           }
           if [ -f manifest.json ]; then
+            echo "🧾 Generating Obtainium configuration and deep links..."
+            python scripts/generate_obtainium.py || echo "⚠️ generate_obtainium.py failed"
+            python scripts/validate_obtainium.py || echo "⚠️ validate_obtainium.py failed"
             echo "✅ manifest.json built:"
             jq '.entries | length' manifest.json || true
             cp manifest.json ./release-apks/manifest.json
+            if [ -f obtainium.json ]; then
+              cp obtainium.json ./release-apks/obtainium.json
+            fi
           fi
           if [ -f patch_changelogs.json ]; then
             cp patch_changelogs.json ./release-apks/patch_changelogs.json
@@ -392,6 +398,10 @@ jobs:
             ASSETS+=( ./release-apks/manifest.json )
             echo "📎 Including manifest.json"
           fi
+          if [ -f ./release-apks/obtainium.json ]; then
+            ASSETS+=( ./release-apks/obtainium.json )
+            echo "📎 Including obtainium.json"
+          fi
           if [ -f ./release-apks/build_report.json ]; then
             ASSETS+=( ./release-apks/build_report.json )
             echo "📎 Including build_report.json"
@@ -450,27 +460,34 @@ jobs:
 
           echo "✅ Release publish step completed successfully!"
       
-      - name: Update Pages Data
+      - name: Update Repository, README & Pages Data
         if: steps.check-apks.outputs.skip_release == 'false'
         run: |
-          echo "🔄 Updating Pages Data..."
+          echo "🔄 Syncing Manifest, Obtainium, README, and Pages Data..."
           mkdir -p pages/public
           cp ./release-apks/manifest.json pages/public/manifest.json || true
+          cp ./release-apks/manifest.json ./manifest.json || true
           cp ./release-apks/build_report.json pages/public/build_report.json || true
+          if [ -f ./release-apks/obtainium.json ]; then
+            cp ./release-apks/obtainium.json pages/public/obtainium.json || true
+            cp ./release-apks/obtainium.json ./obtainium.json || true
+          fi
           if [ -f ./release-apks/patch_changelogs.json ]; then
             cp ./release-apks/patch_changelogs.json pages/public/patch_changelogs.json || true
           fi
+
+          python scripts/update_readme_obtainium.py || echo "⚠️ update_readme_obtainium.py failed"
           
-          # Only commit if there are changes to the data
-          if [[ -n $(git status -s pages/public) ]]; then
+          # Only commit if there are changes to data
+          if [[ -n $(git status -s manifest.json obtainium.json README.md pages/public) ]]; then
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git add pages/public/
-            git commit -m "chore: auto-update App Store data" || true
+            git add manifest.json obtainium.json README.md pages/public/
+            git commit -m "chore: auto-sync manifest, obtainium bundle, and README catalog [skip ci]" || true
             git push
-            echo "✅ Pages data pushed successfully!"
+            echo "✅ Repository and Pages data pushed successfully!"
           else
-            echo "No changes to pages data, skipping push."
+            echo "No changes detected, skipping push."
           fi
 
       - name: Display Release URL

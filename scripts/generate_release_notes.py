@@ -82,6 +82,7 @@ def format_app_display(app_name: str) -> str:
         "pinnit": "Pinnit",
         "gboard": "Gboard",
         "vivaldi-snapshot": "Vivaldi Snapshot",
+        "vivaldi": "Vivaldi Browser",
         "taskmanager": "TaskManager",
         "habitkit": "HabitKit",
         "notesnook": "Notesnook",
@@ -188,32 +189,55 @@ def main() -> int:
             except Exception:
                 pass
 
+    # Read manifest.json for Obtainium links and full catalog
+    manifest_data = {}
+    manifest_path = Path("manifest.json")
+    if not manifest_path.exists():
+        for mp in [Path("./release-apks/manifest.json"), Path("new_manifest.json")]:
+            if mp.exists():
+                manifest_path = mp
+                break
+    if manifest_path.exists():
+        try:
+            with manifest_path.open("r", encoding="utf-8") as f:
+                manifest_data = json.load(f)
+        except Exception:
+            pass
+
+    manifest_entries = manifest_data.get("entries", {})
+    apk_to_manifest = {v["apk"]: v for v in manifest_entries.values() if v.get("apk")}
+
     repo_name = os.environ.get("GITHUB_REPOSITORY", "yashrajrocxx/Mophe-AutoBuilds")
     pages_url = f"https://{repo_name.split('/')[0]}.github.io/{repo_name.split('/')[1]}/" if "/" in repo_name else "https://yashrajrocxx.github.io/Mophe-AutoBuilds/"
+    obtainium_raw_url = f"https://raw.githubusercontent.com/{repo_name}/main/obtainium.json"
 
     # Start human-written sleek markdown
     content: List[str] = []
     content.append("# ⚡ Morphe AutoBuilds — Latest Release\n")
     content.append("Automated compilation of custom patched Android apps with verified ad-blocking, background playback, and premium features.\n")
     
-    # Sleek Callout Banner to Web Store
-    content.append(f"> 🌐 **Full App Catalog:** Browse all apps with instant search, categories, and direct APK downloads on our [**Web Store Portal**]({pages_url}).\n")
+    # Sleek Callout Banners
+    content.append(f"> 🌐 **Full App Catalog:** Browse all apps with instant search, categories, and direct APK downloads on our [**Web Store Portal**]({pages_url}).\n"
+                   f">\n"
+                   f"> 📲 **Automatic Updates with Obtainium:** Install or update any app with 1-click using the **Add to Obtainium** badges below, or [**Bulk Import All Apps**]({obtainium_raw_url}) via URL in Obtainium.\n")
 
     # 1. Newly Rebuilt Apps Table (ONLY apps built in this release run)
     if rebuilt_apks:
         content.append("## 🚀 Rebuilt & Updated Apps in This Release\n")
-        content.append("| Application | Version | Patch Source | Architecture | Direct Download |")
-        content.append("| :--- | :--- | :--- | :---: | :--- |")
+        content.append("| Application | Version | Patch Source | Arch | Download | Obtainium (1-Click) |")
+        content.append("| :--- | :--- | :--- | :---: | :--- | :---: |")
 
         for apk in sorted(rebuilt_apks, key=lambda a: a.name.lower()):
             fn = apk.name
             arch = detect_arch(fn)
-            dl_url = f"https://github/{repo_name}/releases/download/latest/{fn}".replace("https://github/", "https://github.com/")
+            dl_url = f"https://github.com/{repo_name}/releases/download/latest/{fn}"
 
             record = built_records_map.get(fn, {})
-            app_key = record.get("app_name")
-            source = record.get("source")
-            version = record.get("built_version")
+            manifest_entry = apk_to_manifest.get(fn, {})
+
+            app_key = record.get("app_name") or manifest_entry.get("app_name")
+            source = record.get("source") or manifest_entry.get("source")
+            version = record.get("built_version") or manifest_entry.get("built_version")
 
             if not app_key or not version:
                 parsed_app, parsed_src, parsed_ver = parse_apk_details(fn)
@@ -225,7 +249,14 @@ def main() -> int:
             src_title = get_source_display_name(source).replace(" Patches", "") if source else "Custom"
             ver_display = f"`{version}`" if version else "`Latest`"
 
-            content.append(f"| **{app_title}** | {ver_display} | {src_title} | `{arch}` | [Download APK]({dl_url}) |")
+            obt_url = manifest_entry.get("obtainium_url")
+            obt_badge = (
+                f"[![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)]({obt_url})"
+                if obt_url
+                else "—"
+            )
+
+            content.append(f"| **{app_title}** | {ver_display} | {src_title} | `{arch}` | [Download APK]({dl_url}) | {obt_badge} |")
         content.append("")
     elif changelogs_data:
         # If no APKs in current folder yet (e.g. dry-run check), show affected apps from changelogs
@@ -237,6 +268,31 @@ def main() -> int:
             content.append("## 🚀 Updated Apps in This Cycle\n")
             apps_list = ", ".join([f"**{format_app_display(a)}**" for a in sorted(all_affected)])
             content.append(f"The following applications received patch updates in this build cycle: {apps_list}.\n")
+
+    # 2. Full Application Catalog (Always present when manifest exists)
+    if manifest_entries:
+        content.append(f"## 📱 Complete App Catalog ({len(manifest_entries)} Apps)\n")
+        content.append("<details open>\n<summary><b>Click to toggle full catalog with 1-Click Obtainium badges</b></summary>\n")
+        content.append("| Application | Version | Patch Source | Arch | Download | Obtainium (1-Click) |")
+        content.append("| :--- | :--- | :--- | :---: | :--- | :---: |")
+
+        for k, entry in sorted(manifest_entries.items(), key=lambda x: x[1].get("app_name", "")):
+            apk_fn = entry.get("apk")
+            if not apk_fn:
+                continue
+            app_title = format_app_display(entry.get("app_name", ""))
+            ver = entry.get("built_version", "Latest")
+            src_title = get_source_display_name(entry.get("source", "")).replace(" Patches", "")
+            arch_token = entry.get("arch", "arm64-v8a")
+            dl_link = f"https://github.com/{repo_name}/releases/download/latest/{apk_fn}"
+            obt_url = entry.get("obtainium_url")
+            badge = (
+                f"[![Add to Obtainium](https://img.shields.io/badge/Obtainium-Add-7C3AED?style=flat-square&logo=android&logoColor=white)]({obt_url})"
+                if obt_url
+                else "—"
+            )
+            content.append(f"| **{app_title}** | `{ver}` | {src_title} | `{arch_token}` | [Download APK]({dl_link}) | {badge} |")
+        content.append("\n</details>\n")
 
     # 2. What's New in Patches / Upstream Changelogs
     if changelogs_data:
