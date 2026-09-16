@@ -54,6 +54,7 @@ NAME_MAP = {
     "duolingo": "Duolingo",
     "brave": "Brave Browser",
     "jiotvplus": "JioTV+",
+    "jiohotstar": "JioHotstar",
 }
 
 

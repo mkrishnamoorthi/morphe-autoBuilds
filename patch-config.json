@@ -22,6 +22,7 @@
     { "app_name": "notesnook", "source": "hxreborn" },
     { "app_name": "duolingo", "source": "hoodles" },
     { "app_name": "brave", "source": "dh6k" },
-    { "app_name": "vivaldi", "source": "kveld9" }
+    { "app_name": "vivaldi", "source": "kveld9" },
+    { "app_name": "jiohotstar", "source": "durgesh" }
   ]
 }

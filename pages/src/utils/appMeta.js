@@ -199,6 +199,13 @@ export const APP_METADATA = {
     package: "com.brave.browser",
     icon: "https://play-lh.googleusercontent.com/78b9_x8=w240-h480",
     color: "#FF3B00"
+  },
+  "jiohotstar": {
+    name: "JioHotstar",
+    category: "Entertainment & Video",
+    package: "in.startv.hotstar",
+    icon: "https://play-lh.googleusercontent.com/02xiO0ptbXjD8NR3sbS2StP1P9aytDN56dDR15zqM_i66Vwq5W_hD-98CoFxvRVoUS4uV_xMSv-iQh3nQFeDeQ=w240-h480",
+    color: "#0C56E9"
   }
 };
 

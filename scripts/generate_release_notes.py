@@ -88,6 +88,7 @@ def format_app_display(app_name: str) -> str:
         "notesnook": "Notesnook",
         "duolingo": "Duolingo",
         "brave": "Brave Browser",
+        "jiohotstar": "JioHotstar",
     }
     return name_map.get(app_name.lower().strip(), app_name.replace("-", " ").title())
 
