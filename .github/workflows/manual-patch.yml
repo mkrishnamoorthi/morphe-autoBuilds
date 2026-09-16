@@ -177,30 +177,7 @@ jobs:
           gh release download latest -p "manifest.json" --clobber || true
 
           # Merge newly built record into manifest.json
-          python -c "
-import json, glob, datetime
-manifest = {'entries': {}}
-try:
-    with open('manifest.json', 'r') as f:
-        manifest = json.load(f)
-except Exception:
-    pass
-entries = manifest.setdefault('entries', {})
-for rf in glob.glob('build_records/*.json'):
-    if 'build_report' in rf: continue
-    try:
-        with open(rf, 'r') as f:
-            rec = json.load(f)
-        key = rec.get('key')
-        if key:
-            entry = entries.setdefault(key, {})
-            entry.update(rec)
-            entry['built_at'] = datetime.datetime.now(datetime.timezone.utc).isoformat() + 'Z'
-    except Exception as e:
-        print(f'Error merging {rf}: {e}')
-with open('manifest.json', 'w') as f:
-    json.dump(manifest, f, indent=2)
-" || true
+          python scripts/merge_manifest.py || echo "⚠️ merge_manifest.py failed"
 
           python scripts/generate_obtainium.py || true
           python scripts/validate_obtainium.py || true

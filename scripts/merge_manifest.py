@@ -24,12 +24,14 @@ if sys.stdout and hasattr(sys.stdout, "reconfigure"):
 
 def main() -> int:
     new_manifest_path = Path("new_manifest.json")
-    if not new_manifest_path.exists():
-        print("No new_manifest.json found; nothing to merge")
-        return 0
-
-    with new_manifest_path.open("r", encoding="utf-8") as f:
-        manifest = json.load(f)
+    if new_manifest_path.exists():
+        with new_manifest_path.open("r", encoding="utf-8") as f:
+            manifest = json.load(f)
+    elif Path("manifest.json").exists():
+        with open("manifest.json", "r", encoding="utf-8") as f:
+            manifest = json.load(f)
+    else:
+        manifest = {"entries": {}}
 
     manifest["updated_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
     entries = manifest.setdefault("entries", {})
@@ -81,6 +83,8 @@ def main() -> int:
                 entry["built_version"] = resolved_version
             if rec.get("built_at"):
                 entry["built_at"] = rec.get("built_at")
+            else:
+                entry["built_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat() + "Z"
                 
             pending_sig = entry.get("pending_source_sig", "")
             if pending_sig:
