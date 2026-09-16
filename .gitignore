@@ -17,7 +17,6 @@ venv/
 /carry_over.json
 /new_manifest.json
 /patch_changelogs.json
-/manifest.json
 /release_notes.md
 /release_assets.txt
 /current_assets.txt
