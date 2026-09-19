@@ -331,6 +331,13 @@ def run_build(app_name: str, source: str, arch: str = "universal", report: dict 
                     for p in current_include_patches:
                         morphe_cmd.extend(["-e", str(p)])
 
+                    # Check for per-app options file (e.g., options/gboard-jasonwu.json)
+                    source = os.environ.get("SOURCE", "")
+                    options_file = Path("options") / f"{app_name}-{source}.json"
+                    if options_file.exists():
+                        logging.info(f"Using options file: {options_file}")
+                        morphe_cmd.extend(["--options-file", str(options_file)])
+
                     morphe_cmd.extend([
                         "--out", str(output_apk), str(input_apk)
                     ])

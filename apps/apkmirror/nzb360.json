@@ -1,0 +1,9 @@
+{
+    "org": "kevinforeman",
+    "name": "nzb360",
+    "type": "APK",
+    "arch": "universal",
+    "dpi": "nodpi",
+    "package": "com.kevinforeman.nzb360",
+    "version": ""
+}

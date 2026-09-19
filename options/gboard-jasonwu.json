@@ -1,0 +1,12 @@
+[
+  {
+    "patches": {
+      "Package Rename": {
+        "enabled": true,
+        "options": {
+          "app_display_name": "Gboard Patched"
+        }
+      }
+    }
+  }
+]
