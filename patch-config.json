@@ -1,6 +1,7 @@
 {
   "patch_list": [
     {"app_name": "gboard", "source": "jasonwu"},
-    {"app_name": "nzb360", "source": "rushiranpise"}
+    {"app_name": "nzb360", "source": "rushiranpise"},
+    {"app_name": "reddit", "source": "morphe"}
   ]
 }

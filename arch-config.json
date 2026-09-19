@@ -1,6 +1,7 @@
 {
   "arch_list": [
     {"app_name": "gboard", "source": "jasonwu", "arches": ["arm64-v8a"]},
-    {"app_name": "nzb360", "source": "rushiranpise", "arches": ["arm64-v8a"]}
+    {"app_name": "nzb360", "source": "rushiranpise", "arches": ["arm64-v8a"]},
+    {"app_name": "reddit", "source": "morphe", "arches": ["arm64-v8a"]}
   ]
 }
